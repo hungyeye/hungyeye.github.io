@@ -23,4 +23,28 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <!-- cover: /img/cover/3.png -->]]></content>
   </entry>
+  <entry>
+    <title>spring</title>
+    <url>/2024/05/15/spring/</url>
+    <content><![CDATA[<blockquote>
+<p>转载声明：本文转载自 <a href="https://example.com/original-article">原作者名称</a>。本文版权归原作者所有，如有侵权，请联系删除。</p>
+</blockquote>
+<h1 id="示例博客文章标题"><a href="#示例博客文章标题" class="headerlink" title="示例博客文章标题"></a>示例博客文章标题</h1><p>这是转载的文章内容…</p>
+<!-- 添加原文链接和版权信息 -->
+<p>原文链接：<a href="https://example.com/original-article">示例博客文章标题</a></p>
+<p>原作者：原作者名称</p>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随笔</title>
+    <url>/2024/05/16/%E9%9A%8F%E7%AC%94/</url>
+    <content><![CDATA[<p>论文投出去一周，因为方向不一致给拒了，又得开始找期刊投，真麻烦！！！他喵的</p>
+]]></content>
+  </entry>
 </search>
