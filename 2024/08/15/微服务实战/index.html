@@ -1,0 +1,1358 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hungyeye's blog | Hungyeye's blog</title><meta name="author" content="Hungyeye"><meta name="copyright" content="Hungyeye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="微服务每一个服务都有自己的ip和端口，微服务是一种软件架构风格，它是以专注于单一职责的很多小型项目为基础，组合出复杂的大型应用。   Docker ：必须要知道  创建mysql容器docker run -d \  --name mysql \  -p 3306:3306 \  -e TZ&#x3D;Asia&#x2F;Shanghai \  -e MYSQL_ROOT_PASSWORD&#x3D;123456 \  -v .">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hungyeye&#39;s blog">
+<meta property="og:url" content="https://hungyeye.github.io/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="Hungyeye&#39;s blog">
+<meta property="og:description" content="微服务每一个服务都有自己的ip和端口，微服务是一种软件架构风格，它是以专注于单一职责的很多小型项目为基础，组合出复杂的大型应用。   Docker ：必须要知道  创建mysql容器docker run -d \  --name mysql \  -p 3306:3306 \  -e TZ&#x3D;Asia&#x2F;Shanghai \  -e MYSQL_ROOT_PASSWORD&#x3D;123456 \  -v .">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hungyeye.github.io/img/cover/3.PNG">
+<meta property="article:published_time" content="2024-08-15T02:04:59.744Z">
+<meta property="article:modified_time" content="2024-08-15T02:04:59.745Z">
+<meta property="article:author" content="Hungyeye">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hungyeye.github.io/img/cover/3.PNG"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="https://hungyeye.github.io/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Hungyeye","link":"链接: ","source":"来源: Hungyeye's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hungyeye\'s blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-15 10:04:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/3.PNG')"><nav id="nav"><span id="blog-info"><a href="/" title="Hungyeye's blog"><span class="site-name">Hungyeye's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-15T02:04:59.744Z" title="发表于 2024-08-15 10:04:59">2024-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-15T02:04:59.745Z" title="更新于 2024-08-15 10:04:59">2024-08-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">22.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>71分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><p>每一个服务都有自己的ip和端口，<strong>微服务</strong>是一种软件架构风格，它是以专注于单一职责的很多小型项目为基础，组合出复杂的大型应用。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240711145457534.png" alt="image-20240711145457534" style="zoom:50%;">
+
+<h2 id="Docker-：必须要知道"><a href="#Docker-：必须要知道" class="headerlink" title="Docker ：必须要知道"></a>Docker ：必须要知道</h2><p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240712101118216.png" alt="image-20240712101118216"></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814202052638.png" alt="image-20240814202052638"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">创建mysql容器</span><br><span class="line">docker run -d \</span><br><span class="line">  --name mysql \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -e TZ=Asia/Shanghai \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">  -v ./mysql/data:/var/lib/mysql \</span><br><span class="line">  -v ./mysql/conf:/etc/mysql/conf.d \</span><br><span class="line">  -v ./mysql/init:/docker-entrypoint-initdb.d \</span><br><span class="line">  mysql:8.0.26</span><br><span class="line">  </span><br><span class="line">创建redis容器</span><br><span class="line">docker run \</span><br><span class="line">-d \</span><br><span class="line">--name redis \</span><br><span class="line">-p 6379:6379 \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">-v /data/soft/redis/data:/data \</span><br><span class="line">-v /data/soft/redis/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">redis:6.2.7 \</span><br><span class="line">redis-server /etc/redis/redis.conf \</span><br><span class="line">--appendonly <span class="built_in">yes</span></span><br><span class="line">容器在退出后会自动重启，除非手动停止。</span><br><span class="line">开启 AOF 持久化模式。这意味着 Redis 服务器会将所有写入操作记录到一个名为 appendonly.aof 的文件中，即使服务器意外重启，也可以通过读取这个文件来恢复数据。</span><br><span class="line"></span><br><span class="line">创建Gogs容器</span><br><span class="line">docker run -p 10022:22 -p 10880:3000 --name=gogs \</span><br><span class="line">  -e TZ=Asia/Shanghai \</span><br><span class="line">  -v /data/soft/gogs:/data \</span><br><span class="line">  -d gogs/gogs:latest</span><br><span class="line">-p 10022:22 将容器的22端口映射到宿主机的10022端口，用于SSH服务。</span><br><span class="line">-p 10080:3000 将容器的3000端口映射到宿主机的10080端口，用于Web访问。</span><br><span class="line">注意必须要改gogs配置文件中的ip地址</span><br><span class="line">app.ini不要copy虚拟机的，这个是在完成初始化后自己生成的md，高了一天</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">创建xxl-job-admin容器</span><br><span class="line">docker run \</span><br><span class="line">-d \</span><br><span class="line">-e PARAMS=<span class="string">&quot;--spring.datasource.url=jdbc:mysql://172.17.0.2:3306/xxl_job?Unicode=true&amp;characterEncoding=UTF-8 --spring.datasource.username=root --spring.datasource.password=123456&quot;</span> \</span><br><span class="line">-p 8088:8080 \</span><br><span class="line">-v /data/soft/applogs:/data/applogs \</span><br><span class="line">--name xxl-job-admin \</span><br><span class="line">xuxueli/xxl-job-admin:2.3.1</span><br><span class="line"></span><br><span class="line">创建minio容器</span><br><span class="line">docker run \</span><br><span class="line">-p 9001:9000 \ 连接端口号</span><br><span class="line">-p 9090:9090 \ 后台管理控制台端口号</span><br><span class="line">--name minio \</span><br><span class="line">-d --restart=always \</span><br><span class="line">-e <span class="string">&quot;MINIO_ACCESS_KEY=minioadmin&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_SECRET_KEY=minioadmin&quot;</span> \</span><br><span class="line">-v /data/soft/minio/data:/data \</span><br><span class="line">-v /data/soft/minio/config:/root/.minio \</span><br><span class="line"> minio/minio:RELEASE.2022-09-07T22-25-02Z server \</span><br><span class="line">/data --console-address <span class="string">&quot;:9090&quot;</span> -address <span class="string">&quot;:9001&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Day01"><a href="#Day01" class="headerlink" title="Day01"></a>Day01</h2><p>拆分服务：独立Project（文件夹和project）和<strong>Maven聚合</strong>（：和module）单体架构师所有功能写到一个module中</p>
+<p>聚合起来才能成为一个工程</p>
+<p><code>&lt;dependencyManagement&gt;</code>标签不真正引入jar包，而是配置可供子项目选择的jar包依赖</p>
+<p>有总的父工程parent，和模块的父工程，父工程都为<packaging>pom</packaging>，当 <code>&lt;packaging&gt;</code> 元素的值为 <code>pom</code> 时，表示该项目是一个父项目或聚合项目（aggregation project），而不是一个实际的可执行或可部署的项目。这种类型的项目主要用于管理多个子项目的共同配置和依赖。</p>
+<p>在没有前后端分离之前，响应的是html页面，现在前后端分离，响应的是json</p>
+<p>公共类放到base中去</p>
+<p>你想将对象存储在redis中的时候就需要序列化就需要实现Serializable接口</p>
+<p>如果要直接在网络上传递一个javabean 2.A服务 远程调用 B服务的 javaBean对象数据</p>
+<p>你注意你启动类放在了com xuecheng下面，那么最后编译完只要是com xuecheng下面的 component 也好 configuration也好都能扫描到</p>
+<p>把启动类放到com.xuecheng 会将该包以及子包下的所有bean都扫描到，com.xuecheng为项目的根包，<strong>当时就碰到问题日期的配置类一直扫描不到就是因为下面图片这个原因</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240716171758145.png" alt="image-20240716171758145" style="zoom:33%;">
+
+<h2 id="Day02"><a href="#Day02" class="headerlink" title="Day02"></a>Day02</h2><p><strong>从下向上开发，定义接口–&gt;先开发Mapper–&gt;再开发Service–&gt;最后再完善接口</strong></p>
+<h3 id="开发持久层"><a href="#开发持久层" class="headerlink" title="开发持久层"></a>开发持久层</h3><p>需要扫描copy到Service工程中的Mapper以生成这些Mapper接口的代理对象放到Spring容器中@MapperScan(“com.xuecheng.content.mapper”)，定义分页插件（原理：写sql语句会自动加limit分页的sql语句）</p>
+<p>启动测试需要启动类，@SpringBootApplication自动装配原理，把启动类所在包以及子包所有bean扫描以及注入到容器中，把Mapper（虽然是接口但是会生成代理对象，注入到Spring容器），要测试哪个Mapper就需要在单元测试类中，从Spring容器中把它拿到注入到单元测试类中。</p>
+<p>方法引用，进一步简化Lambda表达式   </p>
+<p>Mapper是不需要写实现类的只写接口就行 ，将来会使用MyBatis基于动态代理生成实现类</p>
+<p>MyBatisPlus通过扫描实体类，并基于反射获取<strong>实体类信息</strong>作为数据库表信息 </p>
+<p>public interface CourseBaseMapper extends BaseMapper<CourseBase> {&#x2F;&#x2F;关键要制定泛型也就是我们实体类的类型}</CourseBase></p>
+<p>MP基于反射得到实体类CourseBase的类型，通过反射拿到字节码从而拿到实体类信息，再将实体类信息作为数据库表信息</p>
+<p>约定如下：如果不符合约定的话就需要自己去标记</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240716144049202.png" alt="image-20240716144049202"></p>
+<p>MP的条件构造器有两大类</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240716161435031.png" alt="image-20240716161435031"></p>
+<h3 id="开发业务层"><a href="#开发业务层" class="headerlink" title="开发业务层"></a>开发业务层</h3><p>创建数据字典表，将一些状态对应为一些代码–&gt;编写Service–&gt;测试Service</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//分页对象</span></span><br><span class="line">  Page&lt;CourseBase&gt; page = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(pageParams.getPageNo(), pageParams.getPageSize());</span><br><span class="line">  <span class="comment">// 查询数据内容获得结果</span></span><br><span class="line">  Page&lt;CourseBase&gt; pageResult = courseBaseMapper.selectPage(page, queryWrapper);</span><br></pre></td></tr></table></figure>
+
+<p>接口测试中，考虑到Swagger不能保存测试数据，因此可以使用测试工具httpclient来进行测试。</p>
+<h3 id="前后端联调"><a href="#前后端联调" class="headerlink" title="前后端联调"></a>前后端联调</h3><p>导入前端工程–&gt;安装系统管理服务（因为前端要请求获取数据字典表数据），前后端联调发现有跨域</p>
+<p>服务器之间不存在跨域，服务器程序之间访问不会跨域 跨域其实数据已经取到了，只是因为浏览器的策略把显示或者说渲染这部给阻止了</p>
+<h3 id="课程分类查询"><a href="#课程分类查询" class="headerlink" title="课程分类查询"></a>课程分类查询</h3><p>开发思路：根据接口分析拿到的数据     定义模型类dto   然后定义接口api   开发接口 （开发Mpper–&gt;开发Service对接接口，因为数据都已经拿到了但是格式不对，service负责将数据封装成接口需要的结果，即处理子节点) </p>
+<p>Service代码实现如下</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240718151209415.png" alt="image-20240718151209415"></p>
+<p>自动生成的Mapper不能满足我们的使用递归的sql要求因此需要自定义</p>
+<p>CourseCategoryTreeDti是带有子节点的扩展模型类</p>
+<p>resultType，resultMap查询出来的字段的名和模型属性不一致使用resultMap重新映射</p>
+<p><strong>注意一下：</strong>在xml自定义sql中，course_category会爆红但不报错，其实多个数据都有course_category表，但在Resource中我们连接了xc_content数据库，那么他会默认连接xc_content的表</p>
+<h4 id="这里的递归sql很关键"><a href="#这里的递归sql很关键" class="headerlink" title="这里的递归sql很关键"></a>这里的递归sql很关键</h4><h3 id="新增课程"><a href="#新增课程" class="headerlink" title="新增课程"></a>新增课程</h3><p>使用两个dto：AddCourseDto（接受前端传过来的数据）和CourseBaseInfoDto（其实应该是VO，这个项目感觉解释dto和vo有点问题，所有都用dto）</p>
+<p>课程基本信息、课程营销信息也就是course_base、course_market是一对一的关联关系</p>
+<p>course_base还有一个机构id信息，用户不需要输入，单点登录后拿到用户的机构id然后传递给Service，审核状态和发布状态都是默认的</p>
+<p>由于向两张表写数据，加上事务控制注解@Transactional</p>
+<p>抛Exception事务会失效？</p>
+<p>遇到的困难：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在查到营销表中没有数据的时候就插入，使用了属性copy但要知道courseMarket为空所以会报错，</span></span><br><span class="line">BeanUtils.copyProperties(courseMarketNew,courseMarket);</span><br><span class="line"><span class="type">int</span> <span class="variable">insert</span> <span class="operator">=</span> courseMarketMapper.insert(courseMarket);</span><br><span class="line"><span class="comment">//应该直接这样就好</span></span><br><span class="line"><span class="type">int</span> <span class="variable">insert</span> <span class="operator">=</span> courseMarketMapper.insert(courseMarketNew);</span><br></pre></td></tr></table></figure>
+
+<p>面试题：</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240719164508029.png" alt="image-20240719164508029" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240719164340136.png" alt="image-20240719164340136" style="zoom:33%;">
+
+<p>异常处理，统统向上抛出，抛给框架让框架进行处理</p>
+<p>首先要自定义自己的异常类型，和前端约定返回的异常信息为json，json属性为errMessage（无论是自定义异常还是系统异常统统封装成一个类型返回），最后编写异常处理器（框架提供两个注解增强控制器统一捕获异常 ）</p>
+<p>@ControllerAdvice:底层，AOP</p>
+<p>@ExceptionHandler制定某一个方法对某一个异常的类型进行捕获</p>
+<h4 id="面试："><a href="#面试：" class="headerlink" title="面试："></a>面试：</h4><p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240719190745992.png" alt="image-20240719190745992"></p>
+<h2 id="Day03"><a href="#Day03" class="headerlink" title="Day03"></a>Day03</h2><h3 id="JSR303校验"><a href="#JSR303校验" class="headerlink" title="JSR303校验"></a>JSR303校验</h3><p>JSR303抛出MethodArgumentNotValidException异常，我们要在异常处理中解析这个异常</p>
+<p>Service中主要对业务逻辑进行校验，如<strong>校验本机构只能修改本机构的课程</strong>。</p>
+<p>@Validated激活注解校验</p>
+<p>思考：校验规则都是在模型类上配置的，那么如果多个接口使用统一个模型类会出现什么问题，如，新增课程时课程id为空，修改课程时id不能为空，多个接口对校验的需求不同。</p>
+<p>答：使用分组校验</p>
+<h3 id="修改课程"><a href="#修改课程" class="headerlink" title="修改课程"></a>修改课程</h3><p>修改课程的<strong>第一个接口</strong>就是通过id查询课程</p>
+<p>修改比新增的表单多一个课程id，因此要重新定义一个模型类相比新增课程模型类AddCourseDto多一个id属性。下面这个课程id应该为id不能是courseId，因为前端传过来的是Id，并不是courseId</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720135745927.png" alt="image-20240720135745927" style="zoom:25%;">
+
+<p>不用写mapper因为需要两张表coursebase和coursemarket，mp把两张表mapper都生成好了，他们都具有根据id查课程，而且Service中的getCourseBaseById也不用写只需添加到接口就行，具体方法在新增课程中写过了。</p>
+<p>修改课程时候依然要传入机构id</p>
+<p>表单类的校验都在接口层，在Service层需要进行业务逻辑校验，例如机构1的用户无法修改机构2的课程</p>
+<p>数据校验添加分组后没有添加分组不回进行校验，如下</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720153749466.png" alt="image-20240720153749466" style="zoom:33%;">
+
+<p>视频中只有更新课程基本信息，没有<strong>更新课程营销信息，自己实现</strong></p>
+<h3 id="查询课程计划"><a href="#查询课程计划" class="headerlink" title="查询课程计划"></a>查询课程计划</h3><p>需要课程计划表，teachplan，课程计划与媒资关系表，teach plan_media，用于课程计划关联视频，<strong>视频只关联小章节</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720155438325.png" alt="image-20240720155438325" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720155537610.png" alt="image-20240720155537610" style="zoom:33%;">
+
+<p>生成的Mapper无法满足我们的树形查询方式</p>
+<ul>
+<li>如果分类的级数比较少可以用表的自连接，这里就是大章节和小章节两集，直接使用表的自连接。</li>
+<li>如果比较多可以用递归sql</li>
+</ul>
+<p>表的自连接+左外连接</p>
+<p>左外连接：<strong>无论右边有没有，左边都会显示</strong>（一级分类和二级分类通过teachplan表的自链接进行，如果只有一级分类其下边没有二级分类，此时也需要显示一级分类，这里使用左连接，左边是一级分类，右边是二级分类。）</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720163539924.png" alt="image-20240720163539924" style="zoom:33%;">
+
+<p>查询出的数据与模型类不对应需要使用resultMap自定义映射</p>
+<p>type是返回的最终类型，因为这个类型的属性和查出来的数据不一致，需要手动映射</p>
+<p>主键字段用id，普通字段用result</p>
+<p>一对多映射使用<collection>,一个大章节有多个小章节，list中的属性为ofType</collection></p>
+<p>一对一映射，<association>小章节和视频是一对一的关系，映射的类型叫javaType</association></p>
+<h4 id="sql语句很关键"><a href="#sql语句很关键" class="headerlink" title="sql语句很关键"></a>sql语句很关键</h4><h3 id="新增-修改课程计划"><a href="#新增-修改课程计划" class="headerlink" title="新增&#x2F;修改课程计划"></a>新增&#x2F;修改课程计划</h3><p>teachplan中的grade字段，1对应大章节、2对应小章节</p>
+<p>下面三个操作使用一个接口，新增模型类SaveTeachplanDto用来接受下面三种操作请求的数据</p>
+<p>难度在Service编写</p>
+<ul>
+<li><p>添加章</p>
+</li>
+<li><p>添加小结</p>
+</li>
+<li><p>修改信息</p>
+</li>
+</ul>
+<p>前端会传来{  “courseId” : 74,  “parentid”: 0,  “grade” : 1,  “pname” : “新章名称 [点击修改]” }这四个数据</p>
+<p>新增数据后，通过orderby字段来进行排序</p>
+<p><strong>文档一些代码存在问题</strong>count也没加+1</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240720220929590.png" alt="image-20240720220929590" style="zoom:33%;">
+
+<h3 id="Bug修改："><a href="#Bug修改：" class="headerlink" title="Bug修改："></a>Bug修改：</h3><p>把TeachplanMapper.xml里面的内连接inner join teachplan two on two.parentid &#x3D; one.id改为左外连接left join teachplan two on two.parentid &#x3D; one.id原因:内连的时候新增大章节,而表2并没有数据以新增大章节为父节点.内连,没有公共部分,所以不会显示</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240721093719045.png" alt="image-20240721093719045" style="zoom:33%;">
+
+<p>order by one.orderby,two.orderby&#x2F;&#x2F;当表1的orderby字段相同时，比较two的orderby</p>
+<h2 id="sql多表查询"><a href="#sql多表查询" class="headerlink" title="sql多表查询"></a>sql多表查询</h2><p>  一旦为表起了别名，就不能再使用表名来指定对应的字段了，此时只能够使用别名来指定字段。</p>
+<p>表结构：emp,dept</p>
+<p>连接条件：emp.dept_id &#x3D; dept.id</p>
+<h3 id="内连接："><a href="#内连接：" class="headerlink" title="内连接："></a><strong>内连接：</strong></h3><p>相当于查询A、B交集部分数据（查询的是两张表交集的部分）</p>
+<ul>
+<li>隐式内连接</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表<span class="number">1</span> , 表<span class="number">2</span> <span class="keyword">WHERE</span> 条件 ... ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显式内连接：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表<span class="number">1</span> [ <span class="keyword">INNER</span> ] <span class="keyword">JOIN</span> 表<span class="number">2</span> <span class="keyword">ON</span> 连接条件 ... ;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240721104039839.png" alt="image-20240721104039839" style="zoom:33%;">
+
+<h3 id="外连接："><a href="#外连接：" class="headerlink" title="外连接："></a><strong>外连接：</strong></h3><p>(内连接会有一条数据查询不出来，因为他没有关联的数据)</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240721105104884.png" alt="image-20240721105104884"></p>
+<ul>
+<li>左外连接：左外连接相当于查询表1(左表)的所有数据，当然也包含表1和表2交集部分的数据。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表<span class="number">1</span> <span class="keyword">LEFT</span> [<span class="keyword">OUTER</span>] <span class="keyword">JOIN</span> 表<span class="number">2</span> <span class="keyword">ON</span> 条件 ...;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>右外连接：右外连接相当于查询表2(右表)的所有数据，当然也包含表1和表2交集部分的数据。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表<span class="number">1</span> <span class="keyword">RIGHT</span> [ <span class="keyword">OUTER</span> ] <span class="keyword">JOIN</span> 表<span class="number">2</span> <span class="keyword">ON</span> 条件 ... ;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240721104617522.png" alt="image-20240721104617522" style="zoom:33%;">
+
+<h3 id="自连接："><a href="#自连接：" class="headerlink" title="自连接："></a><strong>自连接：</strong></h3><p>对于自连接查询，可以是内连接查询，也可以是外连接查询。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表A 别名A <span class="keyword">JOIN</span> 表A 别名B <span class="keyword">ON</span> 条件 ... ;</span><br><span class="line">在自连接查询中，必须要为表起别名，要不然我们不清楚所指定的条件、返回的字段，到底</span><br><span class="line">是哪一张表的字段。</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240721110503146.png" alt="image-20240721110503146" style="zoom:33%;">
+
+<h3 id="联合查询："><a href="#联合查询：" class="headerlink" title="联合查询："></a>联合查询：</h3><p>对于union查询，就是把多次查询的结果合并起来，形成一个新的查询结果集。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表A ... <span class="keyword">UNION</span> [ <span class="keyword">ALL</span> ]</span><br><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表B ....;</span><br><span class="line">对于联合查询的多张表的列数必须保持一致，字段类型也需要保持一致。</span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span> 会将全部的数据直接合并在一起，<span class="keyword">union</span> 会对合并之后的数据去重。</span><br></pre></td></tr></table></figure>
+
+<h2 id="day04项目实战对应分支dev04"><a href="#day04项目实战对应分支dev04" class="headerlink" title="day04项目实战对应分支dev04"></a>day04项目实战对应分支dev04</h2><h3 id="删除课程计划"><a href="#删除课程计划" class="headerlink" title="删除课程计划"></a>删除课程计划</h3><p>挺简单的</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240724211941553.png" alt="image-20240724211941553"></p>
+<h3 id="课程计划排序"><a href="#课程计划排序" class="headerlink" title="课程计划排序"></a>课程计划排序</h3><p>和这个人cyborg2077想的基本一样，只不过不太会用mp查询找出order的仅下一个（都考虑到了order不一定连续），直接用条件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.orderByAsc(Teachplan::getOrderby)</span><br><span class="line">                    .last(&quot;LIMIT 1&quot;);就ok了</span><br></pre></td></tr></table></figure>
+
+<p>这个人直接一口接口实现了，传递俩参数，又一个为moveType来确定是movedown还是moveon</p>
+<p>但是这个人感觉弄麻烦了，他分为两种，大章节使用parentId来查同级课程、小章节用courseId来查同级课程，我直接一起无论大章节小章节只要他们这两个id相同就是他的同级课程</p>
+<p>Mabatis Plus中条件语句中</p>
+<p>gt(great than)表示大于，ge(greater than or equal to)大于等于</p>
+<p>lt(less than)表示小于，le(less than or equal to)小于等于</p>
+<h3 id="师资管理"><a href="#师资管理" class="headerlink" title="师资管理"></a>师资管理</h3><p><strong>我直接将这些所有写在了tenchplancontroller，没有重新定义controller，因为觉得这些也是属于课程计划的一部分，毕竟也是在课程计划之后执行的</strong></p>
+<h4 id="查询教师"><a href="#查询教师" class="headerlink" title="查询教师"></a>查询教师</h4><h4 id="添加教师、修改教师为一个接口"><a href="#添加教师、修改教师为一个接口" class="headerlink" title="添加教师、修改教师为一个接口"></a>添加教师、修改教师为一个接口</h4><p>参考这个，课程id，courseBaseNew插入成功后自动生成id，通过主键找到课程基本信息对应的营销数据</p>
+<p><strong>在插入教师表后会生成教师id，接着我们可以通过couseTeacher.getId()获取教师id</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240725220026365.png" alt="image-20240725220026365" style="zoom:33%;">
+
+<p><strong>前端这里修改老师的接口和新增调用的是post，应该写在一个接口里面</strong></p>
+<p>从接口示例中可以看到，新增和删除用的是同一个接口，判断请求是新增还是删除，是根据请求参数中是否传递了id来决定的</p>
+<ul>
+<li>请求参数中没有id，则为新增教师</li>
+<li>请求参数中有id，则为修改教师</li>
+</ul>
+<p>这里我设置CourseTeacherDto和CourseTeacher其实是一样的，也可不设置</p>
+<p><strong>@Transactional是啥作用来着，看看苍穹外卖项目</strong>，为啥要对这个操作加上这个注解</p>
+<p>对两张表写数据，凡是增删改的方法都要加上事务控制注解</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726104721908.png" alt="image-20240726104721908" style="zoom:33%;">
+
+<p>方法没有执行完事务不会提交，表中还不会插入数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.bilibili.com/video/BV1TP411v7v6?p=115&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726105731474.png" alt="image-20240726105731474" style="zoom:33%;">
+
+<h4 id="删除教师，都挺简单"><a href="#删除教师，都挺简单" class="headerlink" title="删除教师，都挺简单"></a>删除教师，都挺简单</h4><h3 id="删除课程"><a href="#删除课程" class="headerlink" title="删除课程"></a>删除课程</h3><p>注意操作多表还是要加入transactional注解</p>
+<h2 id="day05媒资管理模块"><a href="#day05媒资管理模块" class="headerlink" title="day05媒资管理模块"></a>day05媒资管理模块</h2><p><strong>用于管理课程相关的媒体资源</strong>：视频、文档等</p>
+<p><strong>内容管理服务</strong> 的课程计划信息和<strong>媒资管理服务</strong> 的上传的视频进行绑定</p>
+<p>搭建Nacos–&gt;搭建网关（对请求进行路由和转发，转到某一个ip和端口上）–&gt;开发媒资管理微服务</p>
+<p>项目采用<strong>Spring Cloud Gateway作为网关</strong>，网关在请求路由时需要知道每个微服务实例的地址，项目使用<strong>Nacos作用服务发现中心和配置中心</strong>，整体的架构图如下：一个服务可以有多个实例，如内容管理服务可以有两个JVM（服务器），网关会进行负载均衡。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726151952643.png" alt="image-20240726151952643" style="zoom:33%;">
+
+<p>流程如下：</p>
+<p>1、微服务启动，将自己注册到Nacos，Nacos记录了各微服务实例的地址。</p>
+<p>2、网关从Nacos读取服务列表，包括服务名称、服务地址等。</p>
+<p>3、请求到达网关，网关将请求路由到具体的微服务。</p>
+<p>要使用网关首先搭建Nacos，Nacos有两个作用：</p>
+<p><strong>1、服务发现中心。</strong></p>
+<p>微服务将自身注册至Nacos，网关从Nacos获取微服务列表。</p>
+<p><strong>2、配置中心。</strong></p>
+<p>微服务众多，它们的配置信息也非常复杂，为了提供系统的可维护性，微服务的配置信息统一在Nacos配置。</p>
+<h3 id="搭建Nacos"><a href="#搭建Nacos" class="headerlink" title="搭建Nacos"></a>搭建Nacos</h3><p>Spring Cloud ：一套规范</p>
+<p>Spring Cloud alibaba: 对Spring Cloud规范的实现，提供了nacos服务注册中心，配置中心、远程调用feign等各种解决方案</p>
+<p>记得先改nacos配置文件中的数据库地址</p>
+<p>如果远程调用接口比较频繁，建议使用dubbo（基于rpc协议）</p>
+<p><strong>服务发现中心</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">//将内容管理微服务上报nacos</span><br><span class="line">该服务有三个工程，api工程启动的是http服务需要往上报</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>配置中心</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">配置客户端定时从nacos拉去配置，会有一个客户端程序与nacos建立连接</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在正式环境中，每个服务至少有两个实例以此来保证其容错性，如果以后要改数据库的地址那得累死</p>
+<p><strong>通过Nacos去管理项目的所有配置，直接在nacos软件中手动更改配置</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726165800649.png" alt="image-20240726165800649" style="zoom:33%;">
+
+<p>config客户端从nacos中请求获取配置，通过post方式从nacos中获取配置</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726173138032.png" alt="image-20240726173138032"></p>
+<p>配置文件名为</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240726173503446.png" alt="image-20240726173503446" style="zoom:33%;">
+
+<p>service不注册服务，只需要配置文件相关配置，因为service不用被其他微服务调用，其他微服务调用的是api，</p>
+<p>为什么要配置service配置文件到nacos，因为<strong>api接口层</strong>其实本来不应该需要数据库连接，是因为api层依赖了service层代码，每次启动api层时，会把service层的mapper和service代码全部依赖到自己的工程，这些代码需要所以api需要数据库配置。但是api层本身的代码不需要数据库连接。</p>
+<p><strong>所以应该这样做</strong>：service在nacos配置自己的配置文件，然后使用api来引用service工程配置文件，content-api-dev.yaml是接口特有的配置文件，不需要数据库连接配置应该来引用service工程配置文件。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">##api接口的配置文件，拉取了nacos的四个配置文件 </span></span><br><span class="line"><span class="comment">#1.自己特有的配置文件</span></span><br><span class="line"><span class="comment">#2.依赖service的配置文件</span></span><br><span class="line"><span class="comment">#3.公用的配置文件swagger</span></span><br><span class="line"><span class="comment">#4.公用的配置文件logging</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">content-api</span> <span class="comment">#服务名   配置文件名 content-api-dev.yaml</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">172.24</span><span class="number">.40</span><span class="number">.60</span><span class="string">:8848</span></span><br><span class="line">      <span class="attr">discovery:</span> <span class="comment">#注册到nacos中 服务注册相关配置</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">dev_xcplus</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br><span class="line">      <span class="attr">config:</span> <span class="comment">#使用配置中心  配置文件相关配置</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">dev_xcplus</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment">#扩展名yaml</span></span><br><span class="line">        <span class="attr">refresh-enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">extension-configs:</span> <span class="comment">#因为api接口工程依赖了service工程 的jar，这里采用依赖service的配置文件</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">content-service-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">shared-configs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">swagger-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">logging-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">#profiles默认为dev</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br></pre></td></tr></table></figure>
+
+<p>各配置文件 的优先级：项目应用名配置文件 &gt; 扩展配置文件  &gt; 共享配置文件 &gt; 本地配置文件。</p>
+<p>注意：在配置system-api和service的nacos配置文件时，service的配置文件原先为application.yml需要改为bootstrap.yml,要不一致出问题。</p>
+<h3 id="搭建网关"><a href="#搭建网关" class="headerlink" title="搭建网关"></a>搭建网关</h3><p>网关端口为63010</p>
+<p>新建网关工程–&gt;配置网关的bootstrap.yaml配置文件–&gt;在http-client-env.json中配置网关的地址–&gt;使用httpclient测试课程查询 接口</p>
+<h3 id="搭建媒资服务工程"><a href="#搭建媒资服务工程" class="headerlink" title="搭建媒资服务工程"></a>搭建媒资服务工程</h3><h3 id="分布式文件系统"><a href="#分布式文件系统" class="headerlink" title="分布式文件系统"></a>分布式文件系统</h3><p>单体系统拆分为若干微服务，这些微服务会独立部署–&gt;分布式</p>
+<p><strong>通过网络将若干计算机组织起来共同去提供存储和访问文件的服务，就是分布式文件系统。</strong></p>
+<p>本项目采用MInIO构建分布式文件系统，Minio使用纠删码技术来保护数据，使用纠删码的好处是即便丢失一半数量（N&#x2F;2）的硬盘，仍然可以恢复数据。</p>
+<p>实际生产环境有4个结点，<strong>我们开发只部署一个结点</strong></p>
+<p><strong>使用okhttp库想minIO上传文件</strong>,minIO的sdk是一些工具类库帮助我们快速集成minIO上传下载删除文件</p>
+<p>9001是他网站的端口，sdk提供的接口应该是9000</p>
+<ul>
+<li><code>--console-address &quot;:9000&quot;</code>：指定MinIO控制台端口，确保任何尝试连接到这个端口的客户端或应用程序都可以使用这个端口</li>
+<li><code>--address &quot;:9001&quot;</code>：指定MinIO服务端口，将Docker守护程序绑定到指定的端口上</li>
+</ul>
+<p>tmd win忘了开9000端口导致找bug找了半天连不上</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240727192059374.png" alt="image-20240727192059374" style="zoom:33%;">
+
+<p>Content-Type（MediaType），即是Internet Media Type，互联网媒体类型，也叫做<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=MIME%E7%B1%BB%E5%9E%8B&spm=1001.2101.3001.7020">MIME类型</a>。</p>
+<p>text&#x2F;plain：纯文本格式；<br>text&#x2F;html：HTML格式；<br>text&#x2F;css：Cascading Style Sheets；<br>text&#x2F;javascript：JavaScript代码；<br>application&#x2F;json：JSON格式数据；<br>application&#x2F;xml：XML格式数据；<br>application&#x2F;octet-stream：二进制流数据；<br>image&#x2F;jpeg：JPEG格式图片；<br>image&#x2F;gif：GIF格式图片；<br>image&#x2F;png：PNG格式图片；<br>audio&#x2F;mpeg：MP3格式音频；<br>video&#x2F;mp4：MP4格式视频；<br>multipart&#x2F;form-data：表单数据；</p>
+<p>校验文件的完成性对文件的内容进行md5<br>校验时  使用原始文件（本地流） 和 下载到的文件（输出流） 进行对比</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240727195311668.png" alt="image-20240727195311668"></p>
+<h3 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240727195655652.png" alt="image-20240727195655652" style="zoom:25%;">
+
+<p>上传图片是通过媒资服务（对文件进行统一管理）将图片上传到minIO</p>
+<p>将文件本身的信息存在数据库media_files表中，将文件存放到分布式文件系统</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240727200014586.png" alt="image-20240727200014586" style="zoom:33%;">
+
+<p><strong>在media_files表中 bucket + file_path +  MinIO的值 可以浏览文件</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240727200421352.png" alt="image-20240727200421352" style="zoom:33%;">
+
+<p>创建两个桶mediafile（非视频，即使图片文档等）、video</p>
+<p> 配置MinioConfig</p>
+<p>使用springmvc去上传，程序属于消费者</p>
+<p>单独建一个Dto响应给前端防止后面前端需要多穿一些数据，方便改动（直接用po不利于后期维护，万一后期要增加传进来的值就不好办了）</p>
+<p>接口定义：（不懂，说使用了springmvc上传文件）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/upload/coursefile&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line">    <span class="keyword">public</span> UploadFileResultDto <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestPart(&quot;filedata&quot;)</span> MultipartFile upload)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728101618329.png" alt="image-20240728101618329" style="zoom:33%;">
+
+<p>创建一个Dto UploadFileParamsDto用来接收文件信息，和mediafile相关的信息但是比mediafile中的属性少，例如没有id，上传以后才会有id</p>
+<p><strong>这块好迷啊</strong>，<strong>抽取的独立方法太多了</strong></p>
+<p>整体流程：</p>
+<ul>
+<li><p>上传图片接口。调用service的uploadFile</p>
+</li>
+<li><p>调用这个方法，干了两件事</p>
+<ul>
+<li>上传文件到Minio，这里对很多方法进行了封装，getMimeType()、getDefaultFolderPath()、getFileMd5()、addMediaFilesToMinIO()这四个方法。</li>
+<li>将文件信息保存到数据库，封装了一个方法addMediaFilesToDb()。</li>
+</ul>
+</li>
+<li><p>httpclient进行测试</p>
+</li>
+</ul>
+<h3 id="Service事务优化：第一次碰到这种，很重要，如何解决事务失效"><a href="#Service事务优化：第一次碰到这种，很重要，如何解决事务失效" class="headerlink" title="Service事务优化：第一次碰到这种，很重要，如何解决事务失效"></a>Service事务优化：第一次碰到这种，很重要，如何解决事务失效</h3><p>上边的service方法优化后并测试通过，现在思考关于uploadFile方法的是否应该开启事务。</p>
+<p>目前是在uploadFile方法上添加@Transactional，当调用uploadFile方法前会开启数据库事务，如果上传文件过程时间较长那么数据库的事务持续时间就会变长，这样数据库链接释放就慢，最终导致数据库链接不够用。</p>
+<p>我们只将addMediaFilesToDb方法添加事务控制即可,uploadFile方法上的@Transactional注解去掉。</p>
+<p><strong>只要有网络访问的东西千万不要进行事务控制</strong>，上传文件不放到事务控制里面，只放数据库操作</p>
+<p>解决：代理对象+事务注解</p>
+<p>注入进来的Service和Mapper都是代理对象</p>
+<p><strong>开启事务和执行事务一定要是代理对象</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728113358655.png" alt="image-20240728113358655" style="zoom:25%;">
+
+<p><strong>非事务的方法调用事务的方法会出现事务失效</strong>：uploadFile非事务方法，调用加入了事务控制的addMediaFilesToDb事务方法。</p>
+<p><strong>如何解决呢？</strong>使用代理对象调用addMediaFilesToDb方法。</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728113813011.png" alt="image-20240728113813011"></p>
+<p>**这里解决出现循环依赖 **</p>
+<p><strong>弹幕见解</strong>：</p>
+<p>不会生效的，@Transactional这个注解本质时使用代理生成代理类进行处理的，本类自己调用时无法生成代理，所以不生效。和AOP差不多</p>
+<p>调用入库的方法时，调用的是代理对象的入库方法，调用写minio方法的时候，调用的本身的方法，此时写数据库方法是没有被代理的，所以事务失效</p>
+<p>有啥听不懂的，只有代理对象才有开启事务的功能啊，aop思想吗，代理对象是对被代理的对象的增强，这里没有被代理对象调用肯定没有事务的功能</p>
+<h2 id="day06上传视频"><a href="#day06上传视频" class="headerlink" title="day06上传视频"></a>day06上传视频</h2><h3 id="上传视频"><a href="#上传视频" class="headerlink" title="上传视频"></a>上传视频</h3><p><strong>上传文档什么的就是使用上传图片的接口</strong>，上传视频的话需要另行处理</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728200127363.png" alt="image-20240728200127363" style="zoom:33%;">
+
+
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728192709040.png" alt="image-20240728192709040" style="zoom:33%;">
+
+
+
+
+
+<p>上传分块：<strong>前端已经把分块啥的写好了</strong></p>
+<p>前端需要四个接口，途中只有三个接口，但这里有考虑到在检查分块前应该还要<strong>检查文件是否存在</strong>，若存在则不进行后续操作</p>
+<p>检查分块接口需要md5和分块序号才能找到分块，因为如下图chunk中文件名称就是序号</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728200441715.png" alt="image-20240728200441715" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728203057230.png" alt="image-20240728203057230" style="zoom:33%;">
+
+<p>上传分块的时候流程：</p>
+<p>前端上传给媒资服务，媒资服务然后上传给minio</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728213657079.png" alt="image-20240728213657079" style="zoom:33%;">
+
+<p>改了前端改了配置，最终minio里能上传5mb</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728214931755.png" alt="image-20240728214931755"></p>
+<p>接下来进行<strong>文件合并</strong>，主要包含四步：<strong>又抽取了很多方法</strong>，跟上传图片过程一样，这个是过程方法贼多</p>
+<ul>
+<li>先点用minio的合并方法进行合并</li>
+<li>在校验合并后的文件和源文件是否一致</li>
+<li>校验成功后，将文件信息入库</li>
+<li>一切搞定了，最后清理分块</li>
+</ul>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240728225916710.png" alt="image-20240728225916710" style="zoom:33%;">
+
+<p>文件合并的object()中文最终合并后的文件名字，是md5+扩展名</p>
+<p>合并哪里老超时很奇怪：</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240729111448463.png" alt="image-20240729111448463" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240729133300549.png" alt="image-20240729133300549" style="zoom:33%;">
+
+<p><strong><code>file.transferTo(File dest)</code></strong>:</p>
+<ul>
+<li>这个方法用于将数据从当前文件对象传输到指定的目标文件。</li>
+</ul>
+<h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240729134228761.png" alt="image-20240729134228761" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240729134706637.png" alt="image-20240729134706637" style="zoom:33%;">
+
+
+
+<h3 id="视频处理"><a href="#视频处理" class="headerlink" title="视频处理"></a>视频处理</h3><h4 id="视频转码：FFmpeg工具"><a href="#视频转码：FFmpeg工具" class="headerlink" title="视频转码：FFmpeg工具"></a>视频转码：FFmpeg工具</h4><p>对一个视频的转码可以理解为一个任务的执行，如果视频的数量比较多，如何去高效处理一批任务呢？</p>
+<p><strong>分布式+多线程</strong>：充分利用多台计算机，没太计算机使用多线程处理</p>
+<p>任务调度：按照某个时间点或时间间隔执行任务</p>
+<h4 id="分布式任务调度：多个计算机-同时进行任务调度，高效处理视频"><a href="#分布式任务调度：多个计算机-同时进行任务调度，高效处理视频" class="headerlink" title="分布式任务调度：多个计算机 同时进行任务调度，高效处理视频"></a>分布式任务调度：多个计算机 同时进行任务调度，<strong>高效处理视频</strong></h4><p><strong>实现任务调用，通过XXX-JOB中间件</strong>，主要包括调度中心、执行器、任务，<strong>有弹性扩容的机制</strong></p>
+<p><strong>调度中心：</strong></p>
+<p>​        负责管理调度信息，按照调度配置发出调度请求，自身不承担业务代码；</p>
+<p>​        主要职责为执行器管理、任务管理、监控运维、日志管理等</p>
+<p><strong>任务执行器：</strong></p>
+<p>​        负责接收调度请求并执行任务逻辑；</p>
+<p>​        只要职责是注册服务、任务执行服务（接收到任务后会放入线程池中的任务队列）、执行结果上报、日志服务等</p>
+<p><strong>任务：</strong>负责执行具体的业务处理。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240729205134561.png" alt="image-20240729205134561" style="zoom:33%;">
+
+<h4 id="xxl-job配置执行器"><a href="#xxl-job配置执行器" class="headerlink" title="xxl-job配置执行器"></a>xxl-job配置执行器</h4><p>执行器就是我们的微服务，service干活，在service中创建执行器</p>
+<p>在service工程中添加jar包，包含了自动注册、下发任务代码，不用我们去写了，配置调动中心的地址等信息。微服务启动后，执行器会把自己报到调度中心。</p>
+<p>但是service不具备独立启动的能力，我们通常启动api，api依赖service</p>
+<p>执行器如何执行任务？</p>
+<ul>
+<li><p>先将执行器注册到调度中心</p>
+</li>
+<li><p>在微服务中定义一个任务类（这个任务类是spring的一个bean，jobhandler存放任务类）编写执行任务方法，并在方法上通过@XxlJob注解指定方法名称</p>
+</li>
+<li><p>在任务调度中心任务管理页面新增任务（将任务在调度中心中注册）</p>
+</li>
+</ul>
+<p>启动调度中心 –&gt; 加入xxl-job核心代码依赖 –&gt; 配置xxl-job在nacos的配置 –&gt; 新增执行器 –&gt; 项目中添加执行器配置类 –&gt; 项目中添加任务类 –&gt;调度中心新增任务</p>
+<p>运行模式有BEAN和GLUE，bean模式较常用就是在项目工程中编写执行器的任务代码，GLUE是将任务代码编写在调度中心。</p>
+<h4 id="调度中心的路由策略"><a href="#调度中心的路由策略" class="headerlink" title="调度中心的路由策略"></a><strong>调度中心的路由策略</strong></h4><p>分片广播：调度中心任务将任务发给所有执行器，最大限度的提高分布式调度的执行能力（分片是指是调度中心以执行器为维度进行分片，将集群中的执行器标上序号：0，1，2，3…，广播是指每次调度会向集群中的所有执行器发送任务调度，请求中携带分片参数。）</p>
+<p>分片广播需要两个分片参数才能确保执行器在执行过程中执行任务不重复</p>
+<ul>
+<li>执行器的分片序号</li>
+<li>执行器的总数</li>
+</ul>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730095826808.png" alt="image-20240730095826808" style="zoom:33%;">
+
+
+
+<h2 id="day07"><a href="#day07" class="headerlink" title="day07"></a>day07</h2><p>视频处理-分布式任务调度</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730102936132.png" alt="image-20240730102936132" style="zoom:33%;">
+
+<p>通过作业分片方案保证了执行器之间查询到不重复的任务，如果一个执行器在处理一个视频还没有完成，此时调度中心又一次请求调度，为了不重复处理同一个视频该怎么办？</p>
+<ul>
+<li>配置调度过期策略<ul>
+<li>忽略</li>
+<li>立即执行一次</li>
+</ul>
+</li>
+<li>阻塞处理策略<ul>
+<li>单机串行</li>
+<li>丢弃后续调度</li>
+<li>覆盖之前调度</li>
+</ul>
+</li>
+</ul>
+<p>幂等性：它描述了一次和多次请求某一个资源对于资源本身应该具有同样的结果。</p>
+<p>在执行器接收调度请求去执行视频处理任务时要实现视频处理的<strong>幂等性</strong>，要有办法去判断该视频是否处理完成，如果正在处理中或处理完则不再处理。这里我们在数据库视频处理表中添加处理状态字段，视频处理完成更新状态为完成，执行视频处理前判断状态是否完成，如果完成则不再处理。</p>
+<h3 id="查询待处理任务"><a href="#查询待处理任务" class="headerlink" title="查询待处理任务"></a>查询待处理任务</h3><p>如何保证查询到的处理视频记录不重复？</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>关键在于这个<span class="keyword">sql</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> media_process t <span class="keyword">where</span> t.id <span class="operator">%</span> #&#123;shardTotal&#125; <span class="operator">=</span> #&#123;shardIndex&#125; <span class="keyword">and</span> (t.status <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">or</span> t.status <span class="operator">=</span> <span class="string">&#x27;3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="开始任务执行"><a href="#开始任务执行" class="headerlink" title="开始任务执行"></a>开始任务执行</h3><p>前边分析了保证任务不重复执行的方案，理论上每个执行器分到的任务是不重复的，但是当在执行器弹性扩容时无法绝对避免任务不重复执行，比如：原来有四个执行器正在执行任务，由于网络问题原有的0、1号执行器无法与调度中心通信，调度中心就会对执行器重新编号，原来的3、4执行器可能就会执行和0、1号执行器相同的任务。</p>
+<p>使用多个执行器不能<strong>绝对避免</strong>执行同一任务，如何？<strong>使用锁</strong></p>
+<p>由于synchronized只能保证同一个虚拟机中多个线程去争抢锁—-&gt;<strong>因此使用分布式锁</strong></p>
+<p>虚拟机都去抢占同一个锁，锁是一个单独的程序提供加锁、解锁服务。</p>
+<p><strong>该锁已不属于某个虚拟机，而是分布式部署，由多个虚拟机所共享，这种锁叫分布式锁。</strong></p>
+<p>实现分布式锁的方法：</p>
+<ul>
+<li>基于数据库实现分布式锁：主键的唯一性</li>
+<li>基于redis实现分布式锁，如SETNX</li>
+<li>使用zookeeper实现</li>
+</ul>
+<p><strong>基于数据库实现分布式锁</strong>（使用了乐观锁的方式实现）</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">update</span> t1 <span class="keyword">set</span> t1.data1 <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>,t1.version<span class="operator">=</span><span class="string">&#x27;2&#x27;</span> <span class="keyword">where</span> t1.version<span class="operator">=</span><span class="string">&#x27;1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730170123981.png" alt="image-20240730170123981" style="zoom:33%;">
+
+<h3 id="更新任务状态"><a href="#更新任务状态" class="headerlink" title="更新任务状态"></a>更新任务状态</h3><h3 id="视频处理-1"><a href="#视频处理-1" class="headerlink" title="视频处理"></a>视频处理</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730201842690.png" alt="image-20240730201842690" style="zoom:33%;">
+
+<p>好几个方法之前在实现类中抽取过，但都没有提取到接口，在VideoTask中无法注入使用，因此要将他们呢提取为借口才行，如addMediaFilesToMinIO()和downloadFileFromMinIO()</p>
+<p>线程池的线程的数量最多时cpu的核心数</p>
+<p>所有逻辑写完后注意一个点，下面代码会启动size个线程，会瞬间启动完成，也就是说videoJobHandler()方法会立即执行完成，任务逻辑是在线程中执行的，不再videoJobHandler()中执行，该方法只负责启动线程，启动完了纠结数据。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730210225259.png" alt="image-20240730210225259" style="zoom:33%;">
+
+<p>我们想要所有线程把他们的方法执行完后videoJobHandler方法才结束，也就是说我们想要所有任务执行完后才会进行下次调度，因此我们使用计数器</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240730210701879.png" alt="image-20240730210701879" style="zoom:33%;">
+
+<p>为了防止代码中间出现异常导致计数器不减1，使用try-finally,正常情况到0就解除阻塞</p>
+<p>但还得要保底情况，我们需要<strong>指定最大限制的等待时间，阻塞最多等待一定的时间后就接触阻塞</strong></p>
+<h4 id="其他问题：有三个需要自己实现"><a href="#其他问题：有三个需要自己实现" class="headerlink" title="其他问题：有三个需要自己实现"></a>其他问题：有三个需要自己实现</h4><ul>
+<li>任务补偿机制</li>
+<li>达到最大失败次数</li>
+<li>分块文件清理问题</li>
+</ul>
+<h3 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731092844419.png" alt="image-20240731092844419" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731093259387.png" alt="image-20240731093259387" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731094237410.png" alt="image-20240731094237410" style="zoom:33%;">
+
+
+
+<h3 id="绑定媒资"><a href="#绑定媒资" class="headerlink" title="绑定媒资"></a>绑定媒资</h3><p><strong>将视频和课程计划进行绑定</strong>，需要teachplan_media表，这个操作在<strong>内容管理模块不再媒资</strong></p>
+<p>接口实现：</p>
+<p>先删除原有记录–&gt;再添加新记录</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">associationMedia</span><span class="params">(BindTeachplanMediaDto bindTeachplanMediaDto)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="实战："><a href="#实战：" class="headerlink" title="实战："></a>实战：</h4><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731105430184.png" alt="image-20240731105430184" style="zoom:33%;">
+
+<p>根据接口定义实现解除绑定功能。</p>
+<p>点击已经绑定的视频名称即可解除绑定。</p>
+<h3 id="课程分布"><a href="#课程分布" class="headerlink" title="课程分布"></a>课程分布</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731102847620.png" alt="image-20240731102847620" style="zoom:33%;">
+
+<h4 id="课程预览"><a href="#课程预览" class="headerlink" title="课程预览"></a>课程预览</h4><p>作为课程制作方即教学机构，在课程发布前通过课程预览功能可以看到课程发布后的效果，哪里的课程信息存在问题方便查看，及时修改</p>
+<p>课程预览就是把课程的相关信息进行整合，在课程详情界面进行展示，通过课程预览页面查看信息是否存在问题。</p>
+<p>我们需要在服务端生成页面，使用模版引擎FreeMarker，<strong>属于内容管理模块</strong>，模版引擎就是在服务端渲染生成页面，需要有模版和数据</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">freemarker配置信息</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">freemarker:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">cache:</span> <span class="literal">false</span>   <span class="comment">#关闭模板缓存，方便测试</span></span><br><span class="line">    <span class="attr">settings:</span></span><br><span class="line">      <span class="attr">template_update_delay:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">suffix:</span> <span class="string">.ftl</span>   <span class="comment">#页面模板后缀名</span></span><br><span class="line">    <span class="attr">charset:</span> <span class="string">UTF-8</span></span><br><span class="line">    <span class="attr">template-loader-path:</span> <span class="string">classpath:/templates/</span>   <span class="comment">#页面模板位置(默认为 classpath:/templates/)</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="attr">add-mappings:</span> <span class="literal">false</span>   <span class="comment">#关闭项目中的静态资源映射(static、resources文件夹下的资源)</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>课程预览就是把课程的相关信息进行整合，在课程预览界面进行展示，课程预览界面与课程发布的课程详情界面一致。项目采用模板引擎技术实现课程预览界面。</p>
+<ul>
+<li>配置nginx老出现403forbidden，如下几行代码解决</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo chmod o+x /Users</span><br><span class="line">sudo chmod o+x /Users/qh</span><br><span class="line">sudo chmod o+x /Users/qh/Desktop</span><br><span class="line">sudo chmod o+x /Users/qh/Desktop/Project</span><br><span class="line">sudo chmod o+x /Users/qh/Desktop/Project/xc-ui-pc-static-portal</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>server_name较长需要引入server_names_hash_bucket_size 128;</li>
+</ul>
+<h2 id="day08"><a href="#day08" class="headerlink" title="day08"></a>day08</h2><p>之前点一下按钮需要返回json，现在需要返回页面</p>
+<p>@RestController响应json，@Controller响应页面</p>
+<h3 id="定义课程预览接口"><a href="#定义课程预览接口" class="headerlink" title="定义课程预览接口"></a>定义课程预览接口</h3><p>课程预览接口虽然可以正常访问，<strong>但是页面没有样式</strong>，查看浏览器请求记录，发现图片、样式无法正常访问。</p>
+<p>这些静态资源全在门户下，我们需要由Nginx反向代理访问课程预览接口，通过门户的URL去访问课程预览。因此配置反向代理，通过nginx访问这个地址<a target="_blank" rel="noopener" href="http://localhost:63040/content/coursepreview/74">http://localhost:63040/content/coursepreview/74</a> </p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731205435105.png" alt="image-20240731205435105" style="zoom:25%;">
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #后台网关</span><br><span class="line"> #所有以api开头的地址全都进入网关</span><br><span class="line">upstream gatewayserver&#123;</span><br><span class="line">  server 127.0.0.1:63010 weight=10;</span><br><span class="line">&#125; </span><br><span class="line">server &#123;</span><br><span class="line">      listen       80;</span><br><span class="line">      server_name  www.51xuecheng.cn localhost;</span><br><span class="line">      ....</span><br><span class="line">      #api</span><br><span class="line">      location /api/ &#123;</span><br><span class="line">              proxy_pass http://gatewayserver/;</span><br><span class="line">      &#125; </span><br><span class="line">      ....</span><br></pre></td></tr></table></figure>
+
+<p>nginx配置网关，由网关将请求转发到内容管理服务，否则就得一个一个通过upstream配置微服务</p>
+<p>启动网关微服务后</p>
+<p>通过域名访问（<strong>课程预览链接</strong>）<a target="_blank" rel="noopener" href="http://www.51xuecheng.cn/api/content/coursepreview/74">http://www.51xuecheng.cn/api/content/coursepreview/74</a> 可以解析上面域名中的样式文件。</p>
+<p>具体流程就是：<strong>请求课程预览页面-》nginx-》网关-》内容管理服务-》</strong>返回页面-》浏览器加载解析-》请求静态资源-》nginx-》响应静态资-》渲染页面样式</p>
+<h4 id="接口开发"><a href="#接口开发" class="headerlink" title="接口开发"></a>接口开发</h4><p>此时课程预览页面全是静态数据，我们要进行接口开发，从数据库中查数据</p>
+<p>课程预览就是把课程基本信息、营销信息、课程计划、这三个之前有dto也有进行了接口实现</p>
+<p>师资（这里没有做）等课程的相关信息进行整合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CoursePreviewDto</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 课程基本计划、课程营销信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    CourseBaseInfoDto courseBaseInfoDto;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 课程计划信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    List&lt;TeachplanDto&gt; teachplans;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 师资信息暂时不加</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口完善"><a href="#接口完善" class="headerlink" title="接口完善"></a>接口完善</h4><h4 id="前后端联调-1"><a href="#前后端联调-1" class="headerlink" title="前后端联调"></a>前后端联调</h4><p>我们也要改变，前端访问nginx再到网关再到微服务，因为课程预览只有通过域名访问才有样式</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240731201323301.png" alt="image-20240731201323301" style="zoom:33%;">
+
+<h4 id="编写模版"><a href="#编写模版" class="headerlink" title="编写模版"></a>编写模版</h4><p>成功点击预览，会出现新的预览页面，但数据还是静态的，现在需要编写模版修改数据</p>
+<h4 id="视频播放页面接口"><a href="#视频播放页面接口" class="headerlink" title="视频播放页面接口"></a>视频播放页面接口</h4><p>需要两个接口，需要从nginx调用，这两个接口以后不用登录也能用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#openapi</span></span><br><span class="line">location /open/content/ &#123;</span><br><span class="line">        proxy_pass http://gatewayserver/content/open/;</span><br><span class="line">&#125; </span><br><span class="line">location /open/media/ &#123;</span><br><span class="line">        proxy_pass http://gatewayserver/media/open/;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>一个获取课程信息接口–内容管理微服务</p>
+<p>一个获取视频地址接口–媒资管理微服务</p>
+<p>这里加载不了avi视频，只能选择mp4的才能播放</p>
+<h3 id="课程审核"><a href="#课程审核" class="headerlink" title="课程审核"></a>课程审核</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><p>流程复杂的话使用工作流引擎，一套框架专门做工作流</p>
+<p>这里不复杂，定一个状态字段用来控制课程审核状态</p>
+<p><strong>需求分析就两点一个业务模型一个数据模型</strong></p>
+<p>如何控制课程审核通过才可以发布课程呢？</p>
+<p>在课程基本表course_base表设置课程审核状态字段，包括：未提交、已提交(未审核)、审核通过、审核不通过。</p>
+<p>课程审核功能涉及教学机构提交审核，运营人员进行课程审核。在课堂上我们仅实现教学机构提交审核功能，课程审核的结果通过手动修改数据库来实现。</p>
+<p>提交审核：<strong>提交审核将信息写入课程预发布表</strong></p>
+<p>课程预发布表：用来存储<strong>课程审核</strong>的信息<strong>审核通过后</strong>这个信息就作为<strong>课程发布的信息</strong>复制到课程发布表</p>
+<h4 id="接口定义、开发、测试"><a href="#接口定义、开发、测试" class="headerlink" title="接口定义、开发、测试"></a>接口定义、开发、测试</h4><p>这三个信息需要json格式，<strong>这里与预览接口一样没有插入教师信息</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801104346470.png" alt="image-20240801104346470" style="zoom:33%;">
+
+<p>这里要注意在向课程预发布表中插入数据时，不能只插入，因为他的主键字段不是自增的是从就是课程id，有可能已经存在，因此不能insert直接，在存在时需要update</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//查询预发布表，如果有记录则更新，没有则插入</span></span><br><span class="line">        <span class="type">CoursePublishPre</span> <span class="variable">coursePublishPreObj</span> <span class="operator">=</span> coursePublishPreMapper.selectById(courseId);</span><br><span class="line">        <span class="keyword">if</span> (coursePublishPreObj==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">//插入</span></span><br><span class="line">            coursePublishPreMapper.insert(coursePublishPre);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//更新</span></span><br><span class="line">        coursePublishPreMapper.updateById(coursePublishPre);</span><br></pre></td></tr></table></figure>
+
+<p>最终会向两个地方插入数据</p>
+<ul>
+<li>预发布表插入一条记录</li>
+<li>更新课程基本信息表的发布状态为已提交</li>
+</ul>
+<p>笑死了在提交审核的时候，插入课程预发布表时tags字段的内容不能太长否则会报错，例如<strong>JAVA8&#x2F;9&#x2F;10新特性讲解——修改00</strong>这个课程(course_id&#x3D;1)tags很长就不行</p>
+<h4 id="手动审核："><a href="#手动审核：" class="headerlink" title="手动审核："></a>手动审核：</h4><p>审核通过需手动修改数据库：</p>
+<p>1、修改课程预发布表的状态为审核通过202004。</p>
+<p>2、修改课程基本表的审核状态为审核通过202004。</p>
+<h3 id="课程发布"><a href="#课程发布" class="headerlink" title="课程发布"></a>课程发布</h3><h4 id="需求分析-1"><a href="#需求分析-1" class="headerlink" title="需求分析"></a>需求分析</h4><p>审核完成后，开始课程发布</p>
+<p>页面不能再从数据库中拿数据，提高课程查询速度， 将课程信息缓存到redis中，插入到elasticsearch索引中</p>
+<p>预览页面在预览时可以通过服务端渲染的，但是发布之后不能在通过服务器渲染的，不能在通过tomcat服务器了，将预览页面生成html静态页面通过nginx来请求查看，将该页面放到minio中（因为这里用的不是前后端分离技术，不这么搞tomcat就给前端发静态页面，那么不是性能就降低了咩？）</p>
+<h4 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h4><p>本地事务：使用服务自己的数据库来控制事务</p>
+<p>分布式事务：通过与不同的服务进行网络通信去完成事务称之为<strong>分布式事务</strong></p>
+<p>就是想做一件事需要多个服务网络交互来完成</p>
+<p><strong>控制分布式事务首先要理解CAP理论</strong>，理解如何去控制？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:Consistency,一致性,一致性是指用户不管访问哪一个结点拿到的数据都是最新的，比如查询小明的信息，不能出现在数据没有改变的情况下两次查询结果不一样。</span><br><span class="line">A:Availability,可用性,可用性是指任何时候查询用户信息都可以查询到结果，但不保证查询到最新的数据。</span><br><span class="line">P:Partition tolerance,分区容忍性,不同地点存在网络分区 但是需要一定的分区容忍性 也就是不能因为网络故障导致网络不可用</span><br></pre></td></tr></table></figure>
+
+<p>在分布式系统下如果存在分布式事务CAP只能满足两种<strong>CP(强调一致性)<strong>或</strong>AP(强调可用性，数据可用但是可能有一段时间不一致)</strong></p>
+<p>项目中AP场景更多，强调可用性</p>
+<p>基于AP提出BASE理论：Basically Available(基本可用)、Soft state(软状态)和 Eventually consistent (最终一致性)</p>
+<p>选用AP，通过使用<strong>任务调度</strong>或消息队列的方法来见数据同步到redis、搜索引擎、minio</p>
+<p>最终选择<strong>本地消息表+任务调度，</strong>最终实现分布式事务的最终一致性（跟minio分布式调度转码过程类似，需要一个mediaprocess表和mediaprocesshistory表，一旦视频转码成功将他从mediaprocess中删除放到mediaprocesshistory）</p>
+<p>建立一张消息表用来存储需要需要发布的课程信息，数据同步完成后就删除</p>
+<h4 id="课程发布接口"><a href="#课程发布接口" class="headerlink" title="课程发布接口"></a>课程发布接口</h4><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801160316884.png" alt="image-20240801160316884" style="zoom:33%;">
+
+<p>查询预发布表–&gt;向课程发布表写数据–&gt;向消息表写数据（通过SDK工具包向消息表写数据）–&gt;将预发布表数据删除</p>
+<p>针对<strong>向消息表写数据</strong>步骤。  使用<strong>消息SDk</strong>，不去抽取为一个微服务，而且定义微服务要写很多的接口和实现代码，这里的新需求只是消息表的增删改查，所以SDK工具包更合适，只需要项目引入就可以使用</p>
+<p><strong>本项目确定将对消息表相关的处理做成一个SDK组件供各微服务使用</strong>，将消息表的增删改查全部封装到SDK中，SDK中不实现任务的逻辑，只提供一个抽象方法由具体的执行任务方法去实现</p>
+<p>这里是信息同步类任务，即使任务重复执行也没有关系（不想之前转码重复的话需要大量时间，这里就算重复了也没事不费时间所以不用加锁的方式），不再使用抢占任务的方式保证任务不重复执行。</p>
+<p>测试中发现还有个bug就是在coursebase表中有个status状态控制已发布和未发布状态203001表示未发布，此时前端可以点击发布，已发布状态为203002此时前端不能点击，<strong>发布成功后此状态不会变化，也就是发布后还能再点击发布</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801173124375.png" alt="image-20240801173124375" style="zoom:33%;">
+
+<h4 id="课程发布任务处理"><a href="#课程发布任务处理" class="headerlink" title="课程发布任务处理"></a>课程发布任务处理</h4><p>关于sdk模块包扫描问题，其实启动类所在包就是com.xuecheng前面说过，所以肯定能扫到sdk包的，sdk也有com.xuecheng</p>
+<p><strong>下面进行扫描消息，启动任务</strong>，红框代码全都封装到sdk里面</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801203634413.png" alt="image-20240801203634413" style="zoom:33%;">
+
+<p>对消息表进行处理包括：新增消息表、扫描消息表、更新消息表（需要修改state1、2、3、4字段，实现幂等性）、删除消息表</p>
+<p><strong>在内容管理服务添加消息处理sdk的依赖即可使用它，实现sdk中的MessageProcessAbstract类，重写execte方法，该方法就是具体执行任务的逻辑</strong>，扫描到任务后一个任务一个任务的通过多线程执行execute方法，process是执行任务的具体方法</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801204539494.png" alt="image-20240801204539494" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240801205440761.png" alt="image-20240801205440761" style="zoom:33%;">
+
+<p>这个是多线程任务，你不知道传进来的时候是不是还是目前数据库的内容</p>
+<p>防止你在调用的过程中其他线程又对数据进行了更改虽然增加了数据库Io但是能够减少重复操作的频率</p>
+<p>减少重复执行概率啊，万一2个线程同时拿到同一个message，然后另一个线程执行完了，你再走业务不查最新的，是不是要重复执行了</p>
+<p>business_key字段，消息类型代码，三个字段想写那个写那个，例如发布任务，就把课程id写进去，写第一个第二个第三个字段都可以</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813093029577.png" alt="image-20240813093029577"></p>
+<h2 id="day09"><a href="#day09" class="headerlink" title="day09"></a>day09</h2><p>完善day08中<strong>课程静态话上传到minio</strong>和向<strong>elasticsearch写索引数据</strong>，缓存redis后面会讲</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240802141556536.png" alt="image-20240802141556536"></p>
+<h3 id="页面静态化"><a href="#页面静态化" class="headerlink" title="页面静态化"></a>页面静态化</h3><p>课程信息生成后页面是不会经常变化的</p>
+<p>根据课程发布的操作流程，执行课程发布后要将课程详情信息页面静态化，生成html页面上传至文件系统。</p>
+<p><strong>什么是页面静态化？</strong></p>
+<p>课程预览功能通过模板引擎技术在页面模板中填充数据，生成html页面，这个过程是当客户端请求服务器时服务器才开始渲染生成html页面，最后响应给浏览器，服务端渲染的并发能力是有限的。</p>
+<p>页面静态化则强调将生成html页面的过程提前，提前使用模板引擎技术生成html页面，当客户端请求时直接请求html页面，由于是静态页面可以使用nginx、apache等高性能的web服务器，并发性能高。</p>
+<p><strong>什么时候能用页面静态化技术？</strong></p>
+<p>当数据变化不频繁，一旦生成静态页面很长一段时间内很少变化，此时可以使用页面静态化。因为如果数据变化频繁，一旦改变就需要重新生成静态页面，导致维护静态页面的工作量很大。</p>
+<p>根据课程发布的业务需求，虽然课程发布后仍可以修改课程信息，但需要经过课程审核，且修改频度不大，所以适合使用页面静态化。</p>
+<h3 id="静态化测试"><a href="#静态化测试" class="headerlink" title="静态化测试"></a>静态化测试</h3><p>在之前课程预览时是在content-api工程点击预览按钮通过freemarker进行服务端渲染生成页面的，现在是一个任务，这个任务要进行页面静态话，这个任务写在service工程，所以依赖加入到service工程</p>
+<h3 id="上传文件测试"><a href="#上传文件测试" class="headerlink" title="上传文件测试"></a>上传文件测试</h3><p><strong>请求媒资服务，由媒资服务将文件上传至minio</strong>，内容管理服务掉媒资服务</p>
+<p>静态化生成文件后需要上传至分布式文件系统，根据微服务的职责划分，媒资管理服务负责维护文件系统中的文件，所以内容管理服务对页面静态化生成html文件需要调用媒资管理服务的上传文件接口。</p>
+<p>微服务之间难免会存在远程调用，在Spring Cloud中可以使用Feign进行远程调用，</p>
+<p>服务注册到nacos中作用：能够让网关获取微服务相关信息（网关从Nacos读取服务列表，包括服务名称、服务地址等）、以及各个微服务之间的相互调用</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240802170354348.png" alt="image-20240802170354348" style="zoom:25%;">
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">原来微服务之间可能传递的是数据，但现在远程调用需要传文件，使用下面这个让他支持multipart传参数</span><br><span class="line"><span class="comment">&lt;!--feign支持Multipart格式传参--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.openfeign.form<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>feign-form<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">//因为要feigin要调用service需要通过服务注册中心拿到这个服务的实例</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要在启动类上加入@EnableFeignClients(basePackages&#x3D;{“com.xuecheng.content.feignclient”})是的扫描到刚才的feighclient才能生成代理对象</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240802172713447.png" alt="image-20240802172713447" style="zoom:33%;">
+
+<p>这里远程调用测试的时候老找不到media-api服务找不到，我们得去test中的配置文件yml中也要添加</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">discovery:</span> <span class="comment">#注册到nacos中 服务注册相关配置</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">dev_xcplus</span></span><br><span class="line">  <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br></pre></td></tr></table></figure>
+
+<p>在通过远程调用将静态test.html上传到minio后，通过<a target="_blank" rel="noopener" href="http://172.24.40.60:9000/mediafiles/course/test.html%E8%AE%BF%E9%97%AE%E5%8F%91%E7%8E%B0%E6%B2%A1%E6%9C%89%E6%A0%B7%E5%BC%8F">http://172.24.40.60:9000/mediafiles/course/test.html访问发现没有样式</a></p>
+<p>我们通过<a target="_blank" rel="noopener" href="http://file.51xuecheng.cn/mediafiles/course/test.html%E4%B9%9F%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%88%B0%EF%BC%8C%E5%9B%A0%E4%B8%BAfile.51xuecheng.cn%E8%99%9A%E6%8B%9F%E5%99%A8%E4%B8%AD%E6%B2%A1%E6%9C%89%E9%85%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F%E5%9C%B0%E5%9D%80">http://file.51xuecheng.cn/mediafiles/course/test.html也访问不到，因为file.51xuecheng.cn虚拟器中没有配置样式地址</a></p>
+<p><strong>主站虚拟服务器下才配置了样式地址</strong></p>
+<p>因此要想获得样式得通过主站访问，也就是以域名<a target="_blank" rel="noopener" href="http://www.51xuecheng.cn/%E5%BC%80%E5%A4%B4%E6%9D%A5%E8%AE%BF%E9%97%AE">www.51xuecheng.cn/开头来访问</a></p>
+<p>我们在主站下配置代理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location /course/ &#123;  </span><br><span class="line">        proxy_pass http://fileserver/mediafiles/course/;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>此时通过<a target="_blank" rel="noopener" href="http://www.51xuecheng.cn/course/test.html%E8%AE%BF%E9%97%AE%E5%B0%B1%E8%83%BD%E5%8A%A0%E8%BD%BD%E5%87%BA%E6%A0%B7%E5%BC%8F">http://www.51xuecheng.cn/course/test.html访问就能加载出样式</a></p>
+<h3 id="熔断降级处理"><a href="#熔断降级处理" class="headerlink" title="熔断降级处理"></a>熔断降级处理</h3><p>feign远程调用涉及熔断，我们需要在配置文件从nacos加载feign的配置文件（开启feign熔断保护）</p>
+<p><strong>如何解决由于微服务异常引起的雪崩效应呢？可以采用熔断、降级的方法去解决。</strong></p>
+<p>熔断是当下游服务（被调用的服务）异常时一种保护系统的手段，降级是熔断后上游服务（调用者）处理熔断的方法。</p>
+<p>具体流程：</p>
+<p>项目使用Hystrix框架实现熔断、降级处理，在feign-dev.yaml中配置。</p>
+<p>开启Feign熔断保护–&gt;设置熔断的超时时间，为了防止一次处理时间较长触发熔断这里还需要设置请求和连接的超时时间–&gt;定义降级逻辑（fallback、fallbackFactory）</p>
+<p>fallback：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义一个fallback类MediaServiceClientFallback，此类实现了MediaServiceClient接口。</span></span><br><span class="line"><span class="comment">//第一种方法无法取出熔断所抛出的异常</span></span><br><span class="line"><span class="meta">@FeignClient(value = &quot;media-api&quot;,configuration = MultipartSupportConfig.class,fallback = MediaServiceClientFallback.class)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/media&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MediaServiceClient</span>&#123;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>fallbackFactory ：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;media-api&quot;,configuration = MultipartSupportConfig.class,fallbackFactory = MediaServiceClientFallbackFactory.class)</span></span><br><span class="line"><span class="comment">//第二种方法定义MediaServiceClientFallbackFactory 可以解决这个问题。</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MediaServiceClientFallbackFactory</span> <span class="keyword">implements</span> <span class="title class_">FallbackFactory</span>&lt;MediaServiceClient&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> MediaServiceClient <span class="title function_">create</span><span class="params">(Throwable throwable)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MediaServiceClient</span>()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> String <span class="title function_">uploadFile</span><span class="params">(MultipartFile upload, String objectName)</span> &#123;</span><br><span class="line">                <span class="comment">//降级方法</span></span><br><span class="line">                log.debug(<span class="string">&quot;调用媒资管理服务上传文件时发生熔断，异常信息:&#123;&#125;&quot;</span>,throwable.toString(),throwable);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="课程静态化开发"><a href="#课程静态化开发" class="headerlink" title="课程静态化开发"></a>课程静态化开发</h3><p>两部分：生成课程静态化页面，上传静态页面到文件系统</p>
+<p>在课程发布的service编写这两部分内容，最后通过消息去调度执行。</p>
+<p>之前已经写过这两部分的测试方法了，这里拿过来改改就行 </p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803161333537.png" alt="image-20240803161333537"></p>
+<p>气死了，一下午bug</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803192801068.png" alt="image-20240803192801068"></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803214529138.png" alt="image-20240803214529138" style="zoom:33%;">
+
+<h3 id="课程搜索"><a href="#课程搜索" class="headerlink" title="课程搜索"></a>课程搜索</h3><p><strong>本项目使用elasticsearch作为索引及搜索服务。</strong>—得学学</p>
+<p>传统方法：先找文章再找词</p>
+<p>全文检索方法：先找词再找文章，本项目课程搜索支持全文检索</p>
+<p>课程搜索模块包括两部分：<strong>课程索引、课程搜索。</strong></p>
+<ul>
+<li><p>课程索引是将课程信息建立索引。</p>
+</li>
+<li><p>课程搜索是通过前端网页，通过关键字等条件去搜索课程。</p>
+</li>
+</ul>
+<p>在MySQL中，<code>CREATE SCHEMA</code>创建了一个数据库，这是因为<code>CREATE SCHEMA</code>是<code>CREATE DATABASE</code>的同义词。 换句话说，你可以使用<code>CREATE SCHEMA</code>或者<code>CREATE DATABASE</code>来创建一个数据库。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803201122541.png" alt="image-20240803201122541" style="zoom:33%;">
+
+<h4 id="课程信息索引同步"><a href="#课程信息索引同步" class="headerlink" title="课程信息索引同步"></a>课程信息索引同步</h4><p>为了满足实时性的高要求：两种方案</p>
+<ul>
+<li>手动编写同步代码，也就是在添加课程到数据库的同时，将它夹到es索引中去，但是代码耦合度高</li>
+<li>使用canal中间件</li>
+</ul>
+<p>实时性不高：三种方案</p>
+<ul>
+<li>MQ：需要保证消息可靠性</li>
+<li>Logstash</li>
+<li>任务调度：<strong>本文选用这个</strong>，<strong>内容管理服务远程调用搜索服务的写索引接口</strong></li>
+</ul>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803214504775.png" alt="image-20240803214504775" style="zoom:33%;">
+
+<p>记得才content-api中添加search服务的配置文件依赖，找了一会bug</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240803215807106.png" alt="image-20240803215807106"></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804093702874.png" alt="image-20240804093702874"></p>
+<h3 id="认证授权"><a href="#认证授权" class="headerlink" title="认证授权"></a>认证授权</h3><p><strong>授权就是登录成功后，访问我们的微服务是否有权限</strong></p>
+<p>统一认证入口（登陆页面）–&gt;单点登录（用户只需要认证一次，便可以在多个拥有访问权限的系统中访问）–&gt;第三方认证（微信扫码登登录）</p>
+<p><strong>从一个空白的springboot工程实现一个具有认证授权的认证服务</strong></p>
+<p>复制WebSecurityConfig.java有报错，如下解决</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804103306433.png" alt="image-20240804103306433" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804103848560.png" alt="image-20240804103848560" style="zoom:33%;">
+
+<p>过滤器是在请求到达之前的预处理或者后处理，拦截器是对方法调用的前后或者抛出异常时的处理，监听器是监听特定事件执行相应操作</p>
+<p>SecurityContextHolder.getContext()底层就是使用了threadlocal</p>
+<h4 id="Spring-Security执行流程"><a href="#Spring-Security执行流程" class="headerlink" title="Spring Security执行流程"></a>Spring Security执行流程</h4><p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804104557504.png" alt="image-20240804104557504"></p>
+<h4 id="OAuth2协议（用于第三方认证）"><a href="#OAuth2协议（用于第三方认证）" class="headerlink" title="OAuth2协议（用于第三方认证）"></a>OAuth2协议（用于第三方认证）</h4><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804111502596.png" alt="image-20240804111502596" style="zoom:33%;">
+
+<p>OAuth2在本项目的应用</p>
+<p>1、学成在线访问第三方系统的资源。</p>
+<p>本项目要接入微信扫码登录所以本项目要使用OAuth2协议访问微信中的用户信息。</p>
+<p>2、外部系统访问学成在线的资源  。</p>
+<p>同样当第三方系统想要访问学成在线网站的资源也可以基于OAuth2协议。</p>
+<p>3、学成在线前端（客户端） 访问学成在线微服务的资源。<strong>（单点登录）</strong></p>
+<p>本项目是前后端分离架构，前端访问微服务资源也可以基于OAuth2协议进行认证。</p>
+<h4 id="OAuth2授权模式"><a href="#OAuth2授权模式" class="headerlink" title="OAuth2授权模式"></a>OAuth2授权模式</h4><p>Spring Security支持OAuth2认证，OAuth2提供授权码模式、密码模式、简化模式、客户端模式等四种授权模式</p>
+<ul>
+<li>授权码模式：</li>
+</ul>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804114615809.png" alt="image-20240804114615809" style="zoom:25%;">
+
+<p>还以黑马网站微信扫码登录为例进行说明：</p>
+<p>1、用户打开浏览器。</p>
+<p>2、通过浏览器访问客户端即黑马网站。</p>
+<p>3、用户通过浏览器向认证服务请求授权，请求授权时会携带客户端的URL，此URL为下发授权码的重定向地址。</p>
+<p>4、认证服务向资源拥有者返回授权页面。</p>
+<p>5、资源拥有者亲自授权同意。</p>
+<p>6、通过浏览器向认证服务发送授权同意。</p>
+<p>7、认证服务向客户端地址重定向并携带授权码。</p>
+<p>8、客户端即黑马网站收到授权码。</p>
+<p>9、客户端携带授权码向认证服务申请令牌。</p>
+<p>10、认证服务向客户端颁发令牌。</p>
+<ul>
+<li>密码模式：直接将用户敏感信息泄漏给了client，因此这就说明这种模式只能用于client是我们自己开发的情况下。</li>
+</ul>
+<h2 id="day10"><a href="#day10" class="headerlink" title="day10"></a>day10</h2><h3 id="jwt令牌"><a href="#jwt令牌" class="headerlink" title="jwt令牌"></a>jwt令牌</h3><p>Json Web Token，可以使资源服务自己校验令牌的合法性，由三部分构成Header、Payload、Signature</p>
+<ul>
+<li><p>Header：头部包括令牌的类型（即JWT）及使用的哈希算法（如HMAC SHA256或RSA）</p>
+</li>
+<li><p>Payload：<strong>存储一下可以公开出去的用户信息，如用户头像</strong></p>
+<p>第二部分是负载，内容也是一个json对象，它是存放有效信息的地方，它可以存放jwt提供的信息字段，比如：iss（签发者）,exp（过期时间戳）, sub（面向的用户）等，也可自定义字段。</p>
+<p>此部分不建议存放敏感信息，因为此部分可以解码还原原始内容。</p>
+</li>
+<li><p>第三部分是签名，此部分用于防止jwt内容被篡改。</p>
+<p>  这个部分使用base64url将前两部分进行编码，编码后使用点（.）连接组成字符串，最后使用header中声明的签名算法进行签名。</p>
+</li>
+</ul>
+<p>修改TokenConfig配置将普通令牌转换为jwt令牌</p>
+<h4 id="携带令牌访问资源服务"><a href="#携带令牌访问资源服务" class="headerlink" title="携带令牌访问资源服务"></a>携带令牌访问资源服务</h4><p>拿到了jwt令牌下一步就要携带令牌去访问资源服务中的资源，本项目各个微服务就是资源服务，比如：内容管理服务，客户端申请到jwt令牌，携带jwt去内容管理服务查询课程信息，此时内容管理服务要对jwt进行校验，只有jwt合法才可以继续访问。如下图：</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804164103259.png" alt="image-20240804164103259" style="zoom:25%;">
+
+<p>增加依赖，导入两个配置文件，使得springSecurity管控内容管理服务</p>
+<p>在这里注意三点，微服务密钥与认证服务相同，资源名也要相同，在配置类当中设置要管控的url</p>
+<h4 id="测试获取用户身份"><a href="#测试获取用户身份" class="headerlink" title="测试获取用户身份"></a>测试获取用户身份</h4><p>SecurityContextHolder.getContext()底层就是使用了threadlocal</p>
+<h4 id="网关认证"><a href="#网关认证" class="headerlink" title="网关认证"></a>网关认证</h4><p>微服务中检验令牌合法性 可以通过网关 这样只需要网关一个微服务进行校验</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804174339984.png" alt="image-20240804174339984" style="zoom:33%;">
+
+<p>所有访问微服务的请求都要经过网关，在网关进行用户身份的认证可以将很多非法的请求拦截到微服务以外，这叫做网关认证。<strong>注意网关不要拦截认证服务因为此时没有token呢，得先去获取token</strong></p>
+<p>三个作用：路由转发、认证（校验jwt令牌的合法性）、白名单维护（针对不用认证的URL全部放行）</p>
+<p><strong>网关进行认证，但网关进行授权不方便，微服务负责授权</strong></p>
+<p>网关，认证jwt令牌是否合法，是不是伪造的，是不是真的用户。正常用户就可以放行了，但是具体能不能访问到这个资源，要看微服务</p>
+<p><strong>在微服务中要放行所有请求，这里注释之前在content中配置拦截器</strong>，微服务不需要再进行校验了</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804174744147.png" alt="image-20240804174744147" style="zoom:33%;">
+
+
+
+<h3 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h3><h4 id="连接数据库认证"><a href="#连接数据库认证" class="headerlink" title="连接数据库认证"></a>连接数据库认证</h4><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804202600032.png" alt="image-20240804202600032" style="zoom:33%;">
+
+<p>自定义一个实现类去实现由SpringSecirity的UserDetailsService接口</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804202949479.png" alt="image-20240804202949479"></p>
+<p>我们只要实现UserDetailsService 接口查询数据库得到用户信息返回UserDetails 类型的用户信息即可,框架调用loadUserByUsername()方法拿到用户信息之后是如何执行的</p>
+<p>由于数据库中密码不是明文，因此需要将明文加密方式改为密文加密方式，密钥也要改为加密后的</p>
+<h4 id="扩展用户身份信息"><a href="#扩展用户身份信息" class="headerlink" title="扩展用户身份信息"></a>扩展用户身份信息</h4><p>原来只有账号太少了不够用</p>
+<p>方法：</p>
+<ul>
+<li>第一是可以扩展UserDetails，使之包括更多的自定义属性</li>
+<li>第二也可以扩展username的内容 ，比如存入json数据内容作为username的内容。<strong>（简单采用）</strong></li>
+</ul>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240804211612200.png" alt="image-20240804211612200"></p>
+<h4 id="资源服务获取用户身份"><a href="#资源服务获取用户身份" class="headerlink" title="资源服务获取用户身份"></a>资源服务获取用户身份</h4><p>使用工具类SecurityUtil将获取到的字符串转为对象，SecurityUtil中存在一个内部类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">XcUser--内部类，与获取到的用户信息对应，这个类其实就是auth认证服务中的po类对应用户的信息，这里为了避免依赖auth认证服务，所以单独定义一个类</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">XcUser</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="统一认证入口"><a href="#统一认证入口" class="headerlink" title="统一认证入口"></a>统一认证入口</h3><p>根据不同的方式进来有不同的策略，<strong>策略模式</strong></p>
+<p>统一认证请求的数据</p>
+<p>我靠，这里的注入方式看懵我了，得再复习复习</p>
+<p>原来是只要返回UserDetails，框架会自动校验密码，但是不是所有的认证都要校验密码，例如手机验证码，由于原来的DaoAuthenticationProvider 会进行密码校验，现在重新定义DaoAuthenticationProviderCustom类，重写类的additionalAuthenticationChecks方法。</p>
+<p>有校验密码，<strong>不想要就重写，空着就行</strong>，就是后面有校验密码也不再使用框架来校验了，自己另外写方法进行校验，也就是additionalAuthenticationChecks方法置为空，方法体为空</p>
+<p>还得WebSecurityConfig注入新的authenticationProvider，告诉框架使用自己重写的authenticationProvider</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240805104634094.png" alt="image-20240805104634094" style="zoom:33%;">
+
+<p>有了这些认证参数我们可以定义一个认证Service接口去进行各种方式的认证。</p>
+<p>定义用户信息，为了扩展性让它继承XcUser</p>
+<p>我靠由于可能存在多种认证方式，这里在获取不同认证方式的时候，直接注入了IOC容器，然后根据bean的名字去找我们所需要对应实现类的对象，我靠惊了</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240805110455829.png" alt="image-20240805110455829"></p>
+<h3 id="验证码服务"><a href="#验证码服务" class="headerlink" title="验证码服务"></a>验证码服务</h3><p>验证码作为一个独立的微服务，本项目创建单独的验证码服务为各业务提供验证码的生成、校验等服务。</p>
+<p>虚拟机redis连不上md，直接用mac本地redis 没有密码，nacos中yaml如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span> </span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">    <span class="attr">database:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">lettuce:</span></span><br><span class="line">      <span class="attr">pool:</span></span><br><span class="line">        <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">        <span class="attr">max-idle:</span> <span class="number">10</span></span><br><span class="line">        <span class="attr">min-idle:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">timeout:</span> <span class="number">10000</span></span><br><span class="line">    <span class="comment">#redisson:</span></span><br><span class="line">      <span class="comment">#配置文件目录</span></span><br><span class="line">      <span class="comment">#config: classpath:singleServerConfig.yaml</span></span><br></pre></td></tr></table></figure>
+
+<p>验证码服务如何生成并校验验证码？</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240805135747502.png" alt="image-20240805135747502" style="zoom:33%;">
+
+<h3 id="账号密码认证"><a href="#账号密码认证" class="headerlink" title="账号密码认证"></a>账号密码认证</h3><p>认证服务认证成功后，会颁发jwt令牌，存入cookie中</p>
+<p>令牌存在客户端cookie，当要去访问微服务时，前端会将令牌加入到http的头信息中携带到网关，由网关转发到微服务</p>
+<p>退出就是吧cookie清除</p>
+<p>验证码校验是远程调用，即认证服务调用验证码服务进行验证码校验，需要编写Fieignclient接口</p>
+<h3 id="微信扫码登录"><a href="#微信扫码登录" class="headerlink" title="微信扫码登录"></a>微信扫码登录</h3><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Authorized_Interface_Calling_UnionID.html%E6%8E%A5%E5%8F%A3%E5%9C%B0%E5%9D%80">https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Authorized_Interface_Calling_UnionID.html接口地址</a></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806194623414.png" alt="image-20240806194623414" style="zoom:25%;">
+
+<p>需要对接第三方接口</p>
+<p>微信重定向到某个地址包含授权码</p>
+<p>拿到用户信息保存到数据后，重定向到我们的认证接口</p>
+<p>远程调用和第三方进行的话使用在启动类配置<strong>restTemplate</strong>，和微服务之间需要使用feign</p>
+<p><strong>具体流程：</strong>这些所有的链接格式都是springsecurity固定好的，为什么是auth&#x2F;token？固定好的都是</p>
+<p>1.授权后获得授权码code</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806165851602.png" alt="image-20240806165851602" style="zoom:33%;">
+
+<ol start="2">
+<li>通过appid、secret以及code请求微信：申请令牌、使用令牌查询用户信息、将用户信息写入数据库</li>
+</ol>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806170155341.png" alt="image-20240806170155341" style="zoom:33%;">
+
+<p>3.重定向到这个连接，然后执行我们重写后的loadUserByUsername方法，这个方法会获得usrname参数，来看数据库有没有该用户，有就登录没有就报错</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806203140593.png" alt="image-20240806203140593" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806202906221.png" alt="image-20240806202906221" style="zoom:33%;">
+
+
+
+<h2 id="day11"><a href="#day11" class="headerlink" title="day11"></a>day11</h2><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p>通常基于RBAC实现授权</p>
+<p>RBAC分为两种方式：</p>
+<p>基于角色的访问控制（Role-Based Access Control），扩展性差</p>
+<p>基于资源的访问控制（Resource-Based Access Control）</p>
+<h3 id="资源服务授权流程"><a href="#资源服务授权流程" class="headerlink" title="资源服务授权流程"></a>资源服务授权流程</h3><p>通过添加授权注解</p>
+<p>在需要授权的接口处使用@PreAuthorize(“hasAuthority(‘权限标识符’)”)进行控制</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806213018165.png" alt="image-20240806213018165"></p>
+<p>设置了@PreAuthorize表示执行此方法需要授权，如果当前用户请求接口没有权限则抛出异常</p>
+<p>org.springframework.security.access.AccessDeniedException: 不允许访问</p>
+<p>这是因为，我们登录后将jwt令牌存在cookie中里面包好authorities信息，里面放的是test，不是xc_teachmanager_course_list，<strong>需要再出数据库中插入该权限并写入令牌中</strong></p>
+<h3 id="如何授权，授权管理"><a href="#如何授权，授权管理" class="headerlink" title="如何授权，授权管理"></a>如何授权，授权管理</h3><p>5张数据表</p>
+<p>为了为用户xc_user方便分配权限创建了角色表xc_role（学生角色、老师角色）,xc_menu菜单表存放的就是权限标识</p>
+<p>建立角色xc_role和权限xc_menu的关系表xc_permission</p>
+<p>建立角色xc_role和用户xc_user的关系表xc_user_role</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806222852255.png" alt="image-20240806222852255" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240806223715369.png" alt="image-20240806223715369" style="zoom:33%;">
+
+<h3 id="细粒度权限"><a href="#细粒度权限" class="headerlink" title="细粒度权限"></a>细粒度权限</h3><p>不同机构只能查询自己机构的课程，他们都可以查询课程但查询的课程不同</p>
+<h3 id="实战：还没做，看看瑞吉的短信发送流程"><a href="#实战：还没做，看看瑞吉的短信发送流程" class="headerlink" title="实战：还没做，看看瑞吉的短信发送流程"></a>实战：还没做，看看瑞吉的短信发送流程</h3><ul>
+<li>找回密码（实战）手机验证码和邮箱<ul>
+<li>发送验证码</li>
+<li>找回密码</li>
+<li>两部操作</li>
+</ul>
+</li>
+<li>注册（实战）</li>
+</ul>
+<h3 id="选课学习"><a href="#选课学习" class="headerlink" title="选课学习"></a>选课学习</h3><p>实现学生选课、下单支付、学习的整体流程</p>
+<h4 id="选课"><a href="#选课" class="headerlink" title="选课"></a>选课</h4><p>选课无论收不收费都添加到<strong>选课记录表</strong>中，根据状态字段判断是添加成功还是待支付</p>
+<p>选课成功会添加到我的课程表中（免费直接加入），收费支付成功才会加入到我的课程表</p>
+<p><strong>添加选课流程</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240807100556869.png" alt="image-20240807100556869" style="zoom:33%;">
+
+<p>订单依赖于选课记录表，我的课程表也依赖于选课记录表</p>
+<p>学习中心服务远程调用内容管理服务来判断该课程是否收费</p>
+<p>在content中添加查询课程发布信息，url改为以&#x2F;r开头，该服务用于内部调用不需要进行用户登录访问所以直接放行，在服务内部不用穿令牌可以直接访问</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ApiOperation(&quot;查询课程发布信息&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="comment">//此接口主要提供其它微服务远程调用，所以此接口不用授权，本项目标记此类接口统一以 /r开头。</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/r/coursepublish/&#123;courseId&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> CoursePublish <span class="title function_">getCoursepublish</span><span class="params">(<span class="meta">@PathVariable(&quot;courseId&quot;)</span> Long courseId)</span> &#123;</span><br><span class="line">    <span class="type">CoursePublish</span> <span class="variable">coursePublish</span> <span class="operator">=</span> coursePublishService.getCoursePublish(courseId);</span><br><span class="line">     <span class="keyword">return</span> coursePublish;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在进行feign远程调用时会将字符串转成LocalDateTime，在CoursePublish 类中LocalDateTime的属性上边添加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>之前我们在base包编写过配置类字符串转localDateTime，localDateTime转字符串，但这个限于restful接口中，也就是http请求请求接口把请求到的对象转json出现日期格式问题，现在我们是feignclient远程调用。</p>
+<h4 id="添加选课接口开发"><a href="#添加选课接口开发" class="headerlink" title="添加选课接口开发"></a>添加选课接口开发</h4><p>xc_choose_course选课记录表，没有约束，可能会存在多个相同的记录，依赖的是课程（参数）</p>
+<p>xc_course_table我的课程表，有约束，索引为userId和courseId，唯一，因此不能出现两个id都相同的记录。依赖的是选课记录表（参数）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//添加免费课程,免费课程加入选课记录表、我的课程表</span></span><br><span class="line">    <span class="keyword">public</span> XcChooseCourse <span class="title function_">addFreeCoruse</span><span class="params">(String userId, CoursePublish coursepublish)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">免费课程还要添记到我的课程表</span><br><span class="line">    </span><br><span class="line"><span class="comment">//添加到我的课程表</span></span><br><span class="line">    <span class="keyword">public</span> XcCourseTables <span class="title function_">addCourseTabls</span><span class="params">(XcChooseCourse xcChooseCourse)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>选课记录DTO与我的课程表DTO都有, learningStatus 字段.</p>
+<h3 id="支付"><a href="#支付" class="headerlink" title="支付"></a>支付</h3><p>在本项目中不仅选课需要下单、购买学习资料、老师一对一答疑等所以收费项目都需要下单支付。</p>
+<p>所以本项目设计通用的订单服务，通用的订单服务承接各业务模块的收费支付需求，当用户需要交费时统一生成商品订单并进行支付。</p>
+<p> 扫码支付和第三方对接</p>
+<p>专门为支付创建一个支付微服务，包含一张订单表，记录了所有支付的订单</p>
+<p>分为三大块：<strong>生成支付订单、用户完成支付、支付结果通知</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240807231233506.png" alt="image-20240807231233506" style="zoom:33%;">
+
+<p>微信提供的支付方式地址<a target="_blank" rel="noopener" href="https://pay.weixin.qq.com/static/product/product_index.shtml">https://pay.weixin.qq.com/static/product/product_index.shtml</a></p>
+<p>最终使用支付宝配置沙箱环境进行测试</p>
+<p>下单、退款、对账</p>
+<p>支付宝支付接口定义<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open/203/105285/">https://opendocs.alipay.com/open/203/105285/</a></p>
+<p>配置过程我们需要appid以及应用私钥和支付宝公钥</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808110809221.png" alt="image-20240808110809221" style="zoom:50%;">
+
+<h4 id="支付接口"><a href="#支付接口" class="headerlink" title="支付接口"></a>支付接口</h4><p>你通过模拟器去扫码，在模拟器里面有自己的ip地址，模拟器和pc端是独立的，所以你访问localhost并不会访问到订单服务</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808115307361.png" alt="image-20240808115307361" style="zoom:50%;">
+
+<h4 id="支付结果查询接口（也就是主动查询，防止支付宝通知没有通知到）"><a href="#支付结果查询接口（也就是主动查询，防止支付宝通知没有通知到）" class="headerlink" title="支付结果查询接口（也就是主动查询，防止支付宝通知没有通知到）"></a>支付结果查询接口（也就是主动查询，防止支付宝通知没有通知到）</h4><p>这两个账号<strong>二选一</strong></p>
+<p>out_trade_no商品订单号:  是在下单请求时指定的商品订单号。</p>
+<p>支付宝的交易流水号trade_no：是支付完成后支付宝通知支付结果时发送的trade_no</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808140549257.png" alt="image-20240808140549257"></p>
+<h4 id="支付结果通知接口"><a href="#支付结果通知接口" class="headerlink" title="支付结果通知接口"></a>支付结果通知接口</h4><p>对于手机网站支付产生的交易，支付宝会通知商户支付结果，有两种通知方式，通过return_url、notify_url进行通知，使用return_url不能保证通知到位，推荐使用notify_url完成支付结构通知。</p>
+<p>这个重定向是支付成功后，zfb给你手机返回一个重定向地址，然后跳转到这个地址，上面请求路径上面会有一些参数，有点类似获取密钥那会</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">alipayRequest.setNotifyUrl(<span class="string">&quot;https://1325-223-81-193-57.ngrok-free.app/orders/paynotify&quot;</span>);<span class="comment">//在公共参数中设置回跳和通知地址</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808154411344.png" alt="image-20240808154411344"></p>
+<h2 id="day12"><a href="#day12" class="headerlink" title="day12"></a>day12</h2><h3 id="生成支付二维码"><a href="#生成支付二维码" class="headerlink" title="生成支付二维码"></a>生成支付二维码</h3><p>支付测试完毕，现在应用于项目中，对接支付接口</p>
+<p>需要三张表，订单表和订单明细表是一对多的关系，我们会将支付记录表的记录号传给第三方，不是传递订单表的订单号</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808162205802.png" alt="image-20240808162205802"></p>
+<p>生成二维码的接口：创建商品订单、生成支付记录、生成二维码，只要涉及创建订单一般都存在订单表和订单明细表</p>
+<p>订单表：记录订单信息</p>
+<p>订单明细表：记录订单的详细信息</p>
+<p>支付记录表：记录每次支付的详细信息</p>
+<p>用户每次发起支付都创建一个新的支付记录 ，此支付记录与商品订单关联。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240808162832764.png" alt="image-20240808162832764" style="zoom:50%;">
+
+<p>插入订单需要确定订单号也就是主键，这个不是自增主键，<strong>使用雪花算法</strong>生成</p>
+<p>第一：确定订单号的生成规则 </p>
+<p>订单号注意唯一性、安全性、尽量短等特点，生成方案常用的如下：</p>
+<p>1、时间戳+随机数</p>
+<p>年月日时分秒毫秒+随机数</p>
+<p>2、高并发场景</p>
+<p>年月日时分秒毫秒+随机数+redis自增序列</p>
+<p>如果在极端情况下，“年月日时分秒毫秒”和“随机数”都相同，Redis的自增序列能够确保最终生成的ID仍然是唯一的。例如，如果两个请求在同一毫秒内 生成了相同的随机数，Redis自增序列会提供不同的递增值，使得最终生成的ID不同。</p>
+<p>3、订单号中加上业务标识（淘宝订单的使用）</p>
+<p>订单号加上业务标识方便客服，比如：第10位是业务类型，第11位是用户类型等。</p>
+<p>4、<strong>雪花算法</strong></p>
+<p>雪花算法是推特内部使用的分布式环境下的唯一ID生成算法，它基于时间戳生成，保证有序递增，加以入计算机硬件等元素，可以满足高并发环境下ID不重复。</p>
+<p><strong>out_business_id有唯一性约束，因此同一个选课只有一个订单</strong>，商品订单的数据来源于选课记录，在订单表需要存入选课记录的ID，这里需要作好幂等处理。</p>
+<p><strong>每次讲支付记录号传给支付宝， %s占位符，用来获取支付记录号</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812095641562.png" alt="image-20240812095641562" style="zoom:33%;">
+
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pay:</span></span><br><span class="line"> <span class="attr">qrcodeurl:</span> <span class="string">http://192.168.101.1:63030/orders/requestpay?payNo=%s</span></span><br></pre></td></tr></table></figure>
+
+<p>扫码下单测试的时候还是有点bug就是price是0，应该为1的，不知道哪里出了问题不想改了，费时间，测试直接把支付记录表的价格改一下就行，要不为0支付宝扫码会出现价格异常，找到问题了添加选课这里收费课程价格设置为0</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812113047247.png" alt="image-20240812113047247" style="zoom:33%;">
+
+<h3 id="查询支付结果"><a href="#查询支付结果" class="headerlink" title="查询支付结果"></a>查询支付结果</h3><p>根据前边我们调研的获取支付结果的接口，包括：主动查询支付结果、被动接收支付结果。</p>
+<h4 id="主动查询"><a href="#主动查询" class="headerlink" title="主动查询"></a>主动查询</h4><p>用户点击<strong>支付完成</strong>，会查询支付结果，<strong>并且还要更新支付记录表和订单表的状态</strong></p>
+<p>json序列化会导致Long类型转String类型出现精度损失，只要json转换，将long转为string都是用这中序列化方式，在base中配置，就不用在每个属性上去配置了</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812161136937.png" alt="image-20240812161136937" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812161303500.png" alt="image-20240812161303500" style="zoom:33%;">
+
+
+
+<p><strong>md支付完成一直点不了。换了个火狐才行谷歌点不了</strong></p>
+<p>更新支付结果：</p>
+<p>如果支付成功–&gt;更新支付记录表的状态为支付成功–&gt;更新订单表的状态为支付成功</p>
+<h4 id="被动查询"><a href="#被动查询" class="headerlink" title="被动查询"></a>被动查询</h4><p><strong>支付结果通知</strong>，在扫码的时候给支付宝回调地址，支付完成后，支付宝回请求这个controller</p>
+<p><strong>不用点击支付完成，自动更新支付状态</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812212117090.png" alt="image-20240812212117090" style="zoom:33%;">
+
+<h3 id="支付通知"><a href="#支付通知" class="headerlink" title="支付通知"></a>支付通知</h3><p>订单服务通过消息队列将支付结果发给学习中心服务，消息队列采用发布订阅模式。</p>
+<p>1、订单服务创建支付结果通知交换机。</p>
+<p>2、学习中心服务绑定队列到交换机。</p>
+<p>交换机为Fanout广播模式</p>
+<p>直接feign是同步调用，需要等待，有级联问题，耦合强拓展差</p>
+<p>用feign耦合度太高了，如果一个服务挂了，所有服务不都干不了活了</p>
+<p>其实是可以的，异步调用主要是用于避免高并发下的阻塞</p>
+<p><strong>支付服务</strong>通过消息队列把消息通知到 <strong>学习中心服务</strong>（订单服务作为通用服务在订单支付成功后需要将支付结果异步通知给其它微服务。）</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812212401900.png" alt="image-20240812212401900"></p>
+<p>微服务收到支付结果根据订单的类型去更新自己的业务数据。</p>
+<p>order生成，learning消费，都要加入rabbitMq依赖,以及配置，还要加入配置文件（创建交换机、创建队列，绑定交换机和队列）</p>
+<p>为什么生成者和消费者都加入配置文件，防止那一方启动起来都不报错（因为没有创建交换机或队列并绑定而报错，这里不会重复创建）</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812215526623.png" alt="image-20240812215526623" style="zoom:33%;">
+
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240812215808188.png" alt="image-20240812215808188" style="zoom:33%;">
+
+<p>会先把消息持久化到数据库中</p>
+<p>不仅交换机和队列要持久化，消息本身也要持久化</p>
+<p>之前自己写了个消息sdk用来对消息表进行增删改查</p>
+<p><strong>消费方</strong>学习中心服务，更新选课记录为<strong>选课成功</strong>，并将课程插入到<strong>我的课程表中</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//消费方监听队列</span></span><br><span class="line"><span class="comment">//监听消息队列接收支付结果通知</span></span><br><span class="line">    <span class="meta">@RabbitListener(queues = PayNotifyConfig.PAYNOTIFY_QUEUE)</span></span><br></pre></td></tr></table></figure>
+
+<p>消息中的知识用了两个字段，即选课id和订单类型，原因如下：</p>
+<p>因为订单类型能判断是学习中心服务的业务范围，然后学习中心服务收到支付结果要做的事情也只需要选课记录id这个值就可以实现，所以就传这两个</p>
+<p>测试：把之前支付成功的课程，在支付记录表中改为支付未成功也就是将602002改为602001，然后点击支付成功，order会发送消息，learning会接受，最终更新选课表的选课状态为701002到701001并在我的课程表中添加课程记录</p>
+<h2 id="day13"><a href="#day13" class="headerlink" title="day13"></a>day13</h2><h3 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h3><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813113622332.png" alt="image-20240813113622332" style="zoom:33%;">
+
+<h4 id="查询课程信息"><a href="#查询课程信息" class="headerlink" title="查询课程信息"></a>查询课程信息</h4><p>首先需要知道课程是否收费，要拿到课程信息</p>
+<h4 id="获取视频"><a href="#获取视频" class="headerlink" title="获取视频"></a>获取视频</h4><p>工具类只能通过springsecurity解析令牌拿到当前用户的，接令牌的是api工程接。service不能接令牌，用户相关信息只能在springsecurity整合的api得到，service得不到</p>
+<p>门户网站learning.html有bug呢</p>
+<p><strong>试学部分懒得写了</strong></p>
+<p>默认不放的是第一个视频</p>
+<p>2号课程添加了章节后，还没重新上传至minio所以应该没显示</p>
+<p>测试117号课程正常</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813171201263.png" alt="image-20240813171201263"></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813171355426.png" alt="image-20240813171355426"></p>
+<h4 id="我的课程表"><a href="#我的课程表" class="headerlink" title="我的课程表"></a>我的课程表</h4><p>需要配置二级域名</p>
+<p>查询我的课程表</p>
+<p>需要传递用户id参数</p>
+<h2 id="至此所有需求完结"><a href="#至此所有需求完结" class="headerlink" title="至此所有需求完结"></a>至此所有需求完结</h2><h3 id="找回密码没做呢"><a href="#找回密码没做呢" class="headerlink" title="找回密码没做呢"></a>找回密码没做呢</h3><h3 id="试学课程也没做"><a href="#试学课程也没做" class="headerlink" title="试学课程也没做"></a>试学课程也没做</h3><h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><p>DevOps是一种思想理念，它涵盖开发、测试、运维的整个过程。DevOps追求的目标是提高软件开发、测试、运维、运营等各部门的沟通与协作质量，DevOps强调软件开发人员与软件测试、软件运维、质量保障（QA）部门之间有效的沟通与协作，强调通过自动化的方法去管理软件变更、软件集成，使软件从构建到测试、发布更加快捷、可靠，最终按时交付软件。</p>
+<p>CI&#x2F;CD 是近年来企业有效实施DevOps的具体方案。</p>
+<p>CI&#x2F;CD 包含了一个 CI 和两个 CD，CI全称 Continuous Integration，表示持续集成，CD包含 Continuous Delivery和 Continuous Deployment，分别是持续交付和持续部署，三者具有前后依赖关系。</p>
+<p><strong>持续集成–&gt;持续交付–&gt;持续部署</strong></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813202406428.png" alt="image-20240813202406428" style="zoom:33%;">
+
+<p><strong>K8s</strong>：使用镜像创建容器部署，对容器进行编排</p>
+<p>本次项目部署实战旨在理解CI&#x2F;CD的流程，考虑Kubernates的复杂性课堂上我们用Jenkins代替Kubernates完成容器部署。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240813202236956.png" alt="image-20240813202236956" style="zoom:33%;">
+
+<p>package：打包</p>
+<p>install：打包完成后上传到本地仓库</p>
+<p>deploy：打包完后上传到私服</p>
+<p>Clean：清除target目录下的内容</p>
+<p>默认打的jar包没办法运行所以要加springboot打包插件</p>
+<p>-DskipTests：跳过测试，maven打包时会自动把单元测试方法都执行一遍（持续集成：持续的合并后然后集成测试），  现在不测试（之前编写的test方法）跳过就行</p>
+<p>docker logs  -f xuecheng-plus-checkcode</p>
+<h4 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h4><p>jenkins服务器（每一个容器都是一个服务器）会通过ssh远程登录测试服务器进行拉去镜像创建容器</p>
+<p>1、将代码 使用Git托管</p>
+<p>2、在jenkins创建任务，从Git拉取代码。</p>
+<p>3、拉取代码后进行自动构建：测试、打包、部署。</p>
+<p>首先将代码打成镜像包上传到docker私服。运行私有库Registry——相当于本地有个私有Docker hub</p>
+<p>Dokcer Registry简介以及使用方法：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Chary/p/18095027">https://www.cnblogs.com/Chary/p/18095027</a></p>
+<p>自动创建容器、启动容器。</p>
+<p>4、当有代码push到git实现自动构建。</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814203203016.png" alt="image-20240814203203016"></p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814205722091.png" alt="image-20240814205722091" style="zoom:33%;">
+
+<h2 id="项目优化"><a href="#项目优化" class="headerlink" title="项目优化"></a>项目优化</h2><p>视频播放页面用户未登录也可以访问，当用户观看试学课程时需要请求服务端查询数据，接口如下：</p>
+<p>1、根据课程id查询课程信息。</p>
+<p>2、根据文件id查询视频信息。</p>
+<p>这些接口在用户未认证状态下也可以访问，如果接口的性能不高，当高并发到来很可能耗尽整个系统的资源，将整个系统压垮，所以特别需要对这些暴露在外边的接口进行优化。</p>
+<p><strong>白名单接口：用户无需认证就能访问，针对这种接口，如果有动态数据要优先进行测试</strong></p>
+<h3 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h3><h4 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h4><p>压力测试常用的性能指标如下：</p>
+<p>1、吞吐量</p>
+<p>吞吐量是系统每秒可以处理的事务数，也称为TPS（Transaction Per Second）。</p>
+<p>比如：一次点播流程，从请求进入系统到视频画图显示出来这整个流程就是一次事务。</p>
+<p>所以吞吐量并不是一次数据库事务，它是完成一次业务的整体流程。</p>
+<p>2、响应时间</p>
+<p>响应时间是指客户端请求服务端，从请求进入系统到客户端拿到响应结果所经历的时间。响应时间包括：最大响应时间、最小响应时间、平均响应时间。</p>
+<p>3、每秒查询数</p>
+<p>每秒查询数即QPS（Queries-per-second），它是衡量查询接口的性能指标，比如：商品信息查询， 一秒可以请求该接口查询商品信息的次数就是QPS。</p>
+<p>拿查询接口举例，一次查询请求内部不会再去请求其它接口，此时  QPS&#x3D;TPS</p>
+<p>如果一次查询请求内容需要远程调用另一个接口查询数据，此时 QPS&#x3D;2 * TPS</p>
+<p>4、错误率</p>
+<p>错误率 是一批请求发生错误的请求占全部请求的比例。</p>
+<p><strong>不同的指标其要求不同，比如现在进行接口优化，优化后的接口响应时间应该越来越小，吞吐量越来越大，以及QPS值也是越大越好，错误率要保持在一个很小的范围。</strong></p>
+<p>另外除了关注这些性能指标以外还要关注系统的负载情况：</p>
+<p>1、CPU使用率，不高于85%</p>
+<p>2、内存利用率，不高于 85%</p>
+<p>3、网络利用率，不高于 80%</p>
+<p>4、磁盘IO</p>
+<p>磁盘IO的性能指标是IOPS (Input&#x2F;Output Per Second)即每秒的输入输出量(或读写次数)。</p>
+<p><strong>如果过大说明IO操作密集，IO过大也会影响性能指标。</strong></p>
+<p>对查询课程发布借口进行压力测试</p>
+<p><strong>加open是通过nginx进行访问，先进行了一次代理转发到gateway</strong>—–这个不对啊，网友说错了，应该</p>
+<p>是他当时在网关里设了白名单全放行了所以不用open也能查</p>
+<p>&#x2F;<strong>&#x3D;临时全部都打开<br>&#x2F;auth&#x2F;</strong>&#x3D;认证地址<br>&#x2F;content&#x2F;open&#x2F;<strong>&#x3D;内容管理公开访问接口<br>&#x2F;media&#x2F;open&#x2F;</strong>&#x3D;媒资管理公开访问接口</p>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>1.不通过网关</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814104128144.png" alt="image-20240814104128144"></p>
+<p>2.改变日志级别从debug到info</p>
+<h3 id="缓存优化"><a href="#缓存优化" class="headerlink" title="缓存优化"></a>缓存优化</h3><p>测试用例是根据id查询课程信息，这里不存在复杂的SQL，也不存在数据库连接不释放的问题，暂时不考虑数据库方面的优化。</p>
+<p>课程发布信息的特点的是查询较多，修改很少，这里考虑将课程发布信息进行缓存。</p>
+<p><strong>也就是将白名单接口查询数据放到缓存中</strong> <strong>把我的订单我的选课这些访问量大的放到缓存中（我的学习那里）</strong></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814111711623.png" alt="image-20240814111711623"></p>
+<h3 id="缓存三兄弟"><a href="#缓存三兄弟" class="headerlink" title="缓存三兄弟"></a>缓存三兄弟</h3><p>高并发导致的问题</p>
+<h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p>大量并发去访问一个数据库不存在的数据，由于缓存中没有该数据导致大量并发查询数据库，这个现象要缓存穿透。缓存穿透可以造成数据库瞬间压力过大，连接数等资源用完，最终数据库拒绝连接不可用。</p>
+<img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814114944583.png" alt="image-20240814114944583" style="zoom:33%;">
+
+<p>1.增加校验机制：key有一定规则</p>
+<p>2.布隆过滤器：0表示过滤器不存在，数据库不存在</p>
+<ul>
+<li>Google工具包Guava实现。</li>
+<li>redisson 。</li>
+</ul>
+<p>3.缓存空值或特殊值：查不到就缓存空值，但是要注意：<strong>如果缓存了空值或特殊值要设置一个短暂的过期时间。</strong></p>
+<p><strong>使用3改进后，当访问不存在数据不会在一直查数据库，当查到缓存空后直接return，结束</strong></p>
+<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p>缓存雪崩是缓存中大量key失效后当高并发到来时导致大量请求到数据库，瞬间耗尽数据库资源，导致数据库无法使用。</p>
+<p>造成缓存雪崩问题的原因是是大量key拥有了相同的过期时间，比如对课程信息设置缓存过期时间为10分钟，在大量请求同时查询大量的课程信息时，此时就会有大量的课程存在相同的过期时间，一旦失效将同时失效，造成雪崩问题。</p>
+<p>如何解决？</p>
+<p><strong>1、使用同步锁控制查询数据库的线程</strong></p>
+<p>使用同步锁控制查询数据库的线程，只允许有一个线程去查询数据库，查询得到数据后存入缓存。</p>
+<p><strong>2、对同一类型信息的key设置不同的过期时间</strong></p>
+<p>通常对一类信息的key设置的过期时间是相同的，这里可以在原有固定时间的基础上加上一个随机时间使它们的过期时间都不相同。</p>
+<p><strong>3、缓存预热</strong></p>
+<p>不用等到请求到来再去查询数据库存入缓存，可以提前将数据存入缓存。使用缓存预热机制通常有专门的后台程序去将数据库的数据同步到缓存。</p>
+<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814153134264.png" alt="image-20240814153134264" style="zoom:33%;">
+
+<p>缓存击穿是指大量并发访问同一个热点数据，当热点数据失效后同时去请求数据库，瞬间耗尽数据库资源，导致数据库无法使用。</p>
+<p>比如某手机新品发布，当缓存失效时有大量并发到来导致同时去访问数据库。</p>
+<p><strong>如何解决缓存击穿？</strong></p>
+<p><strong>1、使用同步锁控制查询数据库的线程</strong>（尽量缩小锁的范围，如只锁数据库那部分代码）</p>
+<p>使用同步锁控制查询数据库的代码，只允许有一个线程去查询数据库，查询得到数据库存入缓存。</p>
+<p><strong>对查询缓存的代码不用synchronized加锁控制，只对查询数据库进行加锁，双重检查锁</strong>，这个操作好牛逼</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814155120960.png" alt="image-20240814155120960"></p>
+<p><strong>锁整个方法</strong></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814155404675.png" alt="image-20240814155404675"></p>
+<p><strong>只锁数据库方法</strong></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814155645661.png" alt="image-20240814155645661"></p>
+<p><strong>2、热点数据不过期</strong></p>
+<p>可以由后台程序提前将热点数据加入缓存，缓存过期时间不过期，由后台程序做好缓存同步。</p>
+<h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p><strong>本地锁问题：</strong>上边的程序使用了同步锁解决了缓存击穿、缓存雪崩的问题，保证同一个key过期后只会查询一次数据库。如果将同步锁的程序分布式部署在多个虚拟机上则无法保证同一个key只会查询一次数据库。</p>
+<p><strong>一个同步锁程序只能保证同一个虚拟机中多个线程只有一个线程去数据库，如果高并发通过网关负载均衡转发给各个虚拟机，此时就会存在多个线程去查询数据库情况，因为虚拟机中的锁只能保证该虚拟机自己的线程去同步执行，无法跨虚拟机保证同步执行</strong></p>
+<p>同步锁仅仅只在当前jvm有效，不能锁住其他jvm，有几个jvm进程会查几次</p>
+<p>这个同步锁,当在多个实例的情况下,它只能锁住当前JVM(当前实例)的线程,换句话说,每个服务实例都会有一个线程去查数据库</p>
+<p>分布式锁：有多个jvm争抢的锁</p>
+<h4 id="基于数据库实现分布式锁"><a href="#基于数据库实现分布式锁" class="headerlink" title="基于数据库实现分布式锁"></a>基于数据库实现分布式锁</h4><p>已经实现过了，在前面课程发布时候，分布式任务调度中实现</p>
+<h4 id="基于redis实现锁"><a href="#基于redis实现锁" class="headerlink" title="基于redis实现锁"></a>基于redis实现锁</h4><p><strong>1.SETNX实现分布式锁</strong></p>
+<p>SETNX命令的工作过程是去set一个不存在的key，多个线程去设置同一个key只会有一个线程设置成功，设置成功的的线程拿到锁。</p>
+<p><strong>原子性可以用Lua脚本去解决，但过期时间设置难以解决，到底设置多少，大了性能低，小了锁被抢</strong></p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814165943463.png" alt="image-20240814165943463"></p>
+<p>为了避免删除别的线程设置的锁需要使用redis去执行Lua脚本的方式去实现（让这段代码具有原子性，中间执行过程不被cpu中断），这样就具有原子性，但是过期时间的值设置不存在不精确的问题。</p>
+<p><strong>2.基于redisson实现分布式锁</strong></p>
+<p>可以把我们常用的数据结构放到redis中去，也可实现分布式锁</p>
+<p><strong>synchronized锁是阻塞式的，一个线程拿到锁执行，其他线程等</strong></p>
+<p><strong>ReentrantLock是线程拿到锁就执行，其他线程开始自旋，看能不能获取到锁</strong></p>
+<p>Redisson实现了自旋锁的Lock接口</p>
+<p>阻塞需要线程之间的切换，有些程序执行时间可能都没线程切换时间长，这个时候自旋就不用cpu切换上下文–网友</p>
+<p>自旋锁的好处，那就是自旋锁用循环去不停地尝试获取锁，让线程始终处于 Runnable 状态，节省了线程状态切换带来的开销</p>
+<p>WatchDog线程对锁的过期时间自动续期，过期时间默认30s</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814190648688.png" alt="image-20240814190648688"></p>
+<p>**lock()**：</p>
+<ul>
+<li>此方法为加锁，但是锁的有效期采用<strong>默认30秒</strong></li>
+<li>如果主线程未释放，且当前锁未调用unlock方法，则进入到<strong>watchDog机制</strong></li>
+<li>如果主线程未释放，且当前锁调用unlock方法，则直接释放锁</li>
+</ul>
+<h2 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h2><p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240814193811057.png" alt="image-20240814193811057"></p>
+<p><strong>任务：</strong>8.14</p>
+<p>啥事registry私服？</p>
+<p>看看为啥要部署门户而不直接在前端，是因为门户的话可以把一些动态资源转换为静态资源，从而不让请求直接访问数据库么？</p>
+<p> 前端vue是机构端用的 原来门户是学生用的</p>
+<p>异常处理，jsr303？</p>
+<p>浏览器通过ajax请求调用服务端出现跨域</p>
+<p><img src="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/image-20240815095607852.png" alt="image-20240815095607852"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io">Hungyeye</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/">https://hungyeye.github.io/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://hungyeye.github.io" target="_blank">Hungyeye's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/cover/3.PNG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关"><img class="cover" src="/img/cover/0.PNG" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">java相关</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Hungyeye</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hungyeye"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hungyeye" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1326358725@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客，与你共同进步 --小狗蛋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-%EF%BC%9A%E5%BF%85%E9%A1%BB%E8%A6%81%E7%9F%A5%E9%81%93"><span class="toc-number">1.1.</span> <span class="toc-text">Docker ：必须要知道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day01"><span class="toc-number">1.2.</span> <span class="toc-text">Day01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day02"><span class="toc-number">1.3.</span> <span class="toc-text">Day02</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%8C%81%E4%B9%85%E5%B1%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">开发持久层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E4%B8%9A%E5%8A%A1%E5%B1%82"><span class="toc-number">1.3.2.</span> <span class="toc-text">开发业务层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83"><span class="toc-number">1.3.3.</span> <span class="toc-text">前后端联调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%88%86%E7%B1%BB%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.4.</span> <span class="toc-text">课程分类查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E7%9A%84%E9%80%92%E5%BD%92sql%E5%BE%88%E5%85%B3%E9%94%AE"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">这里的递归sql很关键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.3.5.</span> <span class="toc-text">新增课程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%EF%BC%9A"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">面试：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day03"><span class="toc-number">1.4.</span> <span class="toc-text">Day03</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSR303%E6%A0%A1%E9%AA%8C"><span class="toc-number">1.4.1.</span> <span class="toc-text">JSR303校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.4.2.</span> <span class="toc-text">修改课程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92"><span class="toc-number">1.4.3.</span> <span class="toc-text">查询课程计划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sql%E8%AF%AD%E5%8F%A5%E5%BE%88%E5%85%B3%E9%94%AE"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">sql语句很关键</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E-%E4%BF%AE%E6%94%B9%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92"><span class="toc-number">1.4.4.</span> <span class="toc-text">新增&#x2F;修改课程计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bug%E4%BF%AE%E6%94%B9%EF%BC%9A"><span class="toc-number">1.4.5.</span> <span class="toc-text">Bug修改：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.5.</span> <span class="toc-text">sql多表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="toc-number">1.5.1.</span> <span class="toc-text">内连接：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="toc-number">1.5.2.</span> <span class="toc-text">外连接：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="toc-number">1.5.3.</span> <span class="toc-text">自连接：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">1.5.4.</span> <span class="toc-text">联合查询：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day04%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E5%AF%B9%E5%BA%94%E5%88%86%E6%94%AFdev04"><span class="toc-number">1.6.</span> <span class="toc-text">day04项目实战对应分支dev04</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92"><span class="toc-number">1.6.1.</span> <span class="toc-text">删除课程计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E8%AE%A1%E5%88%92%E6%8E%92%E5%BA%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text">课程计划排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%88%E8%B5%84%E7%AE%A1%E7%90%86"><span class="toc-number">1.6.3.</span> <span class="toc-text">师资管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%99%E5%B8%88"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">查询教师</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%99%E5%B8%88%E3%80%81%E4%BF%AE%E6%94%B9%E6%95%99%E5%B8%88%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">添加教师、修改教师为一个接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%99%E5%B8%88%EF%BC%8C%E9%83%BD%E6%8C%BA%E7%AE%80%E5%8D%95"><span class="toc-number">1.6.3.3.</span> <span class="toc-text">删除教师，都挺简单</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%AF%BE%E7%A8%8B"><span class="toc-number">1.6.4.</span> <span class="toc-text">删除课程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day05%E5%AA%92%E8%B5%84%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.7.</span> <span class="toc-text">day05媒资管理模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BANacos"><span class="toc-number">1.7.1.</span> <span class="toc-text">搭建Nacos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%BD%91%E5%85%B3"><span class="toc-number">1.7.2.</span> <span class="toc-text">搭建网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%AA%92%E8%B5%84%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.7.3.</span> <span class="toc-text">搭建媒资服务工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.7.4.</span> <span class="toc-text">分布式文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87"><span class="toc-number">1.7.5.</span> <span class="toc-text">上传图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service%E4%BA%8B%E5%8A%A1%E4%BC%98%E5%8C%96%EF%BC%9A%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%A2%B0%E5%88%B0%E8%BF%99%E7%A7%8D%EF%BC%8C%E5%BE%88%E9%87%8D%E8%A6%81%EF%BC%8C%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88"><span class="toc-number">1.7.6.</span> <span class="toc-text">Service事务优化：第一次碰到这种，很重要，如何解决事务失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day06%E4%B8%8A%E4%BC%A0%E8%A7%86%E9%A2%91"><span class="toc-number">1.8.</span> <span class="toc-text">day06上传视频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E8%A7%86%E9%A2%91"><span class="toc-number">1.8.1.</span> <span class="toc-text">上传视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.8.2.</span> <span class="toc-text">面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86"><span class="toc-number">1.8.3.</span> <span class="toc-text">视频处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81%EF%BC%9AFFmpeg%E5%B7%A5%E5%85%B7"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">视频转码：FFmpeg工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%9A%E5%A4%9A%E4%B8%AA%E8%AE%A1%E7%AE%97%E6%9C%BA-%E5%90%8C%E6%97%B6%E8%BF%9B%E8%A1%8C%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%8C%E9%AB%98%E6%95%88%E5%A4%84%E7%90%86%E8%A7%86%E9%A2%91"><span class="toc-number">1.8.3.2.</span> <span class="toc-text">分布式任务调度：多个计算机 同时进行任务调度，高效处理视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xxl-job%E9%85%8D%E7%BD%AE%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-number">1.8.3.3.</span> <span class="toc-text">xxl-job配置执行器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E4%B8%AD%E5%BF%83%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5"><span class="toc-number">1.8.3.4.</span> <span class="toc-text">调度中心的路由策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day07"><span class="toc-number">1.9.</span> <span class="toc-text">day07</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%BE%85%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.9.1.</span> <span class="toc-text">查询待处理任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="toc-number">1.9.2.</span> <span class="toc-text">开始任务执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81"><span class="toc-number">1.9.3.</span> <span class="toc-text">更新任务状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86-1"><span class="toc-number">1.9.4.</span> <span class="toc-text">视频处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98%EF%BC%9A%E6%9C%89%E4%B8%89%E4%B8%AA%E9%9C%80%E8%A6%81%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.9.4.1.</span> <span class="toc-text">其他问题：有三个需要自己实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95"><span class="toc-number">1.9.5.</span> <span class="toc-text">面试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%AA%92%E8%B5%84"><span class="toc-number">1.9.6.</span> <span class="toc-text">绑定媒资</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%9A"><span class="toc-number">1.9.6.1.</span> <span class="toc-text">实战：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%88%86%E5%B8%83"><span class="toc-number">1.9.7.</span> <span class="toc-text">课程分布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E9%A2%84%E8%A7%88"><span class="toc-number">1.9.7.1.</span> <span class="toc-text">课程预览</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day08"><span class="toc-number">1.10.</span> <span class="toc-text">day08</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%AF%BE%E7%A8%8B%E9%A2%84%E8%A7%88%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.10.1.</span> <span class="toc-text">定义课程预览接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.10.1.1.</span> <span class="toc-text">接口开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%AE%8C%E5%96%84"><span class="toc-number">1.10.1.2.</span> <span class="toc-text">接口完善</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83-1"><span class="toc-number">1.10.1.3.</span> <span class="toc-text">前后端联调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E6%A8%A1%E7%89%88"><span class="toc-number">1.10.1.4.</span> <span class="toc-text">编写模版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E9%A1%B5%E9%9D%A2%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.10.1.5.</span> <span class="toc-text">视频播放页面接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%AE%A1%E6%A0%B8"><span class="toc-number">1.10.2.</span> <span class="toc-text">课程审核</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.10.2.1.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E3%80%81%E5%BC%80%E5%8F%91%E3%80%81%E6%B5%8B%E8%AF%95"><span class="toc-number">1.10.2.2.</span> <span class="toc-text">接口定义、开发、测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%A1%E6%A0%B8%EF%BC%9A"><span class="toc-number">1.10.2.3.</span> <span class="toc-text">手动审核：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%8F%91%E5%B8%83"><span class="toc-number">1.10.3.</span> <span class="toc-text">课程发布</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-1"><span class="toc-number">1.10.3.1.</span> <span class="toc-text">需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.10.3.2.</span> <span class="toc-text">分布式事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%8F%91%E5%B8%83%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.10.3.3.</span> <span class="toc-text">课程发布接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%8F%91%E5%B8%83%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-number">1.10.3.4.</span> <span class="toc-text">课程发布任务处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day09"><span class="toc-number">1.11.</span> <span class="toc-text">day09</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96"><span class="toc-number">1.11.1.</span> <span class="toc-text">页面静态化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">1.11.2.</span> <span class="toc-text">静态化测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">1.11.3.</span> <span class="toc-text">上传文件测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7%E5%A4%84%E7%90%86"><span class="toc-number">1.11.4.</span> <span class="toc-text">熔断降级处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E9%9D%99%E6%80%81%E5%8C%96%E5%BC%80%E5%8F%91"><span class="toc-number">1.11.5.</span> <span class="toc-text">课程静态化开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E6%90%9C%E7%B4%A2"><span class="toc-number">1.11.6.</span> <span class="toc-text">课程搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E7%B4%A2%E5%BC%95%E5%90%8C%E6%AD%A5"><span class="toc-number">1.11.6.1.</span> <span class="toc-text">课程信息索引同步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83"><span class="toc-number">1.11.7.</span> <span class="toc-text">认证授权</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Security%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.11.7.1.</span> <span class="toc-text">Spring Security执行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OAuth2%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%94%A8%E4%BA%8E%E7%AC%AC%E4%B8%89%E6%96%B9%E8%AE%A4%E8%AF%81%EF%BC%89"><span class="toc-number">1.11.7.2.</span> <span class="toc-text">OAuth2协议（用于第三方认证）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OAuth2%E6%8E%88%E6%9D%83%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.11.7.3.</span> <span class="toc-text">OAuth2授权模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day10"><span class="toc-number">1.12.</span> <span class="toc-text">day10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jwt%E4%BB%A4%E7%89%8C"><span class="toc-number">1.12.1.</span> <span class="toc-text">jwt令牌</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%BA%E5%B8%A6%E4%BB%A4%E7%89%8C%E8%AE%BF%E9%97%AE%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.12.1.1.</span> <span class="toc-text">携带令牌访问资源服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD"><span class="toc-number">1.12.1.2.</span> <span class="toc-text">测试获取用户身份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%85%B3%E8%AE%A4%E8%AF%81"><span class="toc-number">1.12.1.3.</span> <span class="toc-text">网关认证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81"><span class="toc-number">1.12.2.</span> <span class="toc-text">用户认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%A4%E8%AF%81"><span class="toc-number">1.12.2.1.</span> <span class="toc-text">连接数据库认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E4%BF%A1%E6%81%AF"><span class="toc-number">1.12.2.2.</span> <span class="toc-text">扩展用户身份信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD"><span class="toc-number">1.12.2.3.</span> <span class="toc-text">资源服务获取用户身份</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E5%85%A5%E5%8F%A3"><span class="toc-number">1.12.3.</span> <span class="toc-text">统一认证入口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%A0%81%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.12.4.</span> <span class="toc-text">验证码服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81"><span class="toc-number">1.12.5.</span> <span class="toc-text">账号密码认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-number">1.12.6.</span> <span class="toc-text">微信扫码登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day11"><span class="toc-number">1.13.</span> <span class="toc-text">day11</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83"><span class="toc-number">1.13.1.</span> <span class="toc-text">授权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%9C%8D%E5%8A%A1%E6%8E%88%E6%9D%83%E6%B5%81%E7%A8%8B"><span class="toc-number">1.13.2.</span> <span class="toc-text">资源服务授权流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8E%88%E6%9D%83%EF%BC%8C%E6%8E%88%E6%9D%83%E7%AE%A1%E7%90%86"><span class="toc-number">1.13.3.</span> <span class="toc-text">如何授权，授权管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%86%E7%B2%92%E5%BA%A6%E6%9D%83%E9%99%90"><span class="toc-number">1.13.4.</span> <span class="toc-text">细粒度权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%9A%E8%BF%98%E6%B2%A1%E5%81%9A%EF%BC%8C%E7%9C%8B%E7%9C%8B%E7%91%9E%E5%90%89%E7%9A%84%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B"><span class="toc-number">1.13.5.</span> <span class="toc-text">实战：还没做，看看瑞吉的短信发送流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E8%AF%BE%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.13.6.</span> <span class="toc-text">选课学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E8%AF%BE"><span class="toc-number">1.13.6.1.</span> <span class="toc-text">选课</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%80%89%E8%AF%BE%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.13.6.2.</span> <span class="toc-text">添加选课接口开发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E4%BB%98"><span class="toc-number">1.13.7.</span> <span class="toc-text">支付</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.13.7.1.</span> <span class="toc-text">支付接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%B9%9F%E5%B0%B1%E6%98%AF%E4%B8%BB%E5%8A%A8%E6%9F%A5%E8%AF%A2%EF%BC%8C%E9%98%B2%E6%AD%A2%E6%94%AF%E4%BB%98%E5%AE%9D%E9%80%9A%E7%9F%A5%E6%B2%A1%E6%9C%89%E9%80%9A%E7%9F%A5%E5%88%B0%EF%BC%89"><span class="toc-number">1.13.7.2.</span> <span class="toc-text">支付结果查询接口（也就是主动查询，防止支付宝通知没有通知到）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%E9%80%9A%E7%9F%A5%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.13.7.3.</span> <span class="toc-text">支付结果通知接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day12"><span class="toc-number">1.14.</span> <span class="toc-text">day12</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%94%AF%E4%BB%98%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.14.1.</span> <span class="toc-text">生成支付二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C"><span class="toc-number">1.14.2.</span> <span class="toc-text">查询支付结果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.14.2.1.</span> <span class="toc-text">主动查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.14.2.2.</span> <span class="toc-text">被动查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E9%80%9A%E7%9F%A5"><span class="toc-number">1.14.3.</span> <span class="toc-text">支付通知</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day13"><span class="toc-number">1.15.</span> <span class="toc-text">day13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.15.1.</span> <span class="toc-text">在线学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.15.1.1.</span> <span class="toc-text">查询课程信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91"><span class="toc-number">1.15.1.2.</span> <span class="toc-text">获取视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E8%AF%BE%E7%A8%8B%E8%A1%A8"><span class="toc-number">1.15.1.3.</span> <span class="toc-text">我的课程表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%B3%E6%AD%A4%E6%89%80%E6%9C%89%E9%9C%80%E6%B1%82%E5%AE%8C%E7%BB%93"><span class="toc-number">1.16.</span> <span class="toc-text">至此所有需求完结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E6%B2%A1%E5%81%9A%E5%91%A2"><span class="toc-number">1.16.1.</span> <span class="toc-text">找回密码没做呢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%95%E5%AD%A6%E8%AF%BE%E7%A8%8B%E4%B9%9F%E6%B2%A1%E5%81%9A"><span class="toc-number">1.16.2.</span> <span class="toc-text">试学课程也没做</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">1.17.</span> <span class="toc-text">项目部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">1.17.0.1.</span> <span class="toc-text">自动部署</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96"><span class="toc-number">1.18.</span> <span class="toc-text">项目优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95"><span class="toc-number">1.18.1.</span> <span class="toc-text">压力测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.18.1.1.</span> <span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">1.18.1.2.</span> <span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BC%98%E5%8C%96"><span class="toc-number">1.18.2.</span> <span class="toc-text">缓存优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%B8%89%E5%85%84%E5%BC%9F"><span class="toc-number">1.18.3.</span> <span class="toc-text">缓存三兄弟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="toc-number">1.18.3.1.</span> <span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-number">1.18.3.2.</span> <span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-number">1.18.3.3.</span> <span class="toc-text">缓存击穿</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-number">1.18.4.</span> <span class="toc-text">分布式锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-number">1.18.4.1.</span> <span class="toc-text">基于数据库实现分布式锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Eredis%E5%AE%9E%E7%8E%B0%E9%94%81"><span class="toc-number">1.18.4.2.</span> <span class="toc-text">基于redis实现锁</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93"><span class="toc-number">1.19.</span> <span class="toc-text">项目总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="无题"><img src="/img/cover/3.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="无题">无题</a><time datetime="2024-08-15T02:04:59.744Z" title="发表于 2024-08-15 10:04:59">2024-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关"><img src="/img/cover/0.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java相关"/></a><div class="content"><a class="title" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关">java相关</a><time datetime="2024-07-24T03:40:53.000Z" title="发表于 2024-07-24 11:40:53">2024-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记"><img src="/img/cover/2.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring笔记"/></a><div class="content"><a class="title" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记">spring笔记</a><time datetime="2024-05-29T03:11:45.000Z" title="发表于 2024-05-29 11:11:45">2024-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/16/%E9%9A%8F%E7%AC%94/" title="随笔"><img src="/img/cover/3.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随笔"/></a><div class="content"><a class="title" href="/2024/05/16/%E9%9A%8F%E7%AC%94/" title="随笔">随笔</a><time datetime="2024-05-16T04:53:17.000Z" title="发表于 2024-05-16 12:53:17">2024-05-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/15/spring/" title="spring"><img src="/img/cover/0.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring"/></a><div class="content"><a class="title" href="/2024/05/15/spring/" title="spring">spring</a><time datetime="2024-05-15T09:48:58.000Z" title="发表于 2024-05-15 17:48:58">2024-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Hungyeye</div><div class="footer_custom_text">Hi, welcome to hungyeye's <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'hungyeye/hungyeye.github.io',
+      'data-repo-id': 'R_kgDOL65qOw',
+      'data-category-id': 'DIC_kwDOL65qO84CfXhF',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
