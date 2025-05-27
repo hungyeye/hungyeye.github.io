@@ -1,0 +1,744 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>rpc笔记 | Hungyeye's blog</title><meta name="author" content="Hungyeye"><meta name="copyright" content="Hungyeye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="集群与分布式集群：一个业务模块，部署在多台服务器上 分布式：一个大的业务系统，拆分为小的业务模块，分别部署在不同的机器上 高可扩展：只需要一个机器部署E模块对其他模块没有任何影响 jar的项目不能独立启动，war才可以  dubbohttps:&#x2F;&#x2F;cn.dubbo.apache.org&#x2F;zh-cn&#x2F;overview&#x2F;mannual&#x2F;java-sdk&#x2F;advanced-features-and-us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rpc笔记">
+<meta property="og:url" content="https://hungyeye.github.io/2025/05/27/rpc/index.html">
+<meta property="og:site_name" content="Hungyeye&#39;s blog">
+<meta property="og:description" content="集群与分布式集群：一个业务模块，部署在多台服务器上 分布式：一个大的业务系统，拆分为小的业务模块，分别部署在不同的机器上 高可扩展：只需要一个机器部署E模块对其他模块没有任何影响 jar的项目不能独立启动，war才可以  dubbohttps:&#x2F;&#x2F;cn.dubbo.apache.org&#x2F;zh-cn&#x2F;overview&#x2F;mannual&#x2F;java-sdk&#x2F;advanced-features-and-us">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hungyeye.github.io/img/cover/1.PNG">
+<meta property="article:published_time" content="2025-05-27T02:49:20.000Z">
+<meta property="article:modified_time" content="2025-05-27T02:50:54.164Z">
+<meta property="article:author" content="Hungyeye">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hungyeye.github.io/img/cover/1.PNG"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="https://hungyeye.github.io/2025/05/27/rpc/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Hungyeye","link":"链接: ","source":"来源: Hungyeye's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'rpc笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-27 10:50:54'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/1.PNG')"><nav id="nav"><span id="blog-info"><a href="/" title="Hungyeye's blog"><span class="site-name">Hungyeye's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">rpc笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-27T02:49:20.000Z" title="发表于 2025-05-27 10:49:20">2025-05-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-27T02:50:54.164Z" title="更新于 2025-05-27 10:50:54">2025-05-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>31分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="rpc笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="集群与分布式"><a href="#集群与分布式" class="headerlink" title="集群与分布式"></a>集群与分布式</h1><p>集群：一个业务模块，部署在多台服务器上</p>
+<p>分布式：一个大的业务系统，拆分为小的业务模块，分别部署在不同的机器上</p>
+<p>高可扩展：只需要一个机器部署E模块对其他模块没有任何影响</p>
+<p>jar的项目不能独立启动，war才可以</p>
+<p><img src="/2025/05/27/rpc/image-20240818140906599.png" alt="image-20240818140906599"></p>
+<h1 id="dubbo"><a href="#dubbo" class="headerlink" title="dubbo"></a>dubbo</h1><p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/advanced-features-and-usage/service/fault-tolerent-strategy/">https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/advanced-features-and-usage/service/fault-tolerent-strategy/</a></p>
+<p>—javasdk</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2025/05/27/rpc/image-20240818155329097.png" alt="image-20240818155329097" style="zoom:33%;">
+
+<ul>
+<li><strong>Container：</strong> 服务运行容器，负责加载、运行服务提供者。必须。</li>
+<li><strong>Provider：</strong> 暴露服务的服务提供方，会向注册中心注册自己提供的服务。必须。</li>
+<li><strong>Consumer：</strong> 调用远程服务的服务消费方，会向注册中心订阅自己所需的服务。必须。</li>
+<li><strong>Registry：</strong> 服务注册与发现的注册中心。注册中心会返回服务提供者地址列表给消费者。非必须。</li>
+<li><strong>Monitor：</strong> 统计服务的调用次数和调用时间的监控中心。服务消费者和提供者会定时发送统计数据到监控中心。 非必须。</li>
+<li>服务提供者和服务消费者的接口提取出来，然后maven依赖该接口，否则我们要在两个模块都得写入接口</li>
+<li><img src="/2025/05/27/rpc/image-20240818195809571.png" alt="image-20240818195809571"></li>
+</ul>
+<p>扫描restcontroller以及requestmapping等</p>
+<ul>
+<li>因为web.xml里<servlet-mapping>标签配置的映射是*.do，所以访问在结尾要加.do</servlet-mapping></li>
+</ul>
+<h2 id="dubbo-admin"><a href="#dubbo-admin" class="headerlink" title="dubbo-admin"></a>dubbo-admin</h2><p>有monitor功能，比他更强大</p>
+<p>跟nacos很像，有可视化界面</p>
+<p>消费者在第一次访问的时候才会和dubbo通信</p>
+<p>当启动dubbo-service服务时，tomcat会占用9000端口，dubbo内部也会占用本机的端口20880，将来要在一台机器上启动多个服务时，每个服务端口不能相同</p>
+<p>每个服务qos也不一样</p>
+<h3 id><a href="#" class="headerlink" title="&lt;dubbo:parameter key=&quot;qos.port&quot; value=&quot;55555&quot;/&gt;"></a><strong><code>&lt;dubbo:parameter key=&quot;qos.port&quot; value=&quot;55555&quot;/&gt;</code></strong></h3><ul>
+<li>这个标签用于为Dubbo应用程序设置特定的参数。</li>
+<li><code>key=&quot;qos.port&quot;</code>：这个参数配置了Dubbo的QoS（Quality of Service，服务质量）端口。QoS端口是Dubbo用来接收管理命令的端口，通过这个端口可以进行一些服务的管理操作，如查看服务状态、禁用某些服务等。</li>
+<li><code>value=&quot;55555&quot;</code>：表示QoS功能监听的端口号为 <code>55555</code>。这个端口号可以通过外部命令行工具或脚本连接，用于管理和监控Dubbo服务。</li>
+<li><img src="/2025/05/27/rpc/image-20240818221436539.png" alt="image-20240818221436539"></li>
+</ul>
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><img src="/2025/05/27/rpc/image-20240818191835779.png" alt="image-20240818191835779" style="zoom:50%;">
+
+<p>必须实现serializable接口，改动的java工程一定要install才可以，以下是四个模块</p>
+<img src="/2025/05/27/rpc/image-20240818192722777.png" alt="image-20240818192722777" style="zoom:33%;">
+
+<h2 id="地址缓存"><a href="#地址缓存" class="headerlink" title="地址缓存"></a>地址缓存</h2><p>注册中心挂了，服务是否可以正常访问？</p>
+<ul>
+<li>可以，因为dubbo<strong>服务消费者</strong>在第一次调用时，会将<strong>服务提供方</strong>地址<strong>缓存到本地</strong>，以后在调用则不会访问注册中心</li>
+<li>当<strong>服务提供者</strong>地址发生变化时，注册中心会通知<strong>服务消费者</strong></li>
+</ul>
+<p>例如：zookeeper挂了，旧的服务还能用，新的服务就用不了</p>
+<h2 id="超时与重试"><a href="#超时与重试" class="headerlink" title="超时与重试"></a>超时与重试</h2><h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><p>服务雪崩，timeout建议配置在服务的提供方，离谱的事在消费方配置timeout还会覆盖服务提供方</p>
+<p><img src="/2025/05/27/rpc/image-20240818195522309.png" alt="image-20240818195522309"></p>
+<ul>
+<li>服务提供方，<strong>retries为重试次数</strong>，设置为2的话就是重试2次，一共3次，默认为2</li>
+</ul>
+<img src="/2025/05/27/rpc/image-20240818195321500.png" alt="image-20240818195321500" style="zoom:33%;">
+
+<ul>
+<li><p>服务消费方</p>
+<img src="/2025/05/27/rpc/image-20240818195347701.png" alt="image-20240818195347701" style="zoom:33%;"></li>
+</ul>
+<h3 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h3><p><img src="/2025/05/27/rpc/image-20240818200432825.png" alt="image-20240818200432825"></p>
+<p><img src="/2025/05/27/rpc/image-20240818200449372.png" alt="image-20240818200449372"></p>
+<h2 id="多版本"><a href="#多版本" class="headerlink" title="多版本"></a>多版本</h2><p><img src="/2025/05/27/rpc/image-20240818201630196.png" alt="image-20240818201630196"></p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>服务提供者部署在1号机器上，后面性能不足了，又部署在2.3机器上，搭建集群环境</p>
+<p><img src="/2025/05/27/rpc/image-20240818202802604.png" alt="image-20240818202802604"></p>
+<h2 id="集群容错"><a href="#集群容错" class="headerlink" title="集群容错"></a>集群容错</h2><p>A调用B出错，提供容错机制</p>
+<p><img src="/2025/05/27/rpc/image-20240818205818588.png" alt="image-20240818205818588"></p>
+<h2 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h2><h2 id="基于SpringBoot方式使用Dubbo"><a href="#基于SpringBoot方式使用Dubbo" class="headerlink" title="基于SpringBoot方式使用Dubbo"></a>基于SpringBoot方式使用Dubbo</h2><p>把公共配置放到yml中，把个性化配置通过注解设置</p>
+<p><img src="/2025/05/27/rpc/image-20240818224537254.png" alt="image-20240818224537254"></p>
+<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Netty 是一个异步的、基于事件驱动的网络应用框架，用于快速开发可维护、高性能的网络服务器和客户端。</p>
+<p>netty并没有采用异步IO，这里的异步主要是指使用了多线程来完成方法调用和处理结果相分离（调用方法线程和接受结果线程不同，<strong>解放调用方法线程</strong>），netty的io模型还是基于多路复用的，并不是异步IO</p>
+<p><strong>Netty 是一个基于 NIO 的 client-server(客户端服务器)框架，使用它可以快速简单地开发网络应用程序。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ch.pipeline().addLast(<span class="keyword">new</span> <span class="title class_">LoggingHandler</span>(LogLevel.DEBUG));<span class="comment">//调式打印出收到的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>通过这行代码，Netty 会将 <code>LoggingHandler</code> 添加到通道的处理流水线中。每当通道有事件发生（例如接收到数据、发送数据、连接建立、连接关闭等），<code>LoggingHandler</code> 都会记录这些事件的详细信息，并输出到日志中。</p>
+<h2 id="客户端与服务端"><a href="#客户端与服务端" class="headerlink" title="客户端与服务端"></a>客户端与服务端</h2><img src="/2025/05/27/rpc/image-20240819163855248.png" alt="image-20240819163855248" style="zoom:150%;">
+
+<p>开始只是添加初始化器，只有在连接建立后才会执行初始化器</p>
+<p>一个selector+一个线程就是一个eventloop，<strong>boss负责建立连接，worker负责数据读写</strong></p>
+<p>Netty 中很多方法都是异步的，如 connect，这时需要使用 sync 方法等待 connect 建立连接完毕，Netty 中很多方法都是异步的，如 connect，这时需要使用 sync 方法等待 connect 建立连接完毕</p>
+<h2 id="异步提升的是什么"><a href="#异步提升的是什么" class="headerlink" title="异步提升的是什么"></a>异步提升的是什么</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//异步非阻塞，main发起调用，真正执行connect时nio线程（NioEventLoopGroup线程）</span></span><br><span class="line">    .connect(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">8080</span>); <span class="comment">// 1</span></span><br><span class="line">channelFuture.sync(); <span class="comment">// 2 sync 方法是同步等待连接建立完成*</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/05/27/rpc/image-20241119160122498.png" alt="image-20241119160122498"></p>
+<ul>
+<li><p><strong>发起异步操作：</strong>当执行 channel.writeAndFlush(requestMetadata.getRpcMessage()) 时，Netty 会把消息写入 Channel 的缓冲区并刷新到网络，这个操作是异步进行的，方法会立即返回 ChannelFuture 对象。<br><strong>添加监听器：</strong>通过 addListener 方法为 ChannelFuture 添加 ChannelFutureListener 监听器。<br>异步操作完成：Netty 的 EventLoop 线程负责处理网络 I&#x2F;O 操作，当消息发送操作完成时，EventLoop 线程会更新 ChannelFuture 的状态。<br><strong>调用回调方法：</strong>EventLoop 线程会检查 ChannelFuture 是否有监听器，如果有，就会调用监听器的 operationComplete 方法（也就是代码里 Lambda 表达式定义的部分），并把 ChannelFuture 作为参数传递进去。</p>
+</li>
+<li><p>有些同学看到这里会有疑问：为什么不在一个线程中去执行建立连接、去执行关闭 channel，那样不是也可以吗？非要用这么复杂的异步方式：比如一个线程发起建立连接，另一个线程去真正建立连接</p>
+</li>
+<li><p>还有同学会笼统地回答，因为 netty 异步方式用了多线程、多线程就效率高。其实这些认识都比较片面，多线程和异步所提升的效率并不是所认为的</p>
+</li>
+</ul>
+<p>要点</p>
+<ul>
+<li>单线程没法异步提高效率，必须配合多线程、多核 cpu 才能发挥异步的优势</li>
+<li>异步并没有缩短响应时间，反而有所增加，但是提高吞吐量（单位时间内处理请求的个数）</li>
+<li>合理进行任务拆分，也是利用异步的关键</li>
+</ul>
+<p>异步常用两个接口：Future 和 Promise</p>
+<ul>
+<li>jdk Future 只能<strong>同步等待</strong>任务结束（或成功、或失败）才能得到结果<ul>
+<li>主线程通过future获取线程池中线程的返回结果</li>
+<li>Runnable任务没有返回结果</li>
+</ul>
+</li>
+<li>netty Future 可以同步等待任务结束得到结果（future.get()），也可以异步方式得到结果(future.addListener)，但都是要等任务结束<ul>
+<li>netty的线程池时eventloop，里面就一个线程 </li>
+<li><img src="/2025/05/27/rpc/image-20240819191322881.png" alt="image-20240819191322881"></li>
+</ul>
+</li>
+<li>Future都不用创建都是在提交任务时候返回</li>
+<li>netty Promise 不仅有 netty Future 的功能，而且脱离了任务独立存在，只作为两个线程间传递结果的容器，可以主动创建promise对象（需要eventloop对象），而不是提交任务之后被动拿到promise</li>
+</ul>
+<img src="/2025/05/27/rpc/image-20240819192025278.png" alt="image-20240819192025278" style="zoom:50%;">
+
+<h2 id="粘包与半包"><a href="#粘包与半包" class="headerlink" title="粘包与半包"></a>粘包与半包</h2><p>只要用Tcp协议进行编程就会出现粘包半包问题，UDP不会有该问题</p>
+<p>现在os自行调整滑动窗口大小，一般不用设置，netty默认最开始创建每个连接时bytebuf为1024B</p>
+<p><img src="/2025/05/27/rpc/image-20240822100024006.png" alt="image-20240822100024006"></p>
+<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><p>OSI 七层协议模型中的应用层、表示层和会话层对应的都是 TCP&#x2F;IP 四层模型中的应用层，所以序列化协议属于 TCP&#x2F;IP 协议应用层的一部分。</p>
+<p><strong>Socket网络通信过程：</strong></p>
+<p><img src="/2025/05/27/rpc/image-20240819214513598.png" alt="image-20240819214513598"></p>
+<p><code>NettyKryoDecoder</code><strong>是我们自定义的解码器。它负责处理”入站”消息，它会从</strong> <code>ByteBuf</code> <strong>中读取到业务对象对应的字节序列，然后再将字节序列转换为我们的业务对象。</strong></p>
+<p><code>NettyKryoEncoder</code> <strong>是我们自定义的编码器。它负责处理”出站”消息，将消息格式转换为字节数组然后写入到字节数据的容器</strong> <code>ByteBuf</code> <strong>对象中。</strong></p>
+<p>问题？</p>
+<p>1.addListener</p>
+<p>2.服务端为啥方法叫 childHandler（告诉作为work的eventloop干什么事情，执行那些逻辑（handler）），是接下来添加的处理器都是给 SocketChannel 用的，而不是给 ServerSocketChannel。ChannelInitializer 处理器（仅执行一次），它的作用是待客户端 SocketChannel 建立连接后，执行 initChannel 以便添加更多的处理器</p>
+<p>服务器端完成绑定后，可以通过accept方法，接受客户端连接请求，与客户端建立连接后，获取到一个SocketChannel实例，通过这个实例与建立连接的客户端进行通信</p>
+<p>（1）Socket 和ServerSocke 是一对 他们是java.net下面实现socket通信的类<br>(2) SocketChannel 和ServerSocketChannel是一对 他们是java.nio下面实现通信的类 支持异步通信<br>(3)服务器必须先建立ServerSocket或者ServerSocketChannel 来等待客户端的连接<br>（4）客户端必须建立相对应的Socket或者SocketChannel来与服务器建立连接<br>（5）服务器接受到客户端的连接受，再生成一个Socket或者SocketChannel与此客户端通信</p>
+<p><strong>childHandler是为了告诉workerEventLoop(child,负责读写)应该执行那些操作（handler）</strong></p>
+<p><img src="/2025/05/27/rpc/image-20240821150727640.png" alt="image-20240821150727640"></p>
+<h1 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h1><p>Java NIO中的<strong>SocketChannel</strong>是一个连接到TCP网络套接字的通道。可以通过以下2种方式创建SocketChannel：<strong>客户端和服务端都能用</strong></p>
+<ol>
+<li>打开一个SocketChannel并连接到互联网上的某台服务器。</li>
+<li>一个新连接到达ServerSocketChannel时，会创建一个SocketChannel。</li>
+</ol>
+<p>Java NIO中的 <strong>ServerSocketChannel</strong> （只能服务端用）是一个可以监听新进来的TCP连接的通道, 就像标准IO中的ServerSocket一样。ServerSocketChannel类在 java.nio.channels包中</p>
+<p>nio 线程一旦和channel建立连接，就会建立绑定关系</p>
+<p>eventloopgroup职责进一步划分为，boss 和worker，刚好group接受带两个参数的方法，第一个参数为boss，第二个参数为worker</p>
+<p><img src="/2025/05/27/rpc/image-20240820203858053.png" alt="image-20240820203858053"></p>
+<p>我们可以再次细化，创建一个独立的eventloop来执行handler，DefaultEventLoopGroup只能处理普通任务和定时任务，而NioEventLoopGroup还能进一步处理io事件</p>
+<p><img src="/2025/05/27/rpc/image-20240820204938107.png" alt="image-20240820204938107"></p>
+<p>handler执行中如何换人</p>
+<ul>
+<li>如果两个 handler 绑定的是同一个线程，那么就直 接调用</li>
+<li>否则，把要调用的代码封装为一个任务对象，由下一个 handler 的线程来调用</li>
+</ul>
+<p><img src="/2025/05/27/rpc/image-20240820205624300.png" alt="image-20240820205624300"></p>
+<p>SocketChannel与客户端进行通信</p>
+<p>select在事件未处理时候，他不会阻塞，所以事件发生后，要么处理，要么取消（cancel），不能什么都不做，否则下次该事件仍会触发，这是因为 nio 底层使用的是水平触发</p>
+<p>多线程优化</p>
+<p><img src="/2025/05/27/rpc/image-20240821091532904.png" alt="image-20240821091532904"></p>
+<p>使用代理的意义</p>
+<p><img src="/2025/05/27/rpc/image-20240821163300759.png" alt="image-20240821163300759"></p>
+<p><img src="/2025/05/27/rpc/image-20240821204410677.png" alt="image-20240821204410677"></p>
+<p>泛型用了通配符只能取不能放</p>
+<p><img src="/2025/05/27/rpc/image-20240821205835683.png" alt="image-20240821205835683"></p>
+<p>如何接受结果？</p>
+<p>nio线程拿到响应消息，如何让主线程（发起调用的线程）和nio线程（接受结果的线程）进行通信（拿数据）</p>
+<p>通过通过netty中的promise（容器）来在多个线程之间交换结果</p>
+<p>Charset.defaultCharset().decode(buffer)会讲buffer转换为字符串</p>
+<p>每个socketchannel拥有自己的bytebuff</p>
+<p>idea断点默认阻塞所有线程,如果需要<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://so.csdn.net/so/search?q=%E5%A4%9A%E7%BA%BF%E7%A8%8B&spm=1001.2101.3001.7020">多线程</a>同时停留在断点处，需要开启idea的断点的All-&gt;Thread模式</p>
+<h1 id="简易RPC框架"><a href="#简易RPC框架" class="headerlink" title="简易RPC框架"></a>简易RPC框架</h1><p>具体地，我们需要在集群的每一个 Server 中都使用 Zookeeper 客户端连接 Zookeeper 服务端，同时用 Server <strong>自身的地址信息</strong>在服务端指定目录下创建临时节点。当客户端请求调用集群服务时，首先通过 Zookeeper 获取该目录下的节点列表 （即所有可用的 Server），随后根据不同的负载均衡策略将请求转发到某一具体的 Server。</p>
+<p>zookeeper的选举流程</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/zookeeper-leader.html">https://www.runoob.com/w3cnote/zookeeper-leader.html</a></p>
+<h2 id="服务端流程"><a href="#服务端流程" class="headerlink" title="服务端流程"></a>服务端流程</h2><p>1.启动服务端后，首先会通过自定义注解扫描服务端的类NettyServerMain将其注入为Spring容器中</p>
+<p>2.服务端注册了两个服务Impl(自动注册)和Impl2(手动注册)</p>
+<p>Impl：The node is:[&#x2F;my-rpc&#x2F;github.javaguide.HelloServicetest1version1&#x2F;127.0.0.1:9998]</p>
+<p>Impl2：The node is:[&#x2F;my-rpc&#x2F;github.javaguide.HelloServicetest2version2&#x2F;127.0.0.1:9998]</p>
+<p>3.服务端从spring容器中获得NettyRpcServer对象，来使用，调用NettyRpcServer对象方法，将当前服务端所提供的服务注册到zookeeper中去（发布任务），等到客户端要获取的时候会调用ZkServiceProviderImpl中的方法，getService从map中找到服务名称对应的service方法直接返回，没有就去在zookeeper中注册。</p>
+<p>1）具体的服务名称为。this.getServiceName() + this.getGroup() + this.getVersion() 也即是</p>
+<p>​                                     interface name + version + group</p>
+<p>2）zookeeper具体是怎么注册的呢，内部实现细节是啥？<strong>其实就是创建节点删除节点的过程</strong></p>
+<ul>
+<li>ZooKeeper Java客户端  Curator 来对 ZooKeeper 进行增删改查等操作。</li>
+<li>根据&#x2F;my-rpc&#x2F;github.javaguide.HelloService&#x2F;127.0.0.1:9999创建一个这样的节点，当然github.javaguide.HelloService可能会存在多个子节点，肯能还会有127.0.0.1:9998等，因为一个实现类可能存在多个实现</li>
+<li><img src="/2025/05/27/rpc/image-20240826113040993.png" alt="image-20240826113040993"></li>
+</ul>
+<p>3.注册完服务后 然后再调用起start()方法，用监听客户端，等待与客户端进行通信</p>
+<p>介绍到请求后，获取消息解析后通过服务名获取服务对象，然后通过反射调用该方法，获得结果，最后在返回给客户端</p>
+<p><img src="/2025/05/27/rpc/image-20240826171652006.png" alt="image-20240826171652006"></p>
+<p>具体日志过程</p>
+<p><img src="/2025/05/27/rpc/image-20240826171151733.png" alt="image-20240826171151733"></p>
+<h2 id="客户端流程："><a href="#客户端流程：" class="headerlink" title="客户端流程："></a>客户端流程：</h2><p>客户端调用远程服务时，必须要通过本地动态代理模块来屏蔽网络通信的细节，所以动态代理模块需要负责将请求参数、方法等数据组装成数据包发送到目标服务器</p>
+<p>1.在启动spring容器的时候，就已经通过postProcessAfterInitialization为helloService创建了代理类（使用到了declaredField，helloService为HelloController中的字段）</p>
+<p><img src="/2025/05/27/rpc/image-20240826160822887.png" alt="image-20240826160822887"></p>
+<p>2.经过postProcessAfterInitialization后这个helloService已经被变为一个代理类了，下面在调用hello方法时候，实际上是要走invoke方法了，<strong>实际上调用hello方法就是发送rpc请求了</strong></p>
+<p>3.发送请求时，首先会从zookeeper中查找服务地址，主要过程就是根据服务名（test1version1在创建代理类的时候就传过来了），拼接成github.javaguide.HelloServicetest1version1服务名，来找到对应的子节点也就是服务地址，127.0.0.1:9998</p>
+<p>4.根据127.0.0.1:9998来获取该地址对应的channel，找到后发送请求，发送消息这些过程就是nio线程来做了</p>
+<p><img src="/2025/05/27/rpc/image-20240826173530093.png" alt="image-20240826173530093"></p>
+<h2 id="spring初始化中一些不了解的问题"><a href="#spring初始化中一些不了解的问题" class="headerlink" title="spring初始化中一些不了解的问题"></a>spring初始化中一些不了解的问题</h2><p><strong>ImportBeanDefinitionRegistrar是个什么玩意md</strong></p>
+<p><strong>BeanPostProcessor接口又是啥</strong></p>
+<p>对rpc请求进行jmeter测试</p>
+<p>Springboot自定义starter</p>
+<h1 id="基于该项目的一些问题"><a href="#基于该项目的一些问题" class="headerlink" title="基于该项目的一些问题"></a>基于该项目的一些问题</h1><p> <strong>RPC</strong>（<strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>all）又叫做 <strong>远程过程调用</strong>，它本身并不是一个具体的协议，而是一种 <strong>调用方式</strong> 。</p>
+<p><strong>Springboot自定义starter：</strong>consumer模块，依赖于 <code>rpc-client-spring-boot-starter</code> 模块，而<code>rpc-client-spring-boot-starter</code>（就是用于整合依赖的，方便导入） 中加载<code>rpc-client-spring-boot</code>模块（类似于autoconfigure），进行自动配置</p>
+<p>一致性哈希算法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cywosp/article/details/23397179?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-23397179-blog-126046092.235%5Ev43%5Epc_blog_bottom_relevance_base3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-23397179-blog-126046092.235%5Ev43%5Epc_blog_bottom_relevance_base3&utm_relevant_index=11">https://blog.csdn.net/cywosp/article/details/23397179?spm=1001.2101.3001.6650.6&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-23397179-blog-126046092.235%5Ev43%5Epc_blog_bottom_relevance_base3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6-23397179-blog-126046092.235%5Ev43%5Epc_blog_bottom_relevance_base3&amp;utm_relevant_index=11</a></p>
+<p>SpringBoot提供了很多的starter起步依赖 ，但有一些起步依赖他没有写，而是技术本身自己写的例如mybatis自己写的起步依赖，让springboot帮忙整合。</p>
+<p><strong>整体流程，客户端发送消息（出站）-&gt;服务端收到消息（入站）-&gt;服务端处理结果，RPC处理-&gt;服务端给响应消息（出站）-&gt;客户端收到消息（入站）</strong></p>
+<p><strong>客户端会拿着服务名到注册中心去找服务对应的的ip地址</strong>，并且基本这些服务注册和发现等操作都被zk封装好了</p>
+<p>自定义注解</p>
+<p><strong>@RpcReference -消费服务</strong> 服务注入注解，被标注的属性将自动注入服务的实现类（基于动态代理实现）</p>
+<p><strong>@RpcService-注册服务</strong> - 该注解用来标注需要暴露的服务实现类，被标注的类将会被注入到 Spring 容器中，同时将对应服务信息注册到远程注册中心；</p>
+<p><strong>@RpcComponentScan</strong> - 扫描被 @RpcService 标注的组件并将对应的 BeanDefiniton 对象注册到Spring。</p>
+<h2 id="客户端具体过程："><a href="#客户端具体过程：" class="headerlink" title="客户端具体过程："></a><strong>客户端具体过程：</strong></h2><p>1.在启动Consumer模块时，服务的消费者，依赖于 <code>rpc-client-spring-boot-starter</code> 模块，会加载该模块完成自动装配，具体也就是springboot在启动时会扫描META-INF&#x2F;spring.factories，该配置文件中定义了大量的配置类，自动加载这些配置类RpcCLientAutoConfiguration，初始化Bean。包括一下负载均衡bean，服务注册发现的bean，netty的bean，并且这些bean都的属性都已经赋初值了。</p>
+<img src="/2025/05/27/rpc/image-20241018104147521.png" alt="image-20241018104147521" style="zoom:33%;">
+
+<p>2.由于该项目集成 Spring 自定义注解提供服务注册与消费，包括如下：</p>
+<p><strong>@RpcReference消费服务 -</strong> 服务注入注解，被标注的属性将自动注入服务的实现类（基于动态代理实现）</p>
+<p><strong>@RpcService注册服务</strong> - 该注解用来标注需要暴露的服务实现类，被标注的类将会被注入到 Spring 容器中，同时将对应服务信息注册到远程注册中心；</p>
+<p><strong>@RpcComponentScan</strong> - 扫描被 @RpcService 标注的组件并将对应的 BeanDefiniton 对象注册到Spring，因为在Controller中加入了@RestController注解所以启动spring的时候他会自动扫描，而service（如HelloServiceImpl）中只有 @RpcService没有@Service无法自动扫描，只能自己编写注解来扫描</p>
+<p>在Consumer的Controller中，在启动spring容器的时候，就已经通过postProcessAfterInitialization为helloService创建了代理类（使用到了declaredField，helloService为HelloController中的字段），在这里由于helloService为接口，因此使用jdk动态代理（<strong>JDK 动态代理只能代理实现了接口的类或者直接代理接口，而 CGLIB 可以代理未实现任何接口的类</strong>）,通过代理对象来调用invoke方法或intercept方法，来执行远程方法调用。</p>
+<p><img src="/2025/05/27/rpc/image-20241018164843757.png" alt="image-20241018164843757"></p>
+<p><img src="/2025/05/27/rpc/image-20241018164904326.png" alt="image-20241018164904326"></p>
+<p>其中remoteCall中的参数在Consumer启动时候，自动装配时已经完成，详细见<strong>RpcClientAutoConfiguration.class</strong></p>
+<p>3.在远程调用过程中做了很多事，包括：构建请求头、构建请求体、进行服务发现、构建通信协议信息（请求头和请求体）、构建请求元数据（所要调用服务的相关信息）、发送网络请求(http、socket、netty)，获取结果、获取响应结果、如果远程调用发生错误返回异常信息、返回响应结果</p>
+<img src="/2025/05/27/rpc/image-20241019151328171.png" alt="image-20241019151328171" style="zoom:33%;">
+
+<p><img src="/2025/05/27/rpc/image-20241018165134782.png" alt="image-20241018165134782"></p>
+<p>构建请求体：Rpcrequest对象</p>
+<p><img src="/2025/05/27/rpc/image-20241018170215933.png" alt="image-20241018170215933"></p>
+<p>然后作为参数，进行服务发现（会在本地缓存所要调用的服务（服务端会提前将服务存入道注册中心中），并且以负载均衡策略调用服务）</p>
+<p><img src="/2025/05/27/rpc/image-20241018170513462.png" alt="image-20241018170513462"></p>
+<h2 id="服务端具体过程"><a href="#服务端具体过程" class="headerlink" title="服务端具体过程"></a>服务端具体过程</h2><p>1.在启动provide模块时，服务的提供者，依赖于 <code>rpc-server-spring-boot-starter</code> 模块，会加载在该模块完成自动装配，具体也就是springboot在启动时会扫描META-INF&#x2F;spring.factories，该配置文件中定义了大量的配置类，自动加载这些配置类Rpc<strong>Server</strong>AutoConfiguration，初始化Bean。包括一下<strong>服务注册发现的bean，netty的bean</strong>，并且这些bean的属性都已经赋初值了。</p>
+<img src="/2025/05/27/rpc/image-20241019083546094.png" alt="image-20241019083546094" style="zoom:33%;">
+
+
+
+<p>2.需要首先将**@RpcService**注解标记的类扫描然后注册为spring的bean，这里主要就是通过@RpcComponentScan注解（其中包含了@Import(RpcBeanDefinitionRegistrar.class)），具体过程用到了RpcBeanDefinitionRegistrar和RpcClassPathBeanDefinitionScanner两个类，代码流程如下</p>
+<img src="/2025/05/27/rpc/image-20241019100641921.png" alt="image-20241019100641921" style="zoom:33%;">
+
+
+
+<p>3.由于该项目集成 Spring 自定义注解提供服务注册与消费，在spring容器启动时候，<strong>RpcServerBeanPostProcessor</strong>会扫描标记了**@RpcService<strong>的类（</strong>该注解是标记在类上的，不是字段上<strong>，并且也显示指定了该注解的属性值，也就是对外暴漏服务的接口名interfaceName），将对应的服务类进行注册，对外暴露服务，同时进行本地服务注册（使用服务注册信息实体类，用于封装远程服务提供方信息，然后进行</strong>远程服务注册和本地服务注册缓存**），这个rpc框架中用的都是curator4.0，感觉一些服务注册相关方法都封装好了，我们直接调用就行，不像guide哥用的版本老，还得自己创建节点。</p>
+<p><img src="/2025/05/27/rpc/image-20241019085216555.png" alt="image-20241019085216555"></p>
+<p>4.RpcServerBeanPostProcessor实现了CommandLineRunner接口重写了run方法，<em>当项目启动后执行<strong>run</strong>方法</em>，run方法中执行如下操作</p>
+<ol>
+<li><strong>启动 RPC 服务器</strong>：在新线程中启动 <code>rpcServer</code>，并使用配置中的端口号。<ul>
+<li>这里使用了一个匿名线程来启动 <code>rpcServer</code>，并通过调用 <code>rpcServer.start(properties.getPort())</code> 启动服务器，使用配置中的端口 <code>properties.getPort()</code>。</li>
+<li>通过将 <code>rpcServer.start()</code> 放入一个新的线程中，确保不会阻塞当前线程的执行。这对于启动长时间运行的服务器非常常见。</li>
+</ul>
+</li>
+<li><strong>记录启动信息</strong>：记录服务器启动时的应用名称、服务器对象和端口。</li>
+<li><strong>注册关闭钩子</strong>：当 JVM 关闭时，执行 <code>serviceRegistry.destroy()</code> 来清除服务注册信息，确保在服务关闭时对注册中心进行清理。</li>
+</ol>
+<p>5.服务端监听到读事件，执行channelRead0方法，</p>
+<p><img src="/2025/05/27/rpc/image-20241019132318417.png" alt="image-20241019132318417"></p>
+<p>Handler中，为什么要先经过帧解码器，然后再经过编解码器？</p>
+<p><img src="/2025/05/27/rpc/image-20241019174904685.png" alt="image-20241019174904685"></p>
+<p>自定义协议会存在半包，加上帧解码器用来解决半包问题，这里加上帧解码器的原因就是解决接收方缓存区要分多次转发消息到自定义协议解码器。即必须等到<strong>完整的协议消息传输过来</strong>才转发给你自定义的消息解码器</p>
+<p>SPI机制，实现接口和实现类的分离，SPI 全称为 Service Provider Interface，是一种服务发现机制。SPI  的本质是将接口实现类的全限定名配置在文件中，并由服务加载器读取配置文件，加载实现类。这样可以在运行时，动态为接口替换实现类。正因此特性，我们可以很容易的通过 SPI 机制为我们的程序提供拓展功能。</p>
+<p><img src="/2025/05/27/rpc/image-20241022205013414.png" alt="image-20241022205013414"></p>
+<p>相当于启动类加载器加载drivermanager（在rt.jar核心jar包中），drivermanager通过spi机制找到对应驱动类并加载，spi过程中用上下文中的loader即apploader加载</p>
+<img src="/2025/05/27/rpc/image-20241022210905170.png" alt="image-20241022210905170" style="zoom:33%;">
+
+<img src="/2025/05/27/rpc/image-20241022205914996.png" alt="image-20241022205914996" style="zoom:25%;">
+
+<img src="/2025/05/27/rpc/image-20241022205849418.png" alt="image-20241022205849418" style="zoom:25%;">
+
+<img src="/2025/05/27/rpc/image-20241022210104533.png" alt="image-20241022210104533" style="zoom:25%;">
+
+<img src="/2025/05/27/rpc/image-20241022210113726.png" alt="image-20241022210113726" style="zoom:25%;">
+
+<p><img src="/2025/05/27/rpc/image-20241121151753843.png" alt="image-20241121151753843"></p>
+<p>kryo：Kryo 是一个高性能的序列化&#x2F;反序列化工具，由于其<strong>变长存储特性</strong>并使用了字节码生成机制，拥有较高的运行速度和较小的字节码体积。</p>
+<p><strong>可变长度编码</strong>：对于整数（如 <code>int</code>、<code>long</code> 等），Kryo 使用可变长度编码（VarInt）进行压缩，小值可以占用更少的字节。例如，一个小整数可能只需要 1 个字节，而不是固定的 4 个字节。</p>
+<h2 id="SPI机制"><a href="#SPI机制" class="headerlink" title="SPI机制"></a>SPI机制</h2><p>SPI 全称为 Service Provider Interface，是一种服务发现机制。SPI  的本质是将接口实现类的全限定名配置在文件中，并由服务加载器读取配置文件，加载实现类。这样可以在运行时，动态为接口替换实现类。正因此特性，我们可以很容易的通过 SPI 机制为我们的程序提供拓展功能。SPI 机制在第三方框架中也有所应用，比如 Dubbo 就是通过 SPI  机制加载所有的组件。不过，Dubbo 并未使用 Java 原生的 SPI 机制，而是对其进行了增强，使其能够更好的满足需求。</p>
+<p><a target="_blank" rel="noopener" href="https://cn.dubbo.apache.org/zh-cn/docsv2.7/dev/source/dubbo-spi/">https://cn.dubbo.apache.org/zh-cn/docsv2.7/dev/source/dubbo-spi/</a></p>
+<h1 id="GPT深挖项目问题"><a href="#GPT深挖项目问题" class="headerlink" title="GPT深挖项目问题"></a>GPT深挖项目问题</h1><h3 id="Netty-相关"><a href="#Netty-相关" class="headerlink" title="Netty 相关"></a><strong>Netty 相关</strong></h3><ol>
+<li><p><strong>Netty 如何实现高性能的网络通信？相较于 BIO 和 NIO，它的优势在哪里？</strong></p>
+</li>
+<li><p><strong>Netty 的 Reactor 线程模型有哪几种？你在项目中使用了哪种？为什么？</strong></p>
+<blockquote>
+<p><strong>客户端：</strong> 在 <code>Bootstrap</code> 中，<code>NioEventLoopGroup</code> 是一个线程池，通常用于客户端的连接和 I&#x2F;O 操作，属于 <strong>单 Reactor 线程模型</strong>。</p>
+<p><strong>服务器端：</strong> 如果是服务器端，通常会使用 <strong>主从 Reactor 模型</strong>，分配不同的线程池分别处理连接接受和数据读写。</p>
+</blockquote>
+</li>
+<li><p><strong>你如何优化 Netty 的性能，例如内存分配、线程池配置等？</strong></p>
+</li>
+<li><p><strong>Netty 的 <code>ByteBuf</code> 与 Java 原生 <code>ByteBuffer</code> 有什么区别？为什么要使用 <code>ByteBuf</code>？</strong></p>
+</li>
+<li><p><strong>Netty 的心跳机制是如何实现的？具体在哪个层面加入的心跳检测？</strong></p>
+<blockquote>
+<p><img src="/2025/05/27/rpc/image-20250330095156705.png" alt="image-20250330095156705"></p>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">.childOption(ChannelOption.SO_KEEPALIVE, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这是设置 <strong>TCP层面的心跳机制</strong>，属于 <strong>操作系统的网络协议栈控制</strong>。</p>
+<h3 id="⚙️-原理："><a href="#⚙️-原理：" class="headerlink" title="⚙️ 原理："></a>⚙️ 原理：</h3><ul>
+<li>TCP协议定义了 <code>keepalive</code> 机制，用来检测一个TCP连接是否还存活。</li>
+<li>启用 <code>SO_KEEPALIVE</code> 后，如果连接<strong>长时间没有数据交互</strong>，操作系统就会<strong>自动发送探测包</strong>，确认对端是否还存在。</li>
+<li>默认设置很保守（Linux为例）：<ul>
+<li><code>tcp_keepalive_time</code>：2小时后开始探测</li>
+<li><code>tcp_keepalive_intvl</code>：每隔75秒发一次探测包</li>
+<li><code>tcp_keepalive_probes</code>：最多发送9次（约11分钟）</li>
+</ul>
+</li>
+</ul>
+<p>⚠️ 这些值是系统级别的，可以通过 sysctl 修改，但默认非常长，不适合高频通讯检测。</p>
+<h3 id="💡-特点："><a href="#💡-特点：" class="headerlink" title="💡 特点："></a>💡 特点：</h3><ul>
+<li>属于<strong>底层机制</strong>，<strong>不可控、反应慢</strong></li>
+<li>不适合高实时性要求的应用层通信</li>
+<li>一般用于<strong>兜底</strong>或“<strong>连接泄露检测</strong>”</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>如果 Netty 连接超时或者被异常关闭，如何处理？你的项目是否有连接重试机制？</strong></p>
+</li>
+<li><p><strong>你的 Netty 通信协议是如何设计的？有哪些字段，如何保证数据完整性？</strong></p>
+</li>
+</ol>
+<hr>
+<h3 id="RPC-相关"><a href="#RPC-相关" class="headerlink" title="RPC 相关"></a><strong>RPC 相关</strong></h3><ol>
+<li><strong>你为什么要自己实现 RPC，而不是使用 Dubbo、gRPC？</strong></li>
+<li><strong>RPC 调用过程中，服务端如何处理高并发请求？你的 RPC 框架如何支持并发？</strong></li>
+<li><strong>你的 RPC 框架是基于同步调用还是异步调用？如何做到异步非阻塞？</strong></li>
+<li><strong>如果 RPC 调用失败，你的框架如何实现重试？是客户端重试还是服务端重试？</strong></li>
+<li><strong>你的 RPC 负载均衡策略有哪几种？为什么选择一致性哈希？在什么场景下适合？</strong></li>
+<li><strong>如何防止 RPC 调用过程中出现服务雪崩？你是否实现了熔断和限流？</strong></li>
+<li><strong>你是如何进行服务治理的，例如熔断、降级、流控？</strong></li>
+</ol>
+<hr>
+<h3 id="Zookeeper-相关"><a href="#Zookeeper-相关" class="headerlink" title="Zookeeper 相关"></a><strong>Zookeeper 相关</strong></h3><ol>
+<li><p><strong>为什么选择 Zookeeper 作为注册中心，而不是 Nacos、Consul？</strong></p>
+<blockquote>
+<p><img src="/2025/05/27/rpc/image-20250415113625375.png" alt="image-20250415113625375"></p>
+</blockquote>
+</li>
+<li><p><strong>Zookeeper 是如何保证节点的一致性的？ZAB 协议的核心机制是什么？</strong></p>
+</li>
+<li><p><strong>Zookeeper 是如何进行服务注册和发现的？如果一个服务实例宕机，Zookeeper 如何通知客户端？</strong></p>
+<blockquote>
+<p>创建和删除节点用来进行服务的注册和发现</p>
+<p>ZookeeperServiceDiscovery 类中的 getServices 方法，该方法的主要作用是根据<strong>服务名称</strong>从 ZooKeeper 中获取对应的服务列表，并将其缓存到本地（以后客户端在进行服务发现的时候<strong>先</strong>检查本地的 <strong>serviceMap</strong> 中是否已经缓存了指定服务名称的服务列表。如果没有缓存，则需要从 ZooKeeper 中获取服务信息并进行缓存，如果缓存了就直接从<strong>serviceMap</strong>获得服务的相关信息包括id地址port等。）。</p>
+<p><strong>serviceCacheMap：</strong><br>主要用于管理和维护与 ZooKeeper 服务的缓存连接。<br>通过 ServiceCache 对象，它可以监听 ZooKeeper 中服务的变化，当服务有新增、删除或修改时，能够及时更新本地的服务缓存。<br>可以看作是一个与 ZooKeeper 服务交互的中间层，负责与 ZooKeeper 保持连接并同步服务信息。<br><strong>serviceMap：</strong><br>主要用于存储服务的实际信息列表。<br>当 ServiceCache 检测到服务变化时，会触发相应的监听器，监听器会更新 serviceMap 中的服务列表。<br>即使 ZooKeeper 服务出现问题（如挂掉），serviceMap 中仍然保存着之前缓存的服务列表，可以继续为应用提供服务信息，保证系统的一定可用性。</p>
+<p><strong>本项目使用的zk创建的是哪类节点？？</strong>（问的ai）</p>
+<p>持久节点是 Zookeeper 里的一种节点类型，一旦创建，这些节点会一直存在，直到手动将其删除。在服务注册的场景下，使用持久节点可以保证服务注册信息的持久化，即便服务提供者下线或者 Zookeeper 客户端断开连接，注册信息也不会丢失。</p>
+<p>当服务断开，例如服务提供者下线，Zookeeper 中的节点虽然是持久节点不会自动删除，但服务提供者可能会主动将其从 Zookeeper 中移除。即便服务提供者没有主动移除，客户端也能通过 ServiceCache 监听到服务实例的变化。</p>
+<p>ServiceCache 是 Curator 框架提供的一个工具，它会对 Zookeeper 中的服务节点进行监听。当服务节点的子节点（也就是服务实例）发生变化时，例如服务实例的添加、删除，ServiceCache 会接收到 Zookeeper 发出的通知。<br>在服务挂掉的场景中，尽管持久节点不会自动删除，但服务提供者在关闭时，通常会主动从 Zookeeper 里注销服务，也就是删除对应的服务实例节点。又或者客户端在和服务建立连接时，若连接失败，会通过心跳检测等机制发现服务不可用，进而从 Zookeeper 中移除该服务实例。</p>
+<p>持久节点：由于持久节点不会因为临时的网络问题或服务提供者的短暂故障而消失，客户端在进行服务发现时可以获得更稳定的服务列表。<br>临时节点：临时节点的自动删除可能会导致服务列表频繁变化，增加客户端的处理负担，特别是在网络不稳定的环境中。</p>
+</blockquote>
+</li>
+<li><p><strong>如果 Zookeeper Leader 发生故障，系统会发生什么？如何保证高可用？</strong></p>
+</li>
+<li><p><strong>Zookeeper 如何避免脑裂？</strong></p>
+</li>
+<li><p><strong>Zookeeper 的 <code>watcher</code> 监听机制是如何实现的？会不会有丢失通知的情况？</strong></p>
+<blockquote>
+<p><em><strong>ServiceCache</strong>:</em> <em>将在<strong>zk</strong>中的服务数据缓存至本地，并监听服务变化，实时更新缓存</em></p>
+<p>使用 serviceDiscovery 对象的 serviceCacheBuilder 方法构建一个 <strong>ServiceCache</strong> 对象，该对象用于将 ZooKeeper 中的服务数据缓存到本地，并监听服务的变化。<br>name(serviceName)：指定要缓存的服务名称。<br>.build()：构建 ServiceCache 对象。</p>
+</blockquote>
+</li>
+<li><p><strong>这个项目中zookeeper是怎么知道服务器端下线的</strong></p>
+</li>
+</ol>
+<blockquote>
+<p><strong>现在思考一个问题，服务在下线时需要从注册中心移除元数据，那么注册中心怎么才能感知到服务下线呢？我们最先想到的方法就是节点主动通知的实现方式，当节点需要下线时，向注册中心发送下线请求，让注册中心移除自己的元数据信息。但是如果节点异常退出，例如断网、进程崩溃等，那么注册中心将会一直残留异常节点的元数据，从而可能造成服务调用出现问题。</strong></p>
+<p><strong>为了避免上述问题，实现服务优雅下线比较好的方式是采用主动通知 + 心跳检测的方案。除了主动通知注册中心下线外，还需要增加节点与注册中心的心跳检测功能，这个过程也叫作探活。心跳检测可以由节点或者注册中心负责，例如注册中心可以向服务节点每 60s 发送一次心跳包，如果 3 次心跳包都没有收到请求结果，可以任务该服务节点已经下线。</strong></p>
+</blockquote>
+<h3 id="Spring-Boot-相关"><a href="#Spring-Boot-相关" class="headerlink" title="Spring Boot 相关"></a><strong>Spring Boot 相关</strong></h3><ol>
+<li><strong>你如何集成 Spring Boot 进行自动化配置？自定义 starter 具体是怎么实现的？</strong></li>
+<li><strong>Spring Boot 如何通过注解扫描服务？你的 RPC 框架如何结合 Spring 进行服务注册？</strong></li>
+<li><strong>你的 RPC 框架如何与 Spring Boot 进行集成？例如如何自动注入代理对象？</strong></li>
+<li><strong>Spring Bean 的生命周期是什么？Spring Boot 是如何管理 Bean 的？</strong></li>
+<li><strong>Spring AOP 机制如何与 RPC 代理结合？你的 RPC 框架是否用了 AOP？</strong></li>
+<li><strong>Spring Boot 的 <code>@Conditional</code> 机制在你的 RPC 框架中如何使用？</strong></li>
+</ol>
+<hr>
+<h3 id="序列化相关"><a href="#序列化相关" class="headerlink" title="序列化相关"></a><strong>序列化相关</strong></h3><ol>
+<li><strong>你在项目中使用了 Kryo、Protostuff、Hessian、JDK、JSON 这 5 种序列化方式，各有什么优缺点？</strong></li>
+<li><strong>为什么选择 Kryo 而不是 Java 原生序列化？Kryo 如何优化序列化速度？</strong></li>
+<li><strong>Hessian 是如何进行序列化的？相比 Kryo，它的优势是什么？</strong></li>
+<li><strong>JSON 作为序列化方式，在 RPC 中有什么问题？性能和二进制序列化相比如何？</strong></li>
+<li><strong>如果你的 RPC 需要支持跨语言调用，你会选择哪种序列化方式？为什么？</strong></li>
+</ol>
+<p>五种序列化算法的对比：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2302_77266365/article/details/140804202">https://blog.csdn.net/2302_77266365/article/details/140804202</a></p>
+<p><strong>kryo</strong>：Kryo 是一个高性能的序列化&#x2F;反序列化工具，由于其<strong>变长存储特性</strong>并使用了字节码生成机制，拥有较高的运行速度和较小的字节码体积。</p>
+<p><strong>可变长度编码</strong>：对于整数（如 <code>int</code>、<code>long</code> 等），Kryo 使用可变长度编码（VarInt）进行压缩，小值可以占用更少的字节。例如，一个小整数可能只需要 1 个字节，而不是固定的 4 个字节。</p>
+<p><strong>Hession</strong>和JDK自带的序列化方式类似，Hessian采用的也是二进制协议，只不过Hessian序列化之后，字节数更小，性能更优。</p>
+<p>优点：</p>
+<p>跨语言支持：Hessian可以在多种编程语言之间进行序列化和反序列化，方便实现跨平台的通信。<br>性能比jdk好，<strong>因为序列化的内容更少，例如如果该对象出现过就不会重新序列化，而是表示它的引用位置。并且序列化的格式更简洁。还有不会序列化属性的元数据等信息。</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>序列化算法</strong></th>
+<th><strong>优点</strong></th>
+<th align="center"><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JDK</td>
+<td>使用简单，可靠</td>
+<td align="center">性能极差，占空间，不跨语言</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>格式简洁、可读性强</td>
+<td align="center">性能较差，占空间</td>
+</tr>
+<tr>
+<td>Hession</td>
+<td>跨平台方便</td>
+<td align="center">性能较差</td>
+</tr>
+<tr>
+<td>Kryo</td>
+<td>性能高，占空间小</td>
+<td align="center">不跨语言</td>
+</tr>
+<tr>
+<td>ProtoStuff</td>
+<td>高性能</td>
+<td align="center">依赖schema</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>在 <strong>Protostuff</strong> 以及其他序列化框架（如 Protobuf）的语境中，Schema 是一个核心概念，它用于描述数据的结构和格式。以下从定义、作用、在 Protostuff 中的体现这几个方面详细介绍：</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Schema 是对数据结构的一种抽象描述，它规定了数据中包含哪些字段、每个字段的类型是什么，以及这些字段在序列化和反序列化过程中的处理规则。简单来说，Schema 就像是数据的 “蓝图”，明确了数据的组织方式和格式。</p>
+<p><img src="/2025/05/27/rpc/image-20250421115432308.png" alt="image-20250421115432308"></p>
+</blockquote>
+<p>jdk序列化会把对象<strong>类的描述</strong>和<strong>所有属性的元数据</strong>也序列化成字节流，</p>
+<ul>
+<li>Hessian使用固定长度存储int和long，而kryo使用变长的int和long保证这种基本数据类型序列化后尽量小，实际应用中，很大的数据不会经常出现。</li>
+<li>Kryo进行序列化的时候，需要传入完整类名或者利用 register()  提前将类注册到Kryo上，其类与一个int型的ID相关联，序列中只存放这个ID，因此序列体积就更小，而Hessian则是将所有类字段信息都放入序列化字节数组中，直接利用字节数组进行反序列化，不需要其他参与，因为存的东西多处理速度就会慢点</li>
+<li>Kryo使用不需要实现Serializable接口，Hessian则需实现</li>
+<li>Kryo数据类的字段增、减，序列化和反序列化时无法兼容，而Hessian则兼容，Protostuff是只能在末尾添加新字段才兼容</li>
+<li><strong>Kryo和Hessian使用涉及到的数据类中必须拥有无参构造函数</strong></li>
+<li>Hessian会把复杂对象的所有属性存储在一个Map中进行序列化。所以在父类、子类存在同名成员变量的情况下，Hessian序列化时，先序列化子类，然后序列化父类，因此反序列化结果会导致子类同名成员变量被父类的值覆盖</li>
+<li>Kryo不是线程安全的，要通过ThreadLocal或者创建Kryo线程池来保证线程安全，而Protostuff则是线程安全的</li>
+<li>Protostuff和Kryo序列化的格式有相似之处，都是利用一个标记来记录字段类型，因此序列化出来体积都比较小</li>
+</ul>
+<img src="/2025/05/27/rpc/image-20250421103943479.png" alt="image-20250421103943479" style="zoom:50%;">
+
+<hr>
+<h3 id="高并发与性能优化"><a href="#高并发与性能优化" class="headerlink" title="高并发与性能优化"></a><strong>高并发与性能优化</strong></h3><ol>
+<li><strong>你的 RPC 框架支持 10000 线程并发，如何保证高吞吐量？用了哪些优化手段？</strong></li>
+<li><strong>TPS 29300 是如何测试出来的？使用了什么工具进行压测？</strong></li>
+<li><strong>在高并发场景下，如何避免大量线程创建导致的性能损耗？</strong></li>
+<li><strong>你的 RPC 框架如何做到零拷贝（Zero Copy）？用了哪些 Netty 机制？</strong></li>
+<li><strong>你在 RPC 请求的处理过程中，是否使用了线程池？如何配置最优线程数？</strong></li>
+<li><strong>在高并发情况下，Netty 的 <code>EventLoopGroup</code> 线程模型是如何工作的？</strong></li>
+<li><strong>如何优化 GC，减少 Full GC 影响 RPC 请求的响应时间？</strong></li>
+<li><strong>你的 RPC 框架如何进行监控？是否有埋点来分析 QPS、TPS、响应时间等指标？</strong></li>
+</ol>
+<hr>
+<h3 id="故障处理与系统稳定性"><a href="#故障处理与系统稳定性" class="headerlink" title="故障处理与系统稳定性"></a><strong>故障处理与系统稳定性</strong></h3><ol>
+<li><strong>如果你的 RPC 服务在高并发情况下出现 CPU 100%，你如何排查？</strong></li>
+<li><strong>如果某个服务节点宕机，客户端的请求会发生什么？如何优雅降级？</strong></li>
+<li><strong>你的 RPC 负载均衡算法是如何选取服务实例的？如果某个实例响应变慢，会被剔除吗？</strong></li>
+<li><strong>如何防止网络抖动影响 RPC 调用？你是否实现了超时重试机制？</strong></li>
+<li><strong>在流量突增的情况下，如何避免服务崩溃？你是否做了限流或熔断？</strong></li>
+<li><strong>如果你的 RPC 框架出现内存泄漏，如何排查？</strong></li>
+<li><strong>你的 RPC 框架如何处理 <code>OOM（Out of Memory）</code> 问题？</strong></li>
+</ol>
+<hr>
+<h3 id="开放性问题（扩展能力）"><a href="#开放性问题（扩展能力）" class="headerlink" title="开放性问题（扩展能力）"></a><strong>开放性问题（扩展能力）</strong></h3><ol>
+<li><strong>如果要支持 WebSocket 作为 RPC 传输层，该如何扩展？</strong></li>
+<li><strong>如何支持 TCP 长连接 + HTTP 短连接共存？</strong></li>
+<li><strong>如果要实现跨语言调用（比如 Python、Go），你如何修改你的 RPC 框架？</strong></li>
+<li><strong>如何让你的 RPC 框架支持服务限流，例如基于令牌桶算法？</strong></li>
+<li><strong>如果需要在分布式环境下进行全链路追踪，你会怎么设计？</strong></li>
+<li><strong>如果让你优化这个 RPC 框架，你会从哪些方面入手？</strong></li>
+<li><strong>如果要支持服务的灰度发布，该如何设计你的 RPC 框架？</strong></li>
+<li><strong>你的 RPC 框架如何与消息队列（如 Kafka）配合使用，支持异步调用？</strong></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io">Hungyeye</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io/2025/05/27/rpc/">https://hungyeye.github.io/2025/05/27/rpc/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://hungyeye.github.io" target="_blank">Hungyeye's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/cover/1.PNG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="微服务实战"><img class="cover" src="/img/cover/2.PNG" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">微服务实战</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Hungyeye</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hungyeye"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hungyeye" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1326358725@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客，与你共同进步 --小狗蛋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">集群与分布式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dubbo"><span class="toc-number">2.</span> <span class="toc-text">dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dubbo-admin"><span class="toc-number">2.2.</span> <span class="toc-text">dubbo-admin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.1.</span> <span class="toc-text">&lt;dubbo:parameter key&#x3D;&quot;qos.port&quot; value&#x3D;&quot;55555&quot;&#x2F;&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%BC%93%E5%AD%98"><span class="toc-number">2.4.</span> <span class="toc-text">地址缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E4%B8%8E%E9%87%8D%E8%AF%95"><span class="toc-number">2.5.</span> <span class="toc-text">超时与重试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E6%97%B6"><span class="toc-number">2.5.1.</span> <span class="toc-text">超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%AF%95"><span class="toc-number">2.5.2.</span> <span class="toc-text">重试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%89%88%E6%9C%AC"><span class="toc-number">2.6.</span> <span class="toc-text">多版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">2.7.</span> <span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%AE%B9%E9%94%99"><span class="toc-number">2.8.</span> <span class="toc-text">集群容错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7"><span class="toc-number">2.9.</span> <span class="toc-text">服务降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ESpringBoot%E6%96%B9%E5%BC%8F%E4%BD%BF%E7%94%A8Dubbo"><span class="toc-number">2.10.</span> <span class="toc-text">基于SpringBoot方式使用Dubbo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Netty"><span class="toc-number">3.</span> <span class="toc-text">Netty</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">3.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">3.2.</span> <span class="toc-text">客户端与服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E6%8F%90%E5%8D%87%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.3.</span> <span class="toc-text">异步提升的是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%98%E5%8C%85%E4%B8%8E%E5%8D%8A%E5%8C%85"><span class="toc-number">3.4.</span> <span class="toc-text">粘包与半包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RPC"><span class="toc-number">4.</span> <span class="toc-text">RPC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NIO"><span class="toc-number">5.</span> <span class="toc-text">NIO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E6%98%93RPC%E6%A1%86%E6%9E%B6"><span class="toc-number">6.</span> <span class="toc-text">简易RPC框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%81%E7%A8%8B"><span class="toc-number">6.1.</span> <span class="toc-text">服务端流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">客户端流程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%AD%E4%B8%80%E4%BA%9B%E4%B8%8D%E4%BA%86%E8%A7%A3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">6.3.</span> <span class="toc-text">spring初始化中一些不了解的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%AF%A5%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">基于该项目的一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">7.1.</span> <span class="toc-text">客户端具体过程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-number">7.2.</span> <span class="toc-text">服务端具体过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPI%E6%9C%BA%E5%88%B6"><span class="toc-number">7.3.</span> <span class="toc-text">SPI机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GPT%E6%B7%B1%E6%8C%96%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">GPT深挖项目问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty-%E7%9B%B8%E5%85%B3"><span class="toc-number">8.0.1.</span> <span class="toc-text">Netty 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">8.0.2.</span> <span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">8.0.3.</span> <span class="toc-text">⚙️ 原理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%A1-%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">8.0.4.</span> <span class="toc-text">💡 特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC-%E7%9B%B8%E5%85%B3"><span class="toc-number">8.0.5.</span> <span class="toc-text">RPC 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zookeeper-%E7%9B%B8%E5%85%B3"><span class="toc-number">8.0.6.</span> <span class="toc-text">Zookeeper 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-%E7%9B%B8%E5%85%B3"><span class="toc-number">8.0.7.</span> <span class="toc-text">Spring Boot 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3"><span class="toc-number">8.0.8.</span> <span class="toc-text">序列化相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">8.0.9.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E5%B9%B6%E5%8F%91%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">8.0.10.</span> <span class="toc-text">高并发与性能优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">8.0.11.</span> <span class="toc-text">故障处理与系统稳定性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%88%E6%89%A9%E5%B1%95%E8%83%BD%E5%8A%9B%EF%BC%89"><span class="toc-number">8.0.12.</span> <span class="toc-text">开放性问题（扩展能力）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/27/rpc/" title="rpc笔记"><img src="/img/cover/1.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="rpc笔记"/></a><div class="content"><a class="title" href="/2025/05/27/rpc/" title="rpc笔记">rpc笔记</a><time datetime="2025-05-27T02:49:20.000Z" title="发表于 2025-05-27 10:49:20">2025-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="微服务实战"><img src="/img/cover/2.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务实战"/></a><div class="content"><a class="title" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="微服务实战">微服务实战</a><time datetime="2024-08-15T02:04:09.000Z" title="发表于 2024-08-15 10:04:09">2024-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关"><img src="/img/cover/0.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java相关"/></a><div class="content"><a class="title" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关">java相关</a><time datetime="2024-07-24T03:40:53.000Z" title="发表于 2024-07-24 11:40:53">2024-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记"><img src="/img/cover/2.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring笔记"/></a><div class="content"><a class="title" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记">spring笔记</a><time datetime="2024-05-29T03:11:45.000Z" title="发表于 2024-05-29 11:11:45">2024-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/16/%E9%9A%8F%E7%AC%94/" title="随笔"><img src="/img/cover/3.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随笔"/></a><div class="content"><a class="title" href="/2024/05/16/%E9%9A%8F%E7%AC%94/" title="随笔">随笔</a><time datetime="2024-05-16T04:53:17.000Z" title="发表于 2024-05-16 12:53:17">2024-05-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Hungyeye</div><div class="footer_custom_text">Hi, welcome to hungyeye's <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'hungyeye/hungyeye.github.io',
+      'data-repo-id': 'R_kgDOL65qOw',
+      'data-category-id': 'DIC_kwDOL65qO84CfXhF',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
