@@ -1,0 +1,530 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>little black egg | Hungyeye's blog</title><meta name="author" content="Hungyeye"><meta name="copyright" content="Hungyeye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="宝宝，我是航哥，现在为你做一个简单的计划： java基础（努努力，五一放假前看完冲冲冲冲）：这个是必须要看的，全看一遍（这一部分包括基础+集合+并发编程，红框里的是对某些知识点的详细补充，可以先不看，如果你在看这些基础的过程中有没看懂的，可以看看红框里的有没有更详细的解释看一看）， 宝宝如果java基础有一些点看不懂，可以问我，也可以看这俩视频，傻子都看得懂（我当时就是集合搞不明白看的视频）： j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="little black egg">
+<meta property="og:url" content="https://hungyeye.github.io/2025/05/31/heidan/index.html">
+<meta property="og:site_name" content="Hungyeye&#39;s blog">
+<meta property="og:description" content="宝宝，我是航哥，现在为你做一个简单的计划： java基础（努努力，五一放假前看完冲冲冲冲）：这个是必须要看的，全看一遍（这一部分包括基础+集合+并发编程，红框里的是对某些知识点的详细补充，可以先不看，如果你在看这些基础的过程中有没看懂的，可以看看红框里的有没有更详细的解释看一看）， 宝宝如果java基础有一些点看不懂，可以问我，也可以看这俩视频，傻子都看得懂（我当时就是集合搞不明白看的视频）： j">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hungyeye.github.io/img/cover/0.PNG">
+<meta property="article:published_time" content="2025-05-31T07:08:51.000Z">
+<meta property="article:modified_time" content="2025-05-31T07:10:11.746Z">
+<meta property="article:author" content="Hungyeye">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hungyeye.github.io/img/cover/0.PNG"><link rel="shortcut icon" href="/img/touxiang.png"><link rel="canonical" href="https://hungyeye.github.io/2025/05/31/heidan/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Hungyeye","link":"链接: ","source":"来源: Hungyeye's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'little black egg',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-31 15:10:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/0.PNG')"><nav id="nav"><span id="blog-info"><a href="/" title="Hungyeye's blog"><span class="site-name">Hungyeye's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">little black egg</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-31T07:08:51.000Z" title="发表于 2025-05-31 15:08:51">2025-05-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-31T07:10:11.746Z" title="更新于 2025-05-31 15:10:11">2025-05-31</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="little black egg"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>宝宝，我是航哥，现在为你做一个简单的计划：</p>
+<h1 id="java基础（努努力，五一放假前看完冲冲冲冲）："><a href="#java基础（努努力，五一放假前看完冲冲冲冲）：" class="headerlink" title="java基础（努努力，五一放假前看完冲冲冲冲）："></a>java基础（努努力，五一放假前看完冲冲冲冲）：</h1><p>这个是必须要看的，全看一遍（这一部分包括<strong>基础+集合+并发编程</strong>，<strong>红框</strong>里的是对某些知识点的详细补充，<strong>可以先不看</strong>，如果你在看这些基础的过程中有没看懂的，可以看看<strong>红框里</strong>的有没有<strong>更详细的解释</strong>看一看），</p>
+<p>宝宝如果java基础有一些点看不懂，可以问我，也可以看这俩视频，傻子都看得懂（我当时就是集合搞不明白看的视频）：</p>
+<p><strong>java基础上：</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17F411T7Ao/?spm_id_from=333.337.search-card.all.click&vd_source=6490e6a4523af5eeda2b4c5dae27592a">https://www.bilibili.com/video/BV17F411T7Ao/?spm_id_from=333.337.search-card.all.click&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a</a></p>
+<p><strong>java基础下：</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yW4y1Y7Ms/?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1yW4y1Y7Ms/?spm_id_from=333.337.search-card.all.click</a></p>
+<img src="/2025/05/31/heidan/image-20250428095238944.png" alt="image-20250428095238944" style="zoom:33%;">
+
+<p>想这些上中下中都会有看的时间，不要相信哈，一般都要比他慢很多，可能要花费上几倍的时间。</p>
+<img src="/2025/05/31/heidan/image-20250428095442700.png" alt="image-20250428095442700" style="zoom:33%;">
+
+
+
+<h1 id="Spring相关的（5-3看完）"><a href="#Spring相关的（5-3看完）" class="headerlink" title="Spring相关的（5.3看完）"></a>Spring相关的（5.3看完）</h1><p>宝宝这块你去年应该刷过视频看过，你得回忆回忆这块也很重要，尤其是@SpringbootApplication注解组成啥的（这个去年一面问我来），设计模式啥的可以不看。</p>
+<p><strong>视频教学：</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Fi4y1S7ix/?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1Fi4y1S7ix/?spm_id_from=333.337.search-card.all.click</a></p>
+<img src="/2025/05/31/heidan/image-20250428095728311.png" alt="image-20250428095728311" style="zoom:33%;">
+
+<h1 id="Mysql（5-7看完）"><a href="#Mysql（5-7看完）" class="headerlink" title="Mysql（5.7看完）"></a>Mysql（5.7看完）</h1><p>及其重要，这个比问，当时二面就我了，<strong>说mysql建立索引要注意什么，索引是不是越多越好</strong>。</p>
+<p><strong>视频教学</strong>：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kr4y1i7ru/?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1Kr4y1i7ru/?spm_id_from=333.337.search-card.all.click</a></p>
+<img src="/2025/05/31/heidan/image-20250428100020060.png" alt="image-20250428100020060" style="zoom:33%;">
+
+
+
+<h1 id="Redis（5-10看完）"><a href="#Redis（5-10看完）" class="headerlink" title="Redis（5.10看完）"></a>Redis（5.10看完）</h1><p>也很重要，但是去年我的一二面好像没有人被问到</p>
+<p>视频教学（可以看看常用的数据结构String，list，hash，set，zset是什么格式）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cr4y1671t?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=8">https://www.bilibili.com/video/BV1cr4y1671t?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=8</a></p>
+<img src="/2025/05/31/heidan/image-20250428100123743.png" alt="image-20250428100123743" style="zoom:33%;">
+
+<h5 id="先把这些看完，能快的尽快，因为你毕竟有基础哈，后面还得看看JVM啥的，垃圾回收啥的，不过这些算比较深的，去年我面试也没人问，感觉还是看运气，这个看了，可以投投其他工作"><a href="#先把这些看完，能快的尽快，因为你毕竟有基础哈，后面还得看看JVM啥的，垃圾回收啥的，不过这些算比较深的，去年我面试也没人问，感觉还是看运气，这个看了，可以投投其他工作" class="headerlink" title="先把这些看完，能快的尽快，因为你毕竟有基础哈，后面还得看看JVM啥的，垃圾回收啥的，不过这些算比较深的，去年我面试也没人问，感觉还是看运气，这个看了，可以投投其他工作&#x2F;"></a>先把这些看完，能快的尽快，因为你毕竟有基础哈，后面还得看看JVM啥的，垃圾回收啥的，不过这些算比较深的，去年我面试也没人问，感觉还是看运气，这个看了，可以投投其他工作&#x2F;</h5><p>1.中国交建-<a target="_blank" rel="noopener" href="https://zhaopin.ccccltd.cn/custom/xzzw?hideMenu=1&c2=&c1=245&zpzc=&c=3100&k=&Degree=">https://zhaopin.ccccltd.cn/custom/xzzw?hideMenu=1&amp;c2=&amp;c1=245&amp;zpzc=&amp;c=3100&amp;k=&amp;Degree=</a></p>
+<p><img src="/2025/05/31/heidan/image-20250522095844608.png" alt="image-20250522095844608"></p>
+<p><img src="/2025/05/31/heidan/image-20250522095856440.png" alt="image-20250522095856440"></p>
+<p><img src="/2025/05/31/heidan/image-20250522095910755.png" alt="image-20250522095910755"></p>
+<p>2.达梦数据-上海-研发工程师-<a target="_blank" rel="noopener" href="https://www.dameng.com/list_73.html?page=1">https://www.dameng.com/list_73.html?page=1</a></p>
+<p>3.中国邮储银行上海分行：<a target="_blank" rel="noopener" href="https://xiaoyuan.zhaopin.com/job/CC138235620J40713338511?refcode=4444&jobSourceType=2">https://xiaoyuan.zhaopin.com/job/CC138235620J40713338511?refcode=4444&amp;jobSourceType=2</a></p>
+<p>4.维信金科：<a target="_blank" rel="noopener" href="https://xiaoyuan.zhaopin.com/company/KA0218824913D90000001000?refcode=4440">https://xiaoyuan.zhaopin.com/company/KA0218824913D90000001000?refcode=4440</a></p>
+<p>5.马上消费金融：<a target="_blank" rel="noopener" href="https://weikezhijia.jobs.feishu.cn/MSXF0619/position/7425901198132398375/detail?spread=DMHT6FV">https://weikezhijia.jobs.feishu.cn/MSXF0619/position/7425901198132398375/detail?spread=DMHT6FV</a></p>
+<p><a target="_blank" rel="noopener" href="https://weikezhijia.jobs.feishu.cn/MSXF0619/position/7451418304479545627/detail?spread=DMHT6FV">https://weikezhijia.jobs.feishu.cn/MSXF0619/position/7451418304479545627/detail?spread=DMHT6FV</a></p>
+<p>6.中泰证劵：<a target="_blank" rel="noopener" href="https://zts.hotjob.cn/SU62bd501c0dcad406d143caea/pb/school.html?workPlaceCode=0/4/10&currentPage=1">https://zts.hotjob.cn/SU62bd501c0dcad406d143caea/pb/school.html?workPlaceCode=0%2F4%2F10&amp;currentPage=1</a></p>
+<img src="/2025/05/31/heidan/image-20250522101334853.png" alt="image-20250522101334853" style="zoom:33%;">
+
+<img src="/2025/05/31/heidan/image-20250522101411397.png" alt="image-20250522101411397" style="zoom:33%;">
+
+<p>7.中兴新云：<a target="_blank" rel="noopener" href="https://www.wenjuan.com/s/RRRNFvO/">https://www.wenjuan.com/s/RRRNFvO/</a></p>
+<h1 id="项目一：黄海学院智慧餐厅"><a href="#项目一：黄海学院智慧餐厅" class="headerlink" title="项目一：黄海学院智慧餐厅"></a>项目一：黄海学院智慧餐厅</h1><p><img src="/2025/05/31/heidan/image-20250531150248164.png" alt="image-20250531150248164"></p>
+<h3 id="1-挑一个项目介绍一下以及你的职责？"><a href="#1-挑一个项目介绍一下以及你的职责？" class="headerlink" title="1.挑一个项目介绍一下以及你的职责？"></a><strong>1.挑一个项目介绍一下以及你的职责？</strong></h3><p>答：那我介绍一下我近期做的一个智慧餐厅的项目，该项目是一个B2C模式的项目，包括系统管理后台和移动端应用两部分。系统管理后台主要提供给商户内部员工，用于对餐厅菜品信息进行维护。移动端主要提供给消费者使用，可以在线预览菜品、添加购物车、下单支付等。</p>
+<p>主要用到的技术栈是后端使用SpringBoot 框架搭建，前端使用Vue，数据库使用 MySQL 和 Redis ，还使用了像MyBatisPlus ， ShardingJDBC，MinIO</p>
+<p>我主要负责的<strong>系统的后台开发</strong>，主要负责项目中菜品管理模块的设计与开发，媒体资源管理模块开发以及订单管理与支付模块开发，还有就是<strong>对项目的一些优化</strong>，例如为了提升系统的高可用<strong>搭建了Redis主从集群</strong>以及mysql主从集群等。</p>
+<h3 id="2-做项目的过程中遇到过难题，你是怎么解决的？"><a href="#2-做项目的过程中遇到过难题，你是怎么解决的？" class="headerlink" title="2.做项目的过程中遇到过难题，你是怎么解决的？"></a>2.做项目的过程中遇到过难题，你是怎么解决的？</h3><p>答：<strong>主要遇到了两个问题</strong></p>
+<p>1.在使用微信完成支付的时候，我调用微信支付接口的时候，需要传递一个回调地址，但是由于该回调地址在局域网内，微信后台无法调用，因此我们进行了<strong>内网穿透</strong>将一个公网ip映射到我们的本机的系统ip，从而完成调用。</p>
+<p>2.我们使用jmeter对我们的系统进行压测试发现，我们查询菜品时吞吐量较低，为了解决这个问题，我们将菜品信息缓存到我们的数据库中，提高我们菜品的查询效率。并在此基础上解决了Redis的缓存穿透、缓存击穿、以及缓存一致性问题。</p>
+<h3 id="3-DTO和VO的区别？"><a href="#3-DTO和VO的区别？" class="headerlink" title="3.DTO和VO的区别？"></a>3.DTO和VO的区别？</h3><p>答：DTO数据传输对象、PO持久化对象，DTO用于接口层向业务层之间传输数据，PO用于业务层与持久层之间传输数据，有些项目还会设置VO对象，VO对象用在前端与接口层之间传输数据。</p>
+<blockquote>
+<img src="/2025/05/31/heidan/image-20250531120858144.png" alt="image-20250531120858144" style="zoom:33%;">
+</blockquote>
+<h3 id="对于项目职责中的6个点对应的详细内容："><a href="#对于项目职责中的6个点对应的详细内容：" class="headerlink" title="对于项目职责中的6个点对应的详细内容："></a><strong>对于项目职责中的6个点对应的详细内容</strong>：</h3><h4 id="1-负责菜品管理模块的设计与开发，使用Redis缓存菜品信息，减轻数据库压力，同时解决缓存穿透、缓存击穿、缓存一致性等问题"><a href="#1-负责菜品管理模块的设计与开发，使用Redis缓存菜品信息，减轻数据库压力，同时解决缓存穿透、缓存击穿、缓存一致性等问题" class="headerlink" title="1.负责菜品管理模块的设计与开发，使用Redis缓存菜品信息，减轻数据库压力，同时解决缓存穿透、缓存击穿、缓存一致性等问题;"></a><strong>1.负责菜品管理模块的设计与开发，使用Redis缓存菜品信息，减轻数据库压力，同时解决缓存穿透、缓存击穿、缓存一致性等问题;</strong></h4><blockquote>
+<p>一开始菜品数据是存储在数据库中，如果在同一个时间段内，有大量用户来点餐会频繁查询数据库，数据库压力加大，从而降低数据库的查询性能，用户体验下降。为了减轻数据库压力并提升查询菜品的速率，利用Redis缓存菜品信息，（查询数据库本质上是磁盘IO操作，查询Redis本质上是内存操作）</p>
+<p><strong>缓存逻辑分析：</strong></p>
+<ul>
+<li>每个分类下的菜品保存一份缓存数据</li>
+<li>数据库中菜品数据有变更时清理缓存数据</li>
+</ul>
+<p>如何解决<strong>缓存穿透</strong>、<strong>缓存雪崩</strong>、<strong>缓存击穿</strong>、以及<strong>缓存一致性</strong>问题？</p>
+<p>一、<strong>缓存穿透：</strong></p>
+<p>大量并发去访问一个数据库不存在的数据，由于缓存中没有该数据导致大量并发查询数据库，这个现象要缓存穿透。</p>
+<p><strong>解决方法：</strong></p>
+<p>1、对请求增加校验机制</p>
+<p>比如：课程Id是长整型，如果发来的不是长整型则直接返回。</p>
+<p>2、使用布隆过滤器</p>
+<p>3、缓存空值或特殊值，但是要注意：如果缓存了空值或特殊值要设置一个短暂的过期时间。</p>
+<p>二、<strong>缓存雪崩：</strong></p>
+<p>缓存雪崩是缓存中大量key失效后当高并发到来时导致大量请求到数据库，瞬间耗尽数据库资源，导致数据库无法使用。</p>
+<p><strong>解决方法：</strong></p>
+<p>1、使用同步锁控制查询数据库的线程</p>
+<p>​		使用同步锁控制查询数据库的线程，只允许有一个线程去查询数据库，查询得到数据后存入缓存。</p>
+<p>2、对同一类型信息的key设置不同的过期时间</p>
+<p>​		通常对一类信息的key设置的过期时间是相同的，这里可以在原有固定时间的基础上加上一个随机时间使它们的过期时间都不相同。</p>
+<p>3、缓存预热</p>
+<p>​		不用等到请求到来再去查询数据库存入缓存，可以提前将数据存入缓存。使用缓存预热机制通常有专门的后台程序去将数据库的数据同步到缓存。</p>
+<p>三、<strong>缓存击穿：</strong></p>
+<p>缓存击穿是指大量并发访问同一个热点数据，当热点数据失效后同时去请求数据库，瞬间耗尽数据库资源，导致数据库无法使用。</p>
+<p>比如某手机新品发布，当缓存失效时有大量并发到来导致同时去访问数据库。</p>
+<p><strong>解决方法：</strong></p>
+<p>1、使用同步锁控制查询数据库的线程</p>
+<p>​	使用同步锁控制查询数据库的代码，只允许有一个线程去查询数据库，查询得到数据库存入缓存。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(obj)&#123;</span><br><span class="line">  <span class="comment">//查询数据库</span></span><br><span class="line">  <span class="comment">//存入缓存</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、热点数据不过期</p>
+<p>可以由后台程序提前将热点数据加入缓存，缓存过期时间不过期，由后台程序做好缓存同步。</p>
+<p><strong>扩展：分布式锁</strong></p>
+<p>四、<strong>缓存一致性：</strong>当数据库中的数据发生变化时，删除Redis中的缓存数据</p>
+</blockquote>
+<h4 id="2-负责订单管理与支付模块开发，实现下单与支付等业务功能，使用SpringTask实现订单状态定时处理"><a href="#2-负责订单管理与支付模块开发，实现下单与支付等业务功能，使用SpringTask实现订单状态定时处理" class="headerlink" title="2.负责订单管理与支付模块开发，实现下单与支付等业务功能，使用SpringTask实现订单状态定时处理;"></a><strong>2.负责订单管理与支付模块开发，实现下单与支付等业务功能，使用SpringTask实现订单状态定时处理;</strong></h4><blockquote>
+<p>这一部分可以直接看功能测试，走一遍流程:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=122">https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=122</a></p>
+<p>我们在使用<strong>网页上下单时候对接支付宝接口</strong>、使用<strong>微信小程序下单时候使用微信支付</strong>。</p>
+<p>用户在下单的时候回调用我们的下单接口，在下单过程中，用户下单业务对应的数据表为orders表和order_detail表(一对多关系,一个订单关联多个订单明细)：</p>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>orders</td>
+<td>订单表</td>
+<td>主要存储订单的基本信息(如: 订单号、状态、金额、支付方式、下单用户、收件地址等)</td>
+</tr>
+<tr>
+<td>order_detail</td>
+<td>订单明细表</td>
+<td>主要存储订单详情信息(如: 该订单关联的套餐及菜品的信息)</td>
+</tr>
+</tbody></table>
+<p>每次下单时，我们需要向订单表中插入1条数据，想明细表中插入1条或多条数据，然后清空购物车（用户的购物车数据，也是需要保存在数据库中的，购物车对应的数据表为<strong>shopping_cart表</strong>）中的数据。</p>
+</blockquote>
+<p>1.<strong>微信支付：</strong>因为要实现微信支付就需要注册微信支付的一个商户号，这个商户号是必须要有一家企业并且有正规的营业执照。只有具备了这些资质之后，才可以去注册商户号，才能开通支付权限。我们没有这个账号当时专门去在闲鱼找了一个商户号。</p>
+<p><img src="/2025/05/31/heidan/image-20250530203033726.png" alt="image-20250530203033726"></p>
+<blockquote>
+<p><strong>微信支付相关接口：</strong></p>
+<p>（1）<strong>JSAPI下单：</strong>商户系统调用该接口在微信支付服务后台生成<strong>预支付交易单</strong>(<strong>对应时序图的第5步</strong>)</p>
+<p><img src="/2025/05/31/heidan/image-20221214224409174.png" alt="image-20221214224409174"></p>
+<p>（2）<strong>微信小程序调起支付API实现小程序支付：</strong>通过JSAPI下单接口获取到发起支付的必要参数<strong>prepay_id</strong>一个字符串，然后使用微信支付提供的小程序方法wx.requestPayment调起小程序支付(<strong>对应时序图的第10步</strong>)</p>
+<img src="/2025/05/31/heidan/image-20221214224551220.png" alt="image-20221214224551220" style="zoom:50%;">
+
+<p><strong>时序图的第13步：</strong>在调用<strong>JSAPI下单接口</strong>时，会传递一个notifyurl也就是回调地址，在支付完成后微信后台会回调这个地址也就是一个controller（也就是paySuccessNotify方法修改订单状态为支付成功），微信后台会调用到商户系统给推送支付的结果，在这里我们就会遇到一个问题，就是微信后台怎么就能调用到我们这个商户系统呢？因为这个调用过程，其实本质上也是一个HTTP请求。</p>
+<img src="/2025/05/31/heidan/image-20250531103135990.png" alt="image-20250531103135990" style="zoom:33%;">
+
+<img src="/2025/05/31/heidan/image-20250531103206928.png" alt="image-20250531103206928" style="zoom:33%;">
+
+<p>目前，商户系统它的ip地址就是当前自己电脑的ip地址，只是一个局域网内的ip地址，微信后台无法调用到。</p>
+<p><strong>解决：</strong>内网穿透。通过<strong>cpolar软件</strong>可以获得一个临时域名，而这个临时域名是一个公网ip，这样，微信后台就可以请求到商户系统了。</p>
+<img src="/2025/05/31/heidan/image-20250530205656019.png" alt="image-20250530205656019" style="zoom:33%;">
+
+<p>获得一个公网ip（就是一个域名）映射到我们本机的8080端口，也就是我们的后端服务端口。</p>
+</blockquote>
+<p>2.使用<strong>SpringTask</strong>实现订单状态定时处理</p>
+<p> SpringTask是Spring框架提供的任务调度工具，可以按照约定的时间自动执行某个代码逻辑。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=122%EF%BC%88%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E8%A7%86%E9%A2%91%E5%B0%B15%E5%88%86%E9%92%9F%EF%BC%89">https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=122（功能测试视频就5分钟）</a></p>
+<blockquote>
+<p>通过定时任务每分钟检查一次是否存在支付超时订单（下单后超过15分钟仍未支付则判定为支付超时订单），如果存在则修改订单状态为“已取消”。</p>
+<p><strong>springTask使用步骤</strong>：</p>
+<p>1). 导入maven坐标 spring-context（已存在）</p>
+<img src="/2025/05/31/heidan/image-20221218193251182.png" alt="image-20221218193251182" style="zoom:50%;"> 
+
+<p>2). 启动类添加注解 @EnableScheduling 开启任务调度</p>
+<p><strong>3). 自定义定时任务类</strong>（关键就是需要定义任务类，并使用@compnent注解将<strong>将该类的实例化对象注入到 Spring 容器中</strong>，@Scheduled注解的cron表达式指定任务什么时候触发，见下图）</p>
+<p>主要就是通过<strong>cron表达式</strong>来控制的，<strong>cron表达式</strong>其实就是一个字符串，通过cron表达式可以<strong>定义任务触发的时间</strong>。</p>
+<img src="/2025/05/31/heidan/image-20250531105521774.png" alt="image-20250531105521774" style="zoom:25%;">
+
+<p><strong>支付超时的订单测试：</strong></p>
+<p><strong>1). 查看订单表</strong></p>
+<p>有一条订单，状态为1。订单状态 1待付款 2待接单 3已接单 4派送中 5已完成 6已取消</p>
+<img src="/2025/05/31/heidan/image-20221218202334773.png" alt="image-20221218202334773" style="zoom:50%;"> 
+
+<p><strong>2). 开启定时任务</strong></p>
+<p>启动服务，观察控制台日志。处理支付超时订单任务每隔1分钟执行一次。</p>
+<img src="/2025/05/31/heidan/image-20221218203045089.png" alt="image-20221218203045089" style="zoom:50%;"> 
+
+<p><strong>3). 再次查看订单表</strong></p>
+<p>状态已更改为6，已取消。</p>
+<img src="/2025/05/31/heidan/image-20221218203146535.png" alt="image-20221218203146535" style="zoom:80%;"> 
+
+<p>证明定时任务已生效。</p>
+<p><strong>处理“派送中”状态的订单任务</strong>测试自已完成，测试步骤和上述一致。可适当修改cron表达式，改变任务执行频率，方便测试。</p>
+</blockquote>
+<h4 id="3-负责搭建Redis主从集群，加入Sentinel机制，实现读写分离，提高系统的高可用以及高并发能力"><a href="#3-负责搭建Redis主从集群，加入Sentinel机制，实现读写分离，提高系统的高可用以及高并发能力" class="headerlink" title="3.负责搭建Redis主从集群，加入Sentinel机制，实现读写分离，提高系统的高可用以及高并发能力;"></a>3.负责搭建Redis主从集群，加入Sentinel机制，实现读写分离，提高系统的高可用以及高并发能力;</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://b11et3un53m.feishu.cn/wiki/Jck7w4GBSia4sukQn1vc9s3anMf%E4%B8%AD%E7%9A%841%EF%BC%8C2%EF%BC%8C3%EF%BC%8C%E4%BD%A0%E7%9C%8B%E7%9A%84%E8%A7%86%E9%A2%91%E4%B9%9F%E6%9C%89%EF%BC%8C%E6%A0%B8%E5%BF%83%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5%E5%92%8C%E5%A2%9E%E9%87%8F%E5%90%8C%E6%AD%A5%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%90%9E%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4%E3%80%82">https://b11et3un53m.feishu.cn/wiki/Jck7w4GBSia4sukQn1vc9s3anMf中的1，2，3，你看的视频也有，核心其实就是全量同步和增量同步，这个没有搞分片集群。</a></p>
+</blockquote>
+<h4 id="4-使用JWT令牌，用自定义拦截器完成用户认证，通过ThreadLocal来优化鉴权逻辑"><a href="#4-使用JWT令牌，用自定义拦截器完成用户认证，通过ThreadLocal来优化鉴权逻辑" class="headerlink" title="4.使用JWT令牌，用自定义拦截器完成用户认证，通过ThreadLocal来优化鉴权逻辑;"></a>4.使用JWT令牌，用自定义拦截器完成用户认证，通过ThreadLocal来优化鉴权逻辑;</h4><p><strong>1.使用Jwt令牌，用自定义拦截器完成用户认证。</strong></p>
+<p>用户登录成功后会返回一个jwt令牌，具体用户登录认证流程图如下</p>
+<img src="/2025/05/31/heidan/image-20250531143532237.png" alt="image-20250531143532237" style="zoom:50%;">
+
+<blockquote>
+<p>１、JWT令牌较长，占存储空间比较大。</p>
+<p>下边是一个JWT令牌的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicmVzMSJdLCJ1c2VyX25hbWUiOiJ6aGFuZ3NhbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NjQyNTQ2NzIsImF1dGhvcml0aWVzIjpbInAxIl0sImp0aSI6Ijg4OTEyYjJkLTVkMDUtNGMxNC1iYmMzLWZkZTk5NzdmZWJjNiIsImNsaWVudF9pZCI6ImMxIn0.wkDBL7roLrvdBG2oGnXeoXq-zZRgE9IVV2nxd-ez_oA</span><br></pre></td></tr></table></figure>
+
+<p>JWT令牌由三部分组成，每部分中间使用点（.）分隔，比如：xxxxx.yyyyy.zzzzz</p>
+<ol>
+<li>Header</li>
+</ol>
+<p>  头部包括令牌的类型（即JWT）及使用的哈希算法（如HMAC SHA256或RSA）</p>
+<p>  一个例子如下：</p>
+<p>  下边是Header部分的内容</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>  将上边的内容使用Base64Url编码，得到一个字符串就是JWT令牌的第一部分。</p>
+<ol>
+<li>Payload</li>
+</ol>
+<p>  第二部分是负载，内容也是一个json对象，它是存放有效信息的地方，它可以存放jwt提供的信息字段，比如：iss（签发者）,exp（过期时间戳）, sub（面向的用户）等，也可自定义字段。</p>
+<p>  此部分不建议存放敏感信息，因为此部分可以解码还原原始内容。</p>
+<p>  最后将第二部分负载使用Base64Url编码，得到一个字符串就是JWT令牌的第二部分。</p>
+<p>  一个例子：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;456&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;admin&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Signature</li>
+</ol>
+<p>  第三部分是签名，此部分用于防止jwt内容被篡改。</p>
+<p>  这个部分使用base64url将前两部分进行编码，编码后使用点（.）连接组成字符串，最后使用header中声明的签名算法进行签名。</p>
+<p>  一个例子：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">  base64UrlEncode(header) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">  base64UrlEncode(payload)<span class="punctuation">,</span></span><br><span class="line">  secret)</span><br></pre></td></tr></table></figure>
+
+<p>base64UrlEncode(header)：jwt令牌的第一部分。</p>
+<p>base64UrlEncode(payload)：jwt令牌的第二部分。</p>
+<p>secret：签名所使用的密钥。</p>
+<p><strong>为什么JWT可以防止篡改？</strong></p>
+<p>第三部分使用签名算法对第一部分和第二部分的内容进行签名，常用的签名算法是 HS256，常见的还有md5,sha 等，签名算法需要使用密钥进行签名，密钥不对外公开，并且签名是不可逆的，如果第三方更改了内容那么服务器验证签名就会失败，要想保证验证签名正确必须保证内容、密钥与签名前一致。</p>
+</blockquote>
+<p><strong>（2）使用ThreadLocal来优化鉴权逻辑</strong></p>
+<p>把解析出来的用户身份信息（比如 userId 或整个用户对象）缓存到当前线程的本地变量中（ThreadLocal），避免在一次请求流程中重复去解析 JWT 或频繁查数据库，统一全局使用，提高性能和代码可维护性。</p>
+<p> <strong>为什么要用 ThreadLocal？</strong></p>
+<p>在不使用 ThreadLocal 的情况下，用户信息通常要在请求的多个地方传递，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Controller -&gt; Service -&gt; DAO</span><br></pre></td></tr></table></figure>
+
+<p>因为employee表中的创建人和修改人id一开始写死了，如果获取呢，就是用户登录创建令牌时，把令牌中的id取出放到thread里面去，然后将threadlocal中的id取出传递给Service的save方法。</p>
+<img src="/2025/05/31/heidan/image-20250531142821627.png" alt="image-20250531142821627" style="zoom:33%;">
+
+<blockquote>
+<p><img src="/2025/05/31/heidan/image-20250531115619772.png" alt="image-20250531115619772"></p>
+<img src="/2025/05/31/heidan/image-20250531115912913.png" alt="image-20250531115912913" style="zoom:33%;">
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=122">https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=122</a></p>
+</blockquote>
+<h4 id="5-负责媒体资源管理模块开发，将图片等媒体资源上传到MinIO分布式文件系统进行存储"><a href="#5-负责媒体资源管理模块开发，将图片等媒体资源上传到MinIO分布式文件系统进行存储" class="headerlink" title="5.负责媒体资源管理模块开发，将图片等媒体资源上传到MinIO分布式文件系统进行存储;"></a>5.负责媒体资源管理模块开发，将图片等媒体资源上传到MinIO分布式文件系统进行存储;</h4><blockquote>
+<p>通过MinIO提供的java sdk工具包来上传图片或视频资源资源，</p>
+<p>MinIO使用纠删码的好处是即便丢失一半数量（N&#x2F;2）的硬盘，仍然可以恢复数据。 比如上边集合中有4个以内的硬盘损害仍可保证数据恢复，不影响上传和下载，如果多于一半的硬盘坏了则无法恢复。</p>
+<p>我们需要在MInIo中穿件bucket，桶，用来存放我们需要上传的文件，例如图片资源我们创建一个bucket，视频资源我们可以创建一个bucket。</p>
+</blockquote>
+<h4 id="6-使用ShardingJDBC实现数据库读写分离，将数据库划分为一主两从，提升单数据库的读写能力提高数据库读取性能和写入性能。"><a href="#6-使用ShardingJDBC实现数据库读写分离，将数据库划分为一主两从，提升单数据库的读写能力提高数据库读取性能和写入性能。" class="headerlink" title="6.使用ShardingJDBC实现数据库读写分离，将数据库划分为一主两从，提升单数据库的读写能力提高数据库读取性能和写入性能。"></a>6.使用ShardingJDBC实现数据库读写分离，将数据库划分为一主两从，提升单数据库的读写能力提高数据库读取性能和写入性能。</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13a411q753?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=175">https://www.bilibili.com/video/BV13a411q753?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=175</a></p>
+<p>项目优化5，6两个视频</p>
+</blockquote>
+<h1 id="项目二：恶意网站检测系统"><a href="#项目二：恶意网站检测系统" class="headerlink" title="项目二：恶意网站检测系统"></a>项目二：恶意网站检测系统</h1><p><img src="/2025/05/31/heidan/image-20250531150259867.png" alt="image-20250531150259867"></p>
+<p>该项目主要使用python构建深度学习模型进行恶意网站检测，使用springboot+vue搭建系统，向python后台通过httpclient发送请求获取相关数据，进行可视化展示。</p>
+<p>httpclient：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&vd_source=6490e6a4523af5eeda2b4c5dae27592a&p=67">https://www.bilibili.com/video/BV1TP411v7v6?spm_id_from=333.788.videopod.episodes&amp;vd_source=6490e6a4523af5eeda2b4c5dae27592a&amp;p=67</a></p>
+<h2 id="详细过程：常见实现方式（Java-Python-模型通信）"><a href="#详细过程：常见实现方式（Java-Python-模型通信）" class="headerlink" title="详细过程：常见实现方式（Java + Python 模型通信）"></a><strong>详细过程：常见实现方式（Java + Python 模型通信）</strong></h2><h4 id="通过-HTTP-接口调用深度学习模型服务"><a href="#通过-HTTP-接口调用深度学习模型服务" class="headerlink" title="通过 HTTP 接口调用深度学习模型服务"></a>通过 HTTP 接口调用深度学习模型服务</h4><ol>
+<li><strong>将训练好的深度学习模型（如 PyTorch、TensorFlow）部署成 Python 后端服务</strong>，比如用 <strong>Flask</strong> 或者Django,我们这里用的是<strong>Flask</strong>。</li>
+<li>SpringBoot 后端通过 <strong><code>HttpClient</code></strong> 发送 POST 请求，请求体中携带要检测的 URL 编码特征。</li>
+<li>模型返回分类结果（如是否恶意、置信度分数等），SpringBoot 接收响应并处理。</li>
+</ol>
+<p>示例代码（SpringBoot 调用 Python 模型）：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line"><span class="type">HttpHeaders</span> <span class="variable">headers</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHeaders</span>();</span><br><span class="line">headers.setContentType(MediaType.APPLICATION_JSON);</span><br><span class="line"></span><br><span class="line">Map&lt;String, String&gt; data = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">data.put(<span class="string">&quot;encodedUrl&quot;</span>, encodedUrl); <span class="comment">// 例如独热编码后的 URL</span></span><br><span class="line"></span><br><span class="line">HttpEntity&lt;Map&lt;String, String&gt;&gt; request = <span class="keyword">new</span> <span class="title class_">HttpEntity</span>&lt;&gt;(data, headers);</span><br><span class="line">ResponseEntity&lt;String&gt; response = restTemplate.postForEntity(<span class="string">&quot;http://localhost:5000/predict&quot;</span>, request, String.class);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> response.getBody(); <span class="comment">// 获取模型预测结果</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="后端收到的检测结果格式（Python-模型响应）："><a href="#后端收到的检测结果格式（Python-模型响应）：" class="headerlink" title="后端收到的检测结果格式（Python 模型响应）："></a>后端收到的检测结果格式（Python 模型响应）：</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;malicious&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;confidence&quot;</span><span class="punctuation">:</span> <span class="number">0.987</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io">Hungyeye</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://hungyeye.github.io/2025/05/31/heidan/">https://hungyeye.github.io/2025/05/31/heidan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://hungyeye.github.io" target="_blank">Hungyeye's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/cover/0.PNG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/05/27/rpc/" title="rpc笔记"><img class="cover" src="/img/cover/1.PNG" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">rpc笔记</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Hungyeye</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hungyeye"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hungyeye" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1326358725@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客，与你共同进步 --小狗蛋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E5%9F%BA%E7%A1%80%EF%BC%88%E5%8A%AA%E5%8A%AA%E5%8A%9B%EF%BC%8C%E4%BA%94%E4%B8%80%E6%94%BE%E5%81%87%E5%89%8D%E7%9C%8B%E5%AE%8C%E5%86%B2%E5%86%B2%E5%86%B2%E5%86%B2%EF%BC%89%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">java基础（努努力，五一放假前看完冲冲冲冲）：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E7%9B%B8%E5%85%B3%E7%9A%84%EF%BC%885-3%E7%9C%8B%E5%AE%8C%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">Spring相关的（5.3看完）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql%EF%BC%885-7%E7%9C%8B%E5%AE%8C%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">Mysql（5.7看完）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%EF%BC%885-10%E7%9C%8B%E5%AE%8C%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">Redis（5.10看完）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E6%8A%8A%E8%BF%99%E4%BA%9B%E7%9C%8B%E5%AE%8C%EF%BC%8C%E8%83%BD%E5%BF%AB%E7%9A%84%E5%B0%BD%E5%BF%AB%EF%BC%8C%E5%9B%A0%E4%B8%BA%E4%BD%A0%E6%AF%95%E7%AB%9F%E6%9C%89%E5%9F%BA%E7%A1%80%E5%93%88%EF%BC%8C%E5%90%8E%E9%9D%A2%E8%BF%98%E5%BE%97%E7%9C%8B%E7%9C%8BJVM%E5%95%A5%E7%9A%84%EF%BC%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%95%A5%E7%9A%84%EF%BC%8C%E4%B8%8D%E8%BF%87%E8%BF%99%E4%BA%9B%E7%AE%97%E6%AF%94%E8%BE%83%E6%B7%B1%E7%9A%84%EF%BC%8C%E5%8E%BB%E5%B9%B4%E6%88%91%E9%9D%A2%E8%AF%95%E4%B9%9F%E6%B2%A1%E4%BA%BA%E9%97%AE%EF%BC%8C%E6%84%9F%E8%A7%89%E8%BF%98%E6%98%AF%E7%9C%8B%E8%BF%90%E6%B0%94%EF%BC%8C%E8%BF%99%E4%B8%AA%E7%9C%8B%E4%BA%86%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%8A%95%E6%8A%95%E5%85%B6%E4%BB%96%E5%B7%A5%E4%BD%9C"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">先把这些看完，能快的尽快，因为你毕竟有基础哈，后面还得看看JVM啥的，垃圾回收啥的，不过这些算比较深的，去年我面试也没人问，感觉还是看运气，这个看了，可以投投其他工作&#x2F;</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%80%EF%BC%9A%E9%BB%84%E6%B5%B7%E5%AD%A6%E9%99%A2%E6%99%BA%E6%85%A7%E9%A4%90%E5%8E%85"><span class="toc-number">5.</span> <span class="toc-text">项目一：黄海学院智慧餐厅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%91%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E4%BB%A5%E5%8F%8A%E4%BD%A0%E7%9A%84%E8%81%8C%E8%B4%A3%EF%BC%9F"><span class="toc-number">5.0.1.</span> <span class="toc-text">1.挑一个项目介绍一下以及你的职责？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%81%9A%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E8%BF%87%E9%9A%BE%E9%A2%98%EF%BC%8C%E4%BD%A0%E6%98%AF%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E7%9A%84%EF%BC%9F"><span class="toc-number">5.0.2.</span> <span class="toc-text">2.做项目的过程中遇到过难题，你是怎么解决的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DTO%E5%92%8CVO%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">5.0.3.</span> <span class="toc-text">3.DTO和VO的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E9%A1%B9%E7%9B%AE%E8%81%8C%E8%B4%A3%E4%B8%AD%E7%9A%846%E4%B8%AA%E7%82%B9%E5%AF%B9%E5%BA%94%E7%9A%84%E8%AF%A6%E7%BB%86%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="toc-number">5.0.4.</span> <span class="toc-text">对于项目职责中的6个点对应的详细内容：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%B4%9F%E8%B4%A3%E8%8F%9C%E5%93%81%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%80%E5%8F%91%EF%BC%8C%E4%BD%BF%E7%94%A8Redis%E7%BC%93%E5%AD%98%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%87%8F%E8%BD%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%8B%E5%8A%9B%EF%BC%8C%E5%90%8C%E6%97%B6%E8%A7%A3%E5%86%B3%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E3%80%81%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E3%80%81%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E7%AD%89%E9%97%AE%E9%A2%98"><span class="toc-number">5.0.4.1.</span> <span class="toc-text">1.负责菜品管理模块的设计与开发，使用Redis缓存菜品信息，减轻数据库压力，同时解决缓存穿透、缓存击穿、缓存一致性等问题;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%B4%9F%E8%B4%A3%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E4%B8%8E%E6%94%AF%E4%BB%98%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%B8%8B%E5%8D%95%E4%B8%8E%E6%94%AF%E4%BB%98%E7%AD%89%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%BD%BF%E7%94%A8SpringTask%E5%AE%9E%E7%8E%B0%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81%E5%AE%9A%E6%97%B6%E5%A4%84%E7%90%86"><span class="toc-number">5.0.4.2.</span> <span class="toc-text">2.负责订单管理与支付模块开发，实现下单与支付等业务功能，使用SpringTask实现订单状态定时处理;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%B4%9F%E8%B4%A3%E6%90%AD%E5%BB%BARedis%E4%B8%BB%E4%BB%8E%E9%9B%86%E7%BE%A4%EF%BC%8C%E5%8A%A0%E5%85%A5Sentinel%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%EF%BC%8C%E6%8F%90%E9%AB%98%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E4%BB%A5%E5%8F%8A%E9%AB%98%E5%B9%B6%E5%8F%91%E8%83%BD%E5%8A%9B"><span class="toc-number">5.0.4.3.</span> <span class="toc-text">3.负责搭建Redis主从集群，加入Sentinel机制，实现读写分离，提高系统的高可用以及高并发能力;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8JWT%E4%BB%A4%E7%89%8C%EF%BC%8C%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8B%A6%E6%88%AA%E5%99%A8%E5%AE%8C%E6%88%90%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%EF%BC%8C%E9%80%9A%E8%BF%87ThreadLocal%E6%9D%A5%E4%BC%98%E5%8C%96%E9%89%B4%E6%9D%83%E9%80%BB%E8%BE%91"><span class="toc-number">5.0.4.4.</span> <span class="toc-text">4.使用JWT令牌，用自定义拦截器完成用户认证，通过ThreadLocal来优化鉴权逻辑;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E8%B4%9F%E8%B4%A3%E5%AA%92%E4%BD%93%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%EF%BC%8C%E5%B0%86%E5%9B%BE%E7%89%87%E7%AD%89%E5%AA%92%E4%BD%93%E8%B5%84%E6%BA%90%E4%B8%8A%E4%BC%A0%E5%88%B0MinIO%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%82%A8"><span class="toc-number">5.0.4.5.</span> <span class="toc-text">5.负责媒体资源管理模块开发，将图片等媒体资源上传到MinIO分布式文件系统进行存储;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8ShardingJDBC%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%EF%BC%8C%E5%B0%86%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%92%E5%88%86%E4%B8%BA%E4%B8%80%E4%B8%BB%E4%B8%A4%E4%BB%8E%EF%BC%8C%E6%8F%90%E5%8D%87%E5%8D%95%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AF%BB%E5%86%99%E8%83%BD%E5%8A%9B%E6%8F%90%E9%AB%98%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%8F%96%E6%80%A7%E8%83%BD%E5%92%8C%E5%86%99%E5%85%A5%E6%80%A7%E8%83%BD%E3%80%82"><span class="toc-number">5.0.4.6.</span> <span class="toc-text">6.使用ShardingJDBC实现数据库读写分离，将数据库划分为一主两从，提升单数据库的读写能力提高数据库读取性能和写入性能。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BA%8C%EF%BC%9A%E6%81%B6%E6%84%8F%E7%BD%91%E7%AB%99%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.</span> <span class="toc-text">项目二：恶意网站检测系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%88Java-Python-%E6%A8%A1%E5%9E%8B%E9%80%9A%E4%BF%A1%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">详细过程：常见实现方式（Java + Python 模型通信）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87-HTTP-%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1"><span class="toc-number">6.1.0.1.</span> <span class="toc-text">通过 HTTP 接口调用深度学习模型服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%94%B6%E5%88%B0%E7%9A%84%E6%A3%80%E6%B5%8B%E7%BB%93%E6%9E%9C%E6%A0%BC%E5%BC%8F%EF%BC%88Python-%E6%A8%A1%E5%9E%8B%E5%93%8D%E5%BA%94%EF%BC%89%EF%BC%9A"><span class="toc-number">6.1.0.2.</span> <span class="toc-text">后端收到的检测结果格式（Python 模型响应）：</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/31/heidan/" title="little black egg"><img src="/img/cover/0.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="little black egg"/></a><div class="content"><a class="title" href="/2025/05/31/heidan/" title="little black egg">little black egg</a><time datetime="2025-05-31T07:08:51.000Z" title="发表于 2025-05-31 15:08:51">2025-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/27/rpc/" title="rpc笔记"><img src="/img/cover/1.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="rpc笔记"/></a><div class="content"><a class="title" href="/2025/05/27/rpc/" title="rpc笔记">rpc笔记</a><time datetime="2025-05-27T02:49:20.000Z" title="发表于 2025-05-27 10:49:20">2025-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="微服务实战"><img src="/img/cover/2.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微服务实战"/></a><div class="content"><a class="title" href="/2024/08/15/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98/" title="微服务实战">微服务实战</a><time datetime="2024-08-15T02:04:09.000Z" title="发表于 2024-08-15 10:04:09">2024-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关"><img src="/img/cover/0.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java相关"/></a><div class="content"><a class="title" href="/2024/07/24/java%E7%9B%B8%E5%85%B3/" title="java相关">java相关</a><time datetime="2024-07-24T03:40:53.000Z" title="发表于 2024-07-24 11:40:53">2024-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记"><img src="/img/cover/2.PNG" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring笔记"/></a><div class="content"><a class="title" href="/2024/05/29/spring%E7%AC%94%E8%AE%B0/" title="spring笔记">spring笔记</a><time datetime="2024-05-29T03:11:45.000Z" title="发表于 2024-05-29 11:11:45">2024-05-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Hungyeye</div><div class="footer_custom_text">Hi, welcome to hungyeye's <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'hungyeye/hungyeye.github.io',
+      'data-repo-id': 'R_kgDOL65qOw',
+      'data-category-id': 'DIC_kwDOL65qO84CfXhF',
+      'data-mapping': 'pathname',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },null)
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment= loadGiscus
+  }
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
